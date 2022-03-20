@@ -1,14 +1,56 @@
-# Mazaj
+# Mazij
  Front-end - Shreya, Kulsoom, Azzaam, Varun, Taha  
  Back-end - Bhavika, Alister, Omar  
 
 Remember to read the FRs given below to see which ones are being inplemented in stage-2 (denoted with a 1 beside the names). All FRs and NFRs associated with each page given below will have to be implemented by the people assigned to that particular page.  
 
+## Stage 3
+
+Deployment resources- https://ohuru.tech/blog/2020/4/18/flutter-signuplogin-application-with-django-backend-2/  
+https://medium.com/@wendreof/how-publish-flutter-web-app-on-heroku-github-pages-f4df95bdd385  
+https://realpython.com/django-hosting-on-heroku/  
+
+### Report Distribution (check report shared)
+### Demo  
+
+*Screen shared by Kulsoom with one/two browser windows. If deployed, Shreya has window open instead for chat*  
+
+1) Introduction with team intro- Azzaam  
+
+___________________________________________________________________________________________________  
+
+2) App demo- Shreya, Kulsoom, Taha, Varun  
+
+Before demo-  
+have an account with each of the acc types with 1 post each (with proper tags (with common tags) and 1 should be a mashed up post, BM should have proper advertisement), with proper details, dp, bio. Create admin account too.  
+
+During demo-  
+1) Go over onboarding, welcome, Register a student account (show both window sizes), get verification code from inbox, upload proper dp and fill in bio, go to profile, upload an image, give 2 tags, upvote that post.- Kulsoom  
+
+2) Go to libraries, show all tabs and mention BM ads everywhere, click on a pic, click on a tag, go back, click on another post, click on collaborator, go back, click on profile, go back, follow a lib, show content tags search and click on 1/2 tags to show posts.- Kulsoom  
+
+3) Go to user search and click on an account and follow them and upvote 2 posts, go back to search and click another account and report a post.- Taha  
+
+4) Show the feed- mention posts are from following accounts/lib, upvote a post, click on a tag, come back.- Taha  
+
+5) Show chat- search for group and join and message ppl, Create a group and message friend to join this. Join from that account too.- Shreya  
+
+6) Show mashup page- click on upload, upload from a profile, type text, draw and undo, save to machine. Go back to upload, upload from tag search, put a shape, and save to draft. Go to upload and take this from drafts and put a sticker on the shape and upload to profile. Give right tags and collaborators (you and user chatted with). Click on this post in profile and show. Go to setting drawer and logout. - Shreya   
+
+7) Login page (show both window sizes), forgot password, login now. Go to settings drawer and mention pages and update details (update email address and account type), give verification code. - Kulsoom  
+
+8) Login to admin account, show the table and updated name and email, search user, show stats (show both window sizes), delete a user, click on posts of another user, click on a post, delete a post, logout.- Varun    
+
+___________________________________________________________________________________________________  
+
+3) Backend overview- Omar, Bhavika  
+4) Achieved func and whats not done, any changes we would like to make, features to add- Alister  
+5) Short conclusion- Azzaam  
+
 ## Stage 2 (if any problem with this, leave a comment here)
 Report- Azzaam, Bhavika, Omar, Varun.  
 Webpage- Kulsoom, Shreya  
  
-
 ### Demo
 The demonstration should include:   
  
@@ -120,120 +162,129 @@ flutter app detailed tutorial- https://medium.com/@shakleenishfar/leaf-flutter-s
 
 
 ### Requirements  
+F-UR1 Registration Progress  
+F-UR 1.1 Register using email-done    
+The user must be able to sign up/create an account using an email 
+address and password. Accounts must be stored on the server until 
+they actively decide to delete their account.  
 
-F-UR1 Registration  
-F-UR 1.1 Register using email -1  
-The user must be able to sign up/create an account using an email address and password.  
-The user should be sent an email to confirm their email address to finalize their
-registration.  
-F-UR 1.2 Register using Google or Facebook -2 opt  
-In case the user prefers, they must be able to create an account by logging into their
-Google account or Facebook account.  
-F-UR 1.3 Register for any of the several types of accounts -1  
-Users must be able to register for a type of accounts as per their needs, the types being
-artist accounts, student accounts, content creator accounts, and brand marketer
-accounts.  
+F-UR 1.2  Register using Google or Facebook  
+In case the user prefers, they must be able to create an account by 
+logging into their Google account or Facebook account.  
 
-F-UR 1.4 Log in -1  
-Users who already have an account must be able to log in using the username and
-password they registered.  
-F-UR 1.5 Log out -1  
-Users must be able to log out of their account on a given browser/app.  
-F-UR 1.6 Delete Account -1  
-User accounts must be stored on the server until they actively decide to delete their
-account.  
-F-UR 1.7 Account Limit -1  
-Only one account must be made per email address and no usernames should be
-repeated.  
+F-UR 1.3  Register for any of the several types of accounts- done   
+Users must be able to register for a type of accounts as per their needs, 
+the types being artist accounts, student accounts, content creator 
+accounts, and brand marketer accounts.  
 
-F-UR 1.8 Retrieve forgotten password -2  
-Users must receive an email at their registered email address to reset their password if
-they have forgotten it.  
+F-UR 1.4  Log in- done   
+Users who already have an account must be able to log in using the 
+username and password they registered.  
 
-F-UR 2 Profile information  
-F-UR 2.1 Add additional user information -1  
+F-UR 1.5  Log out- done   
+Users must be able to log out of their account on the application.  
+
+F-UR 1.6  Delete Account- done   
+Users must be able to delete their accounts from the application.  
+
+F-UR 1.7 Account Limit - done   
+Only one account must be made per email address and no usernames 
+should be repeated.  
+ 
+F-UR 1.8  Retrieve forgotten password - done   
+Users must be able to reset their password if they have forgotten it.
+They can reset their password by creating a new password with their 
+email address.  
+
+F-UR 2 Profile information    
+
+F-UR 2.1 Add additional user information -done   
 The user must be allowed to enter additional information in their profile bio like links to
-their personal websites.  
-F-UR 2.2 View posts -1  
-The user must be able to view their posts in their profile.  
-F-UR 2.3 Delete posts -1  
-The user must be able to delete any of their posts. 
+their personal websites.    
 
-F-UR 2.4 Edit user information -2  
+F-UR 2.2 View posts -1  -done   
+The user must be able to view their posts in their profile.    
+
+F-UR 2.3 Delete posts -done   
+The user must be able to delete any of their posts.   
+
+F-UR 2.4 Edit user information -done   
 The user must be able to edit their personal information and login details.  
 
-F-UR 3 Application Functionality Requirements  
-F-UR 3.1 Upload content -1  (from profile page, with licenses and content tag)
-The app must allow users to upload content- pictures or videos.  
 
-F-UR 3.2 Create virtual collaborative environment -2  
-The system must allow users to collaborate with others to create and post collaborative
-content. The virtual environment shall include a whiteboard, tools for editing of the
-content created and, at the very least, chat functionality.  
-F-UR 3.3 Access home page -2  
-Users must be able to access their home page with posts of users and libraries they
-follow.  
+F-UR 3 Application Functionality Requirements   
+F-UR 3.1  Upload content - done   
+The app must allow users to upload content such as images.  
 
-F-UR 3.4 Access content libraries -1  
-Users must be able to access different content libraries and follow the libraries they
-prefer.  
+F-UR 3.2 Create virtual collaborative environment - chat in works, whiteboard screen done  
+The system must allow users to collaborate with other users. The 
+virtual environment shall include a whiteboard and a chat function
+which the users can access to collaborate.  
 
-F-UR 3.5 Interact with users -2  
-Users must be able to follow and search for other users, |message other users on the
-platform, and share posts within the platform.| The system should also allow
-mentioning/|tagging| users in posts. Furthermore, users should be able to block other
-users to prevent any interaction with them.  
+F-UR 3.3  Access home page - done   
+Users must be able to access their home page with posts of users 
+and libraries they follow.  
 
-F-UR 3.6 Interact with content tags -1 (lib category = content tags)  
-Users must be able to follow and |search| for content tags. The system should also allow
-mentioning content tags in posts.  
-F-UR 3.7 Support for licenses -1  
-Appropriate licenses, particularly instances of Creative Commons, must be supported
-and respected to ensure contributed content is used as intended.
-The platform must include features that enable key pieces of information, like copyright
-details and watermarks, to be displayed visually in an appropriate form for different
-types of users.  
+F-UR 3.4 Access content libraries - done   
+Users must be able to access different content libraries categorized 
+by the account types of the users who have uploaded those posts.
+These libraries are thus curated by the users for the users.  
 
-F-UR 3.8 Editing posts before posting -2 opt  
-System must allow users to edit & snip shared content. The app must have simple
-features for modifying shared content in libraries, such as image/audio filters, splicing
-tools, and other options.  
-F-UR 3.9 Interact with posts -2  
-Users must be able to like and comment under posts.  
+F-UR 3.5 Interact with users - done  
+Users must be able to follow and search for other users. The system 
+should also allow tagging users in post captions. Furthermore, users 
+should be able to -block other users- to prevent any interaction with 
+them.  
 
-F-UR 3.10 Create mash ups of other posts -2 (+ collage + post it)  
-Users must be able to create mash ups of other users’ posts. A mash up includes editing
-another user’s post by either cropping it, adding text, stickers, or filters to it.  
-F-UR 3.11 Report content -2  
-Users must be able to report posts or accounts for having/posting explicit or illegal
-content. Users must be able to flag a copyright violation if content shared does not
-respect the copyright details or does not attribute the original poster/creator of the
-work.  
+F-UR 3.6  Interact with content tags - done   
+Users must be able to follow libraries. The system should also allow 
+mentioning libraries in posts in the caption.   
 
-F-UR 3.12 Access pages for additional application information -1  
-Users must be able to access FAQ, privacy policy, and terms and conditions pages to for
-additional help using the application.  
+F-UR 3.7  Support for licenses - done   
+Appropriate licenses, particularly instances of Creative Commons, 
+must be supported and respected to ensure contributed content is 
+used as intended.   
+The platform must include features that enable key pieces of 
+information, like copyright details to be displayed for information.   
+
+F-UR 3.8 Editing posts before posting - shared content can be edited  
+-System must allow users to edit & snip shared content. The app must
+have simple features for modifying shared content in libraries-, such 
+as image/audio filters or splicing tools.  
+
+F-UR 3.9  Interact with posts - done   
+Users must be able to like or upvote posts.  
+
+F-UR 3.10  Create mash ups of other posts - done   
+Users must be able to create mash ups of other users’ posts. A mash 
+up includes editing another user’s post by either making collages of 
+those or cropping it, adding text, stickers, or filters to it.  
+
+F-UR 3.11 Report content - done   
+Users must be able to report posts or accounts for having/posting 
+explicit or illegal content. Users must be able to flag a copyright 
+violation if content shared does not respect the copyright details of 
+the work.  
+ 
+F-UR 3.12  Access pages for additional application information - done   
+Users must be able to access FAQ, privacy policy, and terms and 
+conditions pages to for additional help using the application.   
 
 F-UR 4 Administration requirements  
-F-UR 4.1 Login as administrators -2  
-The system must allow accounts with administration rights, called platform managers to
-login.  
-F-UR 4.2 Use moderation tools -2  
-The system must allow “platform managers” to use included moderation tools to
-moderate content that is uploaded to or generated using the platform. The tools must
-allow “platform managers” to delete content, block users from accessing certain groups
-and take away posting privileges from violators either for a specific period (e.g., 1 day, 1
-week, 2 weeks.) or indefinitely.  
-F-UR 4.3 View summary reports -2  
-The system must generate summary reports for “platform managers” to view,
-concerning overall platform usage.   
-  
+F-UR 4.1 Login as administrators - done   
+The system must allow accounts with administration rights, called 
+platform managers to login.  
 
+F-UR 4.2  Use moderation tools - done   
+The system must allow “platform managers” to moderate content 
+that is uploaded to or generated using the platform. That is, 
+“platform managers” must be able to delete content, -block users 
+from accessing certain groups- and delete or block users from 
+accessing the application.  
 
-### Note (if you find any points for us to remember, add them here)
- - All details and posts to be stored in db but chat not required to be stored in db.      
- - for now, images to be saved for use in mashup
- - Check the mockups for design and implementation (improve the design).  
- - Apart from the app, some will have to work on the static webpage and some on the report.  
- -
-
+F-UR 4.3 View summary reports - done   
+The system must generate summary reports for “platform 
+managers” to view, concerning overall platform usage which could 
+include the number of posts uploaded, number of accounts created 
+or associated with the activity on the application like the number of 
+upvotes being put.  
