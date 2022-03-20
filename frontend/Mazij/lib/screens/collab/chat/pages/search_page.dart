@@ -12,7 +12,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   // data
   TextEditingController searchEditingController = new TextEditingController();
-  QuerySnapshot searchResultSnapshot = DatabaseService("").searchByName("");
+  //QuerySnapshot searchResultSnapshot = DatabaseService("").searchByName("");
   //dynamic searchResultSnapshot;
   bool isLoading = false;
   bool hasUserSearched = false;
@@ -41,17 +41,17 @@ class _SearchPageState extends State<SearchPage> {
       setState(() {
         isLoading = true;
       });
-      await DatabaseService(_username)
-          .searchByName(searchEditingController.text)
-          .then((snapshot) {
-        searchResultSnapshot = snapshot;
-        print("here");
-        print("$searchResultSnapshot");
-        setState(() {
-          isLoading = false;
-          hasUserSearched = true;
-        });
+      // await DatabaseService(_username)
+      //     .searchByName(searchEditingController.text)
+      //     .then((snapshot) {
+      // searchResultSnapshot = snapshot;
+      print("here");
+      //print("$searchResultSnapshot");
+      setState(() {
+        isLoading = false;
+        hasUserSearched = true;
       });
+      // });
     }
   }
 
@@ -75,22 +75,54 @@ class _SearchPageState extends State<SearchPage> {
 
   // widgets
   Widget groupList() {
-    List<QueryDocumentSnapshot<Object?>> doc = searchResultSnapshot.docs;
-    print('in search groupList');
-    print(doc.length);
-    return hasUserSearched
-        ? ListView.builder(
-            shrinkWrap: true,
-            itemCount: doc.length,
-            itemBuilder: (context, index) {
-              return groupTile(
-                _username,
-                doc[index].get('groupId'),
-                doc[index].get('groupName'),
-                doc[index].get('admin'),
-              );
-            })
-        : Container();
+    // List<QueryDocumentSnapshot<Object?>> doc =  FirebaseFirestore.instance
+    //     .collection("groups")
+    //     .where('groupName', isEqualTo: searchEditingController.text).snapshots();
+    // print('in search groupList');
+    // print(doc.length);
+    // return hasUserSearched
+    //     ? ListView.builder(
+    //         shrinkWrap: true,
+    //         itemCount: doc.length,
+    //         itemBuilder: (context, index) {
+    //           return groupTile(
+    //             _username,
+    //             doc[index].get('groupId'),
+    //             doc[index].get('groupName'),
+    //             doc[index].get('admin'),
+    //           );
+    //         })
+    //     : Container();
+
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection("groups")
+          .where('groupName', isEqualTo: searchEditingController.text)
+          .snapshots(),
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        // var data = snapshot.data;
+        print('search');
+        //  print(data.documents.length);
+        if (snapshot.hasData) {
+          dynamic data = snapshot.data!.docs;
+
+          return ListView.builder(
+              shrinkWrap: true,
+              itemCount: data.length,
+              itemBuilder: (context, index) {
+                return groupTile(
+                  _username,
+                  data[index].data()!["groupId"],
+                  data[index].data()!["groupName"],
+                  data[index].data()!["admin"],
+                );
+              });
+        }
+        // } else {
+        return Container();
+        //}
+      },
+    );
   }
 
   Widget groupTile(
@@ -100,7 +132,7 @@ class _SearchPageState extends State<SearchPage> {
       contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       leading: CircleAvatar(
           radius: 30.0,
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Colors.amber,
           child: Text(groupName.substring(0, 1).toUpperCase(),
               style: TextStyle(color: Colors.white))),
       title: Text(groupName, style: TextStyle(fontWeight: FontWeight.bold)),
@@ -131,7 +163,7 @@ class _SearchPageState extends State<SearchPage> {
             ? Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.black87,
+                    color: Color.fromARGB(95, 56, 52, 52),
                     border: Border.all(color: Colors.white, width: 1.0)),
                 padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                 child: Text('Joined', style: TextStyle(color: Colors.white)),
@@ -155,8 +187,8 @@ class _SearchPageState extends State<SearchPage> {
       key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.black87,
-        title: Text('Search',
+        backgroundColor: Colors.purple.shade300,
+        title: Text('Search Rooms',
             style: TextStyle(
                 fontSize: 27.0,
                 fontWeight: FontWeight.bold,
@@ -173,23 +205,32 @@ class _SearchPageState extends State<SearchPage> {
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-              color: Colors.grey[700],
+              // color: Colors.amber.shade100,
               child: Row(
                 children: [
                   Expanded(
                     child: TextField(
-                      controller: searchEditingController,
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                      decoration: InputDecoration(
-                          hintText: "Search groups...",
-                          hintStyle: TextStyle(
-                            color: Colors.white38,
-                            fontSize: 16,
+                        controller: searchEditingController,
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        // decoration: InputDecoration(
+                        //     hintText: "Search Rooms",
+                        //     hintStyle: TextStyle(
+                        //       color: Colors.white38,
+                        //       fontSize: 16,
+                        //     ),
+                        //     border: InputBorder.none),
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.purple),
+                            borderRadius: BorderRadius.circular(85),
                           ),
-                          border: InputBorder.none),
-                    ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.blue),
+                            borderRadius: BorderRadius.circular(85),
+                          ),
+                        )),
                   ),
                   GestureDetector(
                       onTap: () {
@@ -199,9 +240,9 @@ class _SearchPageState extends State<SearchPage> {
                           height: 40,
                           width: 40,
                           decoration: BoxDecoration(
-                              color: Colors.blueAccent,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(40)),
-                          child: Icon(Icons.search, color: Colors.white)))
+                          child: Icon(Icons.search, color: Colors.blueAccent)))
                 ],
               ),
             ),

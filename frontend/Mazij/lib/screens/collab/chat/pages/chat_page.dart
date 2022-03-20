@@ -20,28 +20,31 @@ class _ChatPageState extends State<ChatPage> {
   TextEditingController messageEditingController = new TextEditingController();
 
   Widget _chatMessages() {
-    return StreamBuilder(
+    return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection('groups')
           .doc(widget.groupId)
           .collection('messages')
           .orderBy('time')
           .snapshots(),
-      builder: (context, snapshot) {
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
         // var data = snapshot.data;
-        print('messages');
+
         //  print(data.documents.length);
         if (snapshot.hasData) {
-          dynamic data = snapshot.data;
-          print(snapshot.data.toString());
+          dynamic data = snapshot.data!.docs;
+
           return ListView.builder(
-              itemCount: data['message'].length,
+              itemCount: data.length,
+              shrinkWrap: true,
               itemBuilder: (context, index) {
-                print(data['message'].length);
                 return MessageTile(
-                  data.documents[index].data["message"],
-                  data.documents[index].data["sender"],
-                  widget._username == data.documents[index].data["sender"],
+                  // data.documents[index].data["message"],
+                  data[index].data()!["message"],
+                  //data.documents[index].data["sender"],
+                  data[index].data()!["sender"],
+                  widget._username == data[index].data()!["sender"],
+                  //data.documents[index].data["sender"],
                 );
               });
         }
@@ -92,7 +95,7 @@ class _ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         title: Text(widget.groupName, style: TextStyle(color: Colors.white)),
         centerTitle: true,
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.purple.shade300,
         elevation: 0.0,
       ),
       body: Container(
@@ -105,21 +108,35 @@ class _ChatPageState extends State<ChatPage> {
               width: MediaQuery.of(context).size.width,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-                color: Colors.grey[700],
+                //color: Colors.grey[700],
                 child: Row(
                   children: <Widget>[
                     Expanded(
                       child: TextField(
-                        controller: messageEditingController,
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
+                          controller: messageEditingController,
+                          style: TextStyle(color: Colors.white),
+                          // decoration: InputDecoration(
+                          //     hintText: "Send a message ...",
+                          //     hintStyle: TextStyle(
+                          //       color: Colors.white38,
+                          //       fontSize: 16,
+                          //     ),
+                          //   border: InputBorder.none),
+                          decoration: InputDecoration(
                             hintText: "Send a message ...",
                             hintStyle: TextStyle(
-                              color: Colors.white38,
-                              fontSize: 16,
+                              color: Colors.white60,
                             ),
-                            border: InputBorder.none),
-                      ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  const BorderSide(color: Colors.purple),
+                              borderRadius: BorderRadius.circular(85),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.blue),
+                              borderRadius: BorderRadius.circular(85),
+                            ),
+                          )),
                     ),
                     SizedBox(width: 12.0),
                     GestureDetector(

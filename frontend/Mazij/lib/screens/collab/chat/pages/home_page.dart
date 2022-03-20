@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                   _popupDialog(context);
                 },
                 child: Icon(Icons.add_circle,
-                    color: Colors.grey[700], size: 75.0)),
+                    color: Colors.purple.shade300, size: 75.0)),
             SizedBox(height: 20.0),
             Text(
                 "You've not joined any group, tap on the 'add' icon to create a group or search for groups by tapping on the search button below."),
@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
     );
 
     AlertDialog alert = AlertDialog(
-      title: Text("Create a group"),
+      title: Text("Create a Group"),
       content: TextField(
           onChanged: (val) {
             _groupName = val;
@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
                 fontSize: 27.0,
                 fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.purple.shade300,
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
@@ -183,7 +183,7 @@ class _HomePageState extends State<HomePage> {
           _popupDialog(context);
         },
         child: Icon(Icons.add, color: Colors.white, size: 30.0),
-        backgroundColor: Colors.grey[700],
+        backgroundColor: Colors.purple.shade300,
         elevation: 0.0,
       ),
     );

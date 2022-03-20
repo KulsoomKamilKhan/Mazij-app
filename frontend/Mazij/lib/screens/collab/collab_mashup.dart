@@ -15,6 +15,8 @@ class CollabMashup extends StatefulWidget {
 class _CollabMashupState extends State<CollabMashup> {
   @override
   Widget build(BuildContext context) {
+    // if ((MediaQuery.of(context).size.width >= 1000) &&
+    //     (MediaQuery.of(context).size.height >= 500)) {
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(50),
@@ -32,5 +34,21 @@ class _CollabMashupState extends State<CollabMashup> {
             flex: 1,
           ),
         ]));
+    // }
+    // return Scaffold(
+    //   appBar: PreferredSize(
+    //     preferredSize: const Size.fromHeight(50),
+    //     child: myAppBar("Collaborate and Mashup"),
+    //   ),
+    //   drawer: const SettingsDrawer(),
+    //   // row for displaying side-by-side,
+    //   // endDrawer: Drawer(
+    //   //   child: SingleChildScrollView(child: Expanded(child: HomePage())),
+    //   // ),
+    //   body: const Expanded(
+    //     child: FlutterPainterExample(),
+    //     flex: 2,
+    //   ),
+    // );
   }
 }
