@@ -1,0 +1,32 @@
+#Virtual environment directories
+bin/
+include/
+Lib/
+lib/
+lib64/
+pyvenv.cfg
+Scripts/
+
+#Migrations
+backend/users/__pycache__/
+backend/users/migrations/
+backend/backend/static/__pycache__/
+backend/backend/__pycache__/
+backend/users/__pycache__/
+backend/mazaj_profile/__pycache__/
+backend/mazaj_profile/migrations
+backend/posts/__pycache__/
+backend/posts/migrations
+backend\channels_app\__pycache__
+backend\core\__pycache__
+backend\core\models\__pycache__
+
+#Do not ignore frontend/Mazaj/lib
+!frontend/Mazij/lib
+
+backend/core/__pycache__/apps.cpython-38.pyc
+backend/core/__pycache__/apps.cpython-38.pyc
+backend/core/__pycache__/apps.cpython-38.pyc
+backend/channels_app/__pycache__/apps.cpython-38.pyc
+backend/core/__pycache__/__init__.cpython-38.pyc
+backend/core/models/__pycache__/__init__.cpython-38.pyc
