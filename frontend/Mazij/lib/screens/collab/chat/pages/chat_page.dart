@@ -21,22 +21,33 @@ class _ChatPageState extends State<ChatPage> {
 
   Widget _chatMessages() {
     return StreamBuilder(
-      stream: DatabaseService(widget._username).getChats(widget.groupId),
+      stream: FirebaseFirestore.instance
+          .collection('groups')
+          .doc(widget.groupId)
+          .collection('messages')
+          .orderBy('time')
+          .snapshots(),
       builder: (context, snapshot) {
-        dynamic data = snapshot.data;
+        // var data = snapshot.data;
         print('messages');
-        print(data.documents.length);
-        return snapshot.hasData
-            ? ListView.builder(
-                itemCount: data.documents.length,
-                itemBuilder: (context, index) {
-                  return MessageTile(
-                    data.documents[index].data["message"],
-                    data.documents[index].data["sender"],
-                    widget._username == data.documents[index].data["sender"],
-                  );
-                })
-            : Container();
+        //  print(data.documents.length);
+        if (snapshot.hasData) {
+          dynamic data = snapshot.data;
+          print(snapshot.data.toString());
+          return ListView.builder(
+              itemCount: data['message'].length,
+              itemBuilder: (context, index) {
+                print(data['message'].length);
+                return MessageTile(
+                  data.documents[index].data["message"],
+                  data.documents[index].data["sender"],
+                  widget._username == data.documents[index].data["sender"],
+                );
+              });
+        }
+        // } else {
+        return Container();
+        //}
       },
     );
   }

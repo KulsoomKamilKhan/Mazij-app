@@ -94,12 +94,12 @@ class DatabaseService {
   }
 
   // get user data
-  Future getUserData(String email) async {
-    QuerySnapshot snapshot =
-        await userCollection.where('email', isEqualTo: email).get();
-    print(snapshot.docs[0].data);
-    return snapshot;
-  }
+  // Future getUserData(String email) async {
+  //   QuerySnapshot snapshot =
+  //       await userCollection.where('email', isEqualTo: email).get();
+  //   print(snapshot.docs[0].data);
+  //   return snapshot;
+  // }
 
   // get user groups
   getUserGroups() async {

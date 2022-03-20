@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           dynamic data = snapshot.data!;
+          print(snapshot.data.toString());
           print(data['groups'].length);
           if (data['groups'] != null) {
             print(data['groups'].length);
