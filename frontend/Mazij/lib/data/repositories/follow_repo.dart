@@ -3,7 +3,7 @@ import 'package:Mazaj/data/models/follow_model.dart';
 import 'package:http/http.dart' as http;
 
 class FollowRepository {
-  static const base = "http://127.0.0.1:8000/followers/";
+  static const base = "https://mazij-backend.herokuapp.com/followers/";
 
   Future<List<dynamic>> getAllInstances() async {
     Uri local = Uri.parse(base);

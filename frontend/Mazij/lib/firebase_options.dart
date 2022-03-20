@@ -40,6 +40,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '519768581909',
     projectId: 'mazijchat',
     authDomain: 'mazijchat.firebaseapp.com',
+    databaseURL: 'https://mazijchat-default-rtdb.firebaseio.com',
     storageBucket: 'mazijchat.appspot.com',
     measurementId: 'G-1YVJP95ZD2',
   );
@@ -49,26 +50,29 @@ class DefaultFirebaseOptions {
     appId: '1:519768581909:android:4c29e7f6c8166f82f72b1c',
     messagingSenderId: '519768581909',
     projectId: 'mazijchat',
+    databaseURL: 'https://mazijchat-default-rtdb.firebaseio.com',
     storageBucket: 'mazijchat.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDp3Dx9FkACn6hse1k-kz1SqtmVyENAe94',
-    appId: '1:519768581909:ios:fcdf21dcbe7ba889f72b1c',
+    appId: '1:519768581909:ios:03e574b2b761c76af72b1c',
     messagingSenderId: '519768581909',
     projectId: 'mazijchat',
+    databaseURL: 'https://mazijchat-default-rtdb.firebaseio.com',
     storageBucket: 'mazijchat.appspot.com',
-    iosClientId: '519768581909-kji7c53titm0s3k3ho1a9uvhouni90ig.apps.googleusercontent.com',
-    iosBundleId: 'com.mazij.app',
+    iosClientId: '519768581909-ge2qh1n68d7h2g8jvrqgrbl7k3nad70b.apps.googleusercontent.com',
+    iosBundleId: 'mazijapp.example.com',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyDp3Dx9FkACn6hse1k-kz1SqtmVyENAe94',
-    appId: '1:519768581909:ios:fcdf21dcbe7ba889f72b1c',
+    appId: '1:519768581909:ios:787615c4bce80acaf72b1c',
     messagingSenderId: '519768581909',
     projectId: 'mazijchat',
+    databaseURL: 'https://mazijchat-default-rtdb.firebaseio.com',
     storageBucket: 'mazijchat.appspot.com',
-    iosClientId: '519768581909-kji7c53titm0s3k3ho1a9uvhouni90ig.apps.googleusercontent.com',
-    iosBundleId: 'com.mazij.app',
+    iosClientId: '519768581909-gbl5po0huqvfb2qpojs2nin8vp6ft0ii.apps.googleusercontent.com',
+    iosBundleId: 'mazijappmacos.example.com',
   );
 }

@@ -70,11 +70,14 @@ class AuthenticationBloc
     try {
       var response = await _userRepository.getUserByusername(
           username); //retrieving password from user and authenticating it
+      print("bloc0");
       if (response.passwords.compareTo(password) == 0) {
+        print("bloc1");
         var profile = await _profileRepository.getProfileByUsername(username);
         loginPersistence(response);
         await storage.write(key: 'bio', value: profile.bio);
         await storage.write(key: 'profile_pic', value: profile.profile_pic);
+        print("bloc2");
         print(response.username);
         print(response.email);
         if ((response.username.compareTo('hwumazijadmin48') == 0) &&

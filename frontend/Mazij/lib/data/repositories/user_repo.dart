@@ -3,11 +3,13 @@ import 'package:Mazaj/data/models/user_model.dart';
 import 'package:http/http.dart' as http;
 
 class UserRepository {
-  static const base = "http://127.0.0.1:8000/users";
+  static const base = "https://mazij-backend.herokuapp.com/users";
 
   Future<List<User>> GetUsers() async {
     Uri local = Uri.parse(base);
+    print(local);
     var response = await http.get(local);
+    print(response.statusCode);
     Iterable userList = jsonDecode(response.body);
     List<User> users = userList.map((user) => User.fromJson(user)).toList();
     if (response.statusCode == 200) {
@@ -18,12 +20,15 @@ class UserRepository {
   }
 
   Future<User> getUserByusername(String? username) async {
-    Uri local = Uri.parse(base + "/${username}");
+    Uri local = Uri.parse(base + "/${username}/");
+    print(local);
     var response = await http.get(local);
+    print(response.statusCode);
     var jsonUser = jsonDecode(response.body);
     User user = User.fromJson(jsonUser);
 
     if (response.statusCode == 200) {
+      print(user.username);
       return user;
     } else {
       throw Exception('Failed to load user');
@@ -32,6 +37,7 @@ class UserRepository {
 
   Future<bool> createUser(User user) async {
     Uri local = Uri.parse(base + "/user/create/");
+    print(local);
     var response = await http.post(
       local,
       headers: <String, String>{
@@ -52,11 +58,13 @@ class UserRepository {
 
   Future<bool> updateUser(User user) async {
     Uri local = Uri.parse(base + "/${user.username}/update/");
+    print(local);
     var response = await http.put(
       local,
       headers: <String, String>{'Content-Type': 'application/json'},
       body: jsonEncode(user.toJson()),
     );
+    print(response.statusCode);
     if (response.statusCode == 200) {
       return true;
     } else {
@@ -66,8 +74,10 @@ class UserRepository {
 
   Future<bool> deleteUser(String username) async {
     Uri local = Uri.parse(base + "/${username}/delete");
+    print(local);
     var response =
         await http.delete(local, headers: {"Content-Type": "application/json"});
+    print(response.statusCode);
     if (response.statusCode == 200) {
       return true;
     } else {
@@ -93,7 +103,6 @@ class UserRepository {
     var response = await http.post(local,
         headers: <String, String>{'Content-Type': 'application/json'},
         body: jsonEncode(postBody));
-    print(response.statusCode);
     if (response.statusCode == 200) {
       return true;
     } else {

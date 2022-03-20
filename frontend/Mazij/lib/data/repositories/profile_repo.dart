@@ -4,7 +4,7 @@ import 'package:Mazaj/screens/profiles/create_profile.dart';
 import 'package:http/http.dart' as http;
 
 class ProfileRepository {
-  static const base = "http://127.0.0.1:8000/profiles/";
+  static const base = "https://mazij-backend.herokuapp.com/profiles/";
 
   Future<Profile> getProfileByUsername(String? username) async {
     Uri local = Uri.parse(base + "${username}/");

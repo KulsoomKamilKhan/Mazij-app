@@ -4,7 +4,7 @@ import 'package:Mazaj/data/models/statistics_model.dart';
 import 'package:http/http.dart' as http;
 
 class StatisticsRepository {
-  static const base = "http://127.0.0.1:8000/users/user/stats/";
+  static const base = "https://mazij-backend.herokuapp.com/users/user/stats/";
 
   Future<Statistics> GetStats() async {
     Uri local = Uri.parse(base);
