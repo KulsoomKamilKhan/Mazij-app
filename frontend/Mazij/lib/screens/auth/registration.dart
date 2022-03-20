@@ -95,7 +95,7 @@ class CustomFormState extends State<CustomForm> {
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height,
                   decoration: BoxDecoration(
-                    image: DecorationImage (image: Image.asset("assets/logo.png").image, opacity: 0.3),
+                      //image: DecorationImage (image: Image.asset("assets/logo.png").image, opacity: 0.3),
                       gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -468,8 +468,7 @@ class CustomFormState extends State<CustomForm> {
                                           value: value,
                                           child: Text(value,
                                               style: TextStyle(
-                                                  color:
-                                                      Colors.purple)),
+                                                  color: Colors.purple)),
                                         );
                                       }).toList(),
                                       onChanged: (newValue) {
