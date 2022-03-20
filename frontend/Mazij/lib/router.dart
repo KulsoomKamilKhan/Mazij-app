@@ -4,6 +4,7 @@ import 'package:Mazaj/screens/admin_panel/admin_dash.dart';
 import 'package:Mazaj/screens/auth/verify_email.dart';
 import 'package:Mazaj/screens/collab/collab_mashup.dart';
 import 'package:Mazaj/screens/posts/create_posts.dart';
+import 'package:Mazaj/screens/profiles/search_profile.dart';
 import 'package:Mazaj/screens/search/search_bar.dart';
 import 'package:Mazaj/widgets/collab_home.dart';
 import 'package:Mazaj/widgets/feed_home.dart';
@@ -33,6 +34,7 @@ class RouterClass {
   static const String libHomeRoute = '/lib';
   static const String bioRoute = '/bio';
   static const String searchRoute = '/search';
+  static const String searchPRoute = '/searchp';
   //static const String captionRoute = '/caption';
   static const String faqRoute = '/faq';
   static const String privacyRoute = '/privacy';
@@ -72,6 +74,8 @@ class RouterClass {
         return MaterialPageRoute(builder: (_) => const CreateProfile());
       case searchRoute:
         return MaterialPageRoute(builder: (_) => const Search());
+      case searchPRoute:
+        return MaterialPageRoute(builder: (_) => const SearchProfile());
       case faqRoute:
         return MaterialPageRoute(builder: (_) => const Faq());
       case privacyRoute:

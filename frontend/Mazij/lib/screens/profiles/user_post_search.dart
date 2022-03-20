@@ -3,16 +3,17 @@ import 'package:Mazaj/bloc/post_bloc/post_bloc.dart';
 import 'package:Mazaj/data/models/post_model.dart';
 import 'package:Mazaj/data/repositories/post_repo.dart';
 import 'package:Mazaj/screens/library/userprofile.dart';
+import 'package:Mazaj/screens/profiles/user_profile_search.dart';
 import 'package:Mazaj/screens/search/userprofilesearch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 //import 'package:intl/intl.dart';
 
-class UserPostS extends StatelessWidget {
+class UserPostSP extends StatelessWidget {
   Post post;
   String _loggeduser;
   //String pg;
-  UserPostS(this.post, this._loggeduser);
+  UserPostSP(this.post, this._loggeduser);
 
  List<Widget> getc(String caption) {
     List<Widget> list = [];
@@ -177,7 +178,7 @@ class UserPostS extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => UserProfileS(
+            builder: (context) => UserProfileSP(
               post.user,
             ),
           ),

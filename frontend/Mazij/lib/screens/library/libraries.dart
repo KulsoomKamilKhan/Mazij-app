@@ -437,7 +437,7 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
     }
     int j = 0;
     while (j < values.length) {
-      String s = values[j].toString();
+      String s = values[j].toString().trim();
       list.add(Row(
         children: [
           ElevatedButton(
@@ -478,7 +478,7 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
 
     int j = 0;
     while (j < values.length) {
-      String s = values[j].toString();
+      String s = values[j].toString().trim();
 
       list.add(Row(
         children: [

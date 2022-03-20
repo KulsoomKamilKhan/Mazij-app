@@ -6,7 +6,7 @@ import 'package:Mazaj/data/models/post_model.dart';
 import 'package:http/http.dart' as http;
 
 class CollabRepository {
-  static const base = "https://mazij-backend.herokuapp.com/posts/";
+  static const base = "http://bhavikakaliya.pythonanywhere.com/posts/";
 
   Future<List<Collab>> getDraftsByUsername(String? user) async {
     Uri local = Uri.parse(base + "draft-mashup/${user}/");

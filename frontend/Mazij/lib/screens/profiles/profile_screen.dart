@@ -4,6 +4,7 @@ import 'dart:typed_data'; // for unsigned 8 byte integers' list
 import 'package:Mazaj/bloc/post_bloc/post_bloc.dart';
 import 'package:Mazaj/data/models/post_model.dart';
 import 'package:Mazaj/screens/posts/create_posts.dart';
+import 'package:Mazaj/screens/profiles/search_profile.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -50,8 +51,31 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(50),
-          child: myAppBar("Mazij"),
+          child: AppBar(
+             backgroundColor: Colors.white,
+      iconTheme: const IconThemeData(
+          color: Colors.black), 
+            title: const Text("Mazij", style: TextStyle(
+              color: Color(0xB6326EF1),
+              fontSize: 32,
+              fontWeight: FontWeight.w700)),
+            actions: <Widget>[
+        // to dsiplay to the right
+        IconButton(
+          icon: const Icon(Icons.search),
+          highlightColor: Colors.purple,
+          tooltip: "Search",
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SearchProfile(),
+              ),
+            );
+          },
         ),
+      ],
+        )),
         drawer: const SettingsDrawer(),
         body: BlocListener<PostBloc, PostState>(
             listener: (context, state) {},
@@ -215,7 +239,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
   @override
   Widget build(BuildContext context) {
     user = details['username']!;
-    var _bytesImage = Base64Decoder().convert(details['profile_pic']!);
+    var _bytesImage = const Base64Decoder().convert(details['profile_pic']!);
 
     return Column(
       children: <Widget>[

@@ -35,7 +35,7 @@ class _PostScreenState extends State<PostScreen> {
 
     int j = 0;
     while (j < values.length) {
-      String s = values[j].toString();
+      String s = values[j].toString().trim();
       print(s);
       list.add(Row(
         children: [
@@ -82,7 +82,7 @@ class _PostScreenState extends State<PostScreen> {
 
     int j = 0;
     while (j < values.length) {
-      String s = values[j].toString();
+      String s = values[j].toString().trim();
       print(s);
       list.add(Row(
         children: [

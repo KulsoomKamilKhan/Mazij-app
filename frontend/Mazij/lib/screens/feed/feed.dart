@@ -224,7 +224,7 @@ class _TopTabBarState extends State<TopTabBar> {
 
     int j = 0;
     while (j < values.length) {
-      String s = values[j].toString();
+      String s = values[j].toString().trim();
 
       list.add(Row(
         children: [
@@ -306,7 +306,9 @@ class _TopTabBarState extends State<TopTabBar> {
                               ),
                               subtitle: Row(children: [
                                 ElevatedButton(
+                                  
                                   style: ElevatedButton.styleFrom(
+                                    side: BorderSide(width: 5.0, color: Colors.grey.shade300,),
                                     primary: Colors.amber.shade300,
                                     onSurface: Colors.grey,
                                     padding: const EdgeInsets.symmetric(
@@ -314,6 +316,7 @@ class _TopTabBarState extends State<TopTabBar> {
                                     textStyle: const TextStyle(
                                         fontSize: 10, color: Colors.white),
                                     shadowColor: Colors.grey,
+                                    
                                   ),
                                   child: Text(ac(posts[index].account_type),
                                       style:
@@ -469,6 +472,7 @@ class _TopTabBarState extends State<TopTabBar> {
                             subtitle: Row(children: [
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
+                                  side: BorderSide(width: 5.0, color: Colors.grey.shade300,),
                                   primary: Colors.amber.shade400,
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 2, vertical: 2),

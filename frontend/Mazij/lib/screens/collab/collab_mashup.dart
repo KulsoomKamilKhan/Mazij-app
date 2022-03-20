@@ -20,35 +20,35 @@ class _CollabMashupState extends State<CollabMashup> {
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(50),
-          child: myAppBar("Collaborate and Mashup"),
-        ),
+          child: AppBar(
+            backgroundColor: Colors.white,
+            title: const Text("Collaborate and Mashup", style: TextStyle(
+              color: Color(0xB6326EF1),
+              fontSize: 32,
+              fontWeight: FontWeight.w700)),
+                        
+            automaticallyImplyLeading: false,
+            actions: [
+              IconButton(onPressed: (){Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                );}, icon: const Icon(Icons.chat_bubble_rounded, color: Colors.purpleAccent))
+            ],
+        )),
         drawer: const SettingsDrawer(),
         // row for displaying side-by-side,
-        body: Row(children: const [
-          Expanded(
+        body: //Row(children: const [
+          const Expanded(
             child: FlutterPainterExample(),
             flex: 2,
           ),
-          Expanded(
-            child: HomePage(),
-            flex: 1,
-          ),
-        ]));
-    // }
-    // return Scaffold(
-    //   appBar: PreferredSize(
-    //     preferredSize: const Size.fromHeight(50),
-    //     child: myAppBar("Collaborate and Mashup"),
-    //   ),
-    //   drawer: const SettingsDrawer(),
-    //   // row for displaying side-by-side,
-    //   // endDrawer: Drawer(
-    //   //   child: SingleChildScrollView(child: Expanded(child: HomePage())),
-    //   // ),
-    //   body: const Expanded(
-    //     child: FlutterPainterExample(),
-    //     flex: 2,
-    //   ),
-    // );
+          // Expanded(
+          //   child: HomePage(),
+          //   flex: 1,
+          // ),
+        //])
+        );
   }
 }

@@ -24,7 +24,7 @@ class UserPostC extends StatelessWidget {
     }
     int j = 0;
     while (j < values.length) {
-      String s = values[j].toString();
+      String s = values[j].toString().trim();
       list.add(Row(
         children: [
           ElevatedButton(
@@ -58,7 +58,7 @@ class UserPostC extends StatelessWidget {
 
     int j = 0;
     while (j < values.length) {
-      String s = values[j].toString();
+      String s = values[j].toString().trim();
 
       list.add(Row(
         children: [

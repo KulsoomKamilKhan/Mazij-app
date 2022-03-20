@@ -89,7 +89,7 @@ class _CaptionPostsState extends State<CaptionPosts> {
 
     int j = 0;
     while (j < values.length) {
-      String s = values[j].toString();
+      String s = values[j].toString().trim();
 
       list.add(ElevatedButton(
           style: ElevatedButton.styleFrom(

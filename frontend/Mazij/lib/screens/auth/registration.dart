@@ -547,7 +547,7 @@ class CustomFormState extends State<CustomForm> {
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height,
                 decoration: BoxDecoration(
-                    //image: DecorationImage(image: Image.asset("assets/logo.png").image, opacity: 0.4, fit: BoxFit.contain),
+                    image: DecorationImage(image: Image.asset("assets/logo.png").image, opacity: 0.4, fit: BoxFit.contain),
                     gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,

@@ -54,7 +54,7 @@ class PostCell extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           image: DecorationImage(
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitHeight,
                             image: Image.memory(
                               _bytesImage,
                               gaplessPlayback: true,
