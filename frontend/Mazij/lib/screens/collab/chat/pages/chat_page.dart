@@ -16,12 +16,12 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  Stream<QuerySnapshot>? _chats;
+  //Stream<QuerySnapshot>? _chats;
   TextEditingController messageEditingController = new TextEditingController();
 
   Widget _chatMessages() {
     return StreamBuilder(
-      stream: _chats,
+      stream: DatabaseService(widget._username).getChats(widget.groupId),
       builder: (context, snapshot) {
         dynamic data = snapshot.data;
         print('messages');
@@ -66,13 +66,13 @@ class _ChatPageState extends State<ChatPage> {
       if (mounted) setState(() {});
     });
     super.initState();
-    DatabaseService(widget._username).getChats(widget.groupId).then((val) {
-      print('ChatPage');
-      print(widget._username);
-      setState(() {
-        _chats = val;
-      });
-    });
+    // DatabaseService(widget._username).getChats(widget.groupId).then((val) {
+    //   print('ChatPage');
+    //   print(widget._username);
+    //   setState(() {
+    //     _chats = val;
+    //   });
+    // });
   }
 
   @override

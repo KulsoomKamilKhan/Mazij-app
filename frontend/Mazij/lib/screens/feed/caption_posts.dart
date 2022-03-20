@@ -23,7 +23,9 @@ class CaptionPosts extends StatefulWidget {
 class _CaptionPostsState extends State<CaptionPosts> {
   @override
   Widget build(BuildContext context) {
+    print('in caption.dart');
     print(widget.caption);
+    print(widget.caption.length);
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(50),
@@ -69,7 +71,9 @@ class _CaptionPostsState extends State<CaptionPosts> {
           // } else
           else if (state is PostError) {}
           //return const Text("No images to Display");
-          return display(widget.posts, widget.u, widget.caption);
+          return Padding(
+              padding: EdgeInsets.all(10),
+              child: display(widget.posts, widget.u, widget.caption));
         })));
   }
 
@@ -110,8 +114,36 @@ class _CaptionPostsState extends State<CaptionPosts> {
   }
 
   Padding display(List<Library> posts1, String u, String caption) {
-    List<Library> posts =
-        posts1.where((post) => (post.caption.compareTo(caption) == 0)).toList();
+    List<Library> posts = [];
+    //  posts1.where((post) => (post.caption.compareTo(caption) == 0)).toList();
+
+    int k = 0;
+    // List<Widget> getc(String caption) {
+    // List<Widget> list = [];
+    while (k < posts1.length) {
+      Library post = posts1[k];
+      final split = post.caption.split(',');
+      int i = 0;
+      Map<int, String> values = {};
+      while (i < split.length) {
+        values[i] = split[i].trim();
+        if (values[i]!.compareTo(caption) == 0) {
+          posts.add(post);
+        }
+        print(values[i]);
+        print(split[i].length);
+        i++;
+      }
+      // int j = 0;
+      // while (j < values.length) {
+      //   String s = values[j].toString().trim();
+
+      //   j++;
+      // }
+      k++;
+      // return list;
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: GridView.builder(
@@ -134,6 +166,7 @@ class _CaptionPostsState extends State<CaptionPosts> {
                         title: Row(children: getu(post.collaborators)),
                         content: Stack(
                           //alignment: Alignment.center,
+
                           children: <Widget>[
                             Image.memory(
                               _bytesImage,
