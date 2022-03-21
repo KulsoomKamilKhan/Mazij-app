@@ -197,6 +197,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
     //print(u.toString());
     return Column(
       children: <Widget>[
+        Row(children: [
         Align(
           alignment: Alignment.topLeft, // align to the top left of the page
           child: IconButton(
@@ -218,11 +219,12 @@ class _ProfileInfoState extends State<ProfileInfo> {
             iconSize: 25,
             tooltip: 'Report User',
             onPressed: () {
+              print("user report");
               //Navigator.of(context).pushNamed('/feed');
               //Navigator.of(context).pop();
             },
           ),
-        ),
+        ),]),
         Container(
           width: MediaQuery.of(context).size.width,
           height: 285,
