@@ -196,7 +196,8 @@ class _ProfileInfoState extends State<ProfileInfo> {
     //print(u.toString());
     return Column(
       children: <Widget>[
-        Row(children: [
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
         Align(
           alignment: Alignment.topLeft, // align to the top left of the page
           child: IconButton(

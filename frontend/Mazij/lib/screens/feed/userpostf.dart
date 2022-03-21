@@ -143,8 +143,8 @@ class UserPostF extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                            height: 300,
-                            width: 500,
+                            // height: 2000,
+                            // width: 300,
                             child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
