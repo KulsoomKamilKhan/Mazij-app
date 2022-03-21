@@ -94,11 +94,14 @@ class _MembersState extends State<MembersPage> {
                               title: InkWell(
                                 child: data.data()!["members"][index],
                                 onTap: () {
+                                  print("member tapped");
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => UserProfileM(
-                                          data.data()!["members"][index]),
+                                      builder: (context) => UserProfileM(data
+                                          .data()!["members"][index]
+                                          .toString()
+                                          .trim()),
                                     ),
                                   );
                                 },
