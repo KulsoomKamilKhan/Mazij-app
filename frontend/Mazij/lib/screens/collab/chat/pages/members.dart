@@ -26,7 +26,7 @@ class _MembersState extends State<MembersPage> {
 
   @override
   void initState() {
-     Future.delayed(Duration.zero, () async {
+    Future.delayed(Duration.zero, () async {
       profiles = await _profRepository.getProfiles();
       _username = (await storage.read(key: 'username')).toString();
       if (mounted) setState(() {});
@@ -82,8 +82,8 @@ class _MembersState extends State<MembersPage> {
                         itemCount: data.data()!["members"].length,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-                         // print(data.data()!["admin"]);
-                          if(_username.compareTo(widget.admin)==0){
+                          // print(data.data()!["admin"]);
+                          if (_username.compareTo(widget.admin) == 0) {
                             return ListTile(
                               leading: CircleAvatar(
                                 backgroundImage: Image.memory(
@@ -91,29 +91,38 @@ class _MembersState extends State<MembersPage> {
                                 ).image,
                                 radius: 55.0,
                               ),
-                            title: InkWell(child:data.data()!["members"][index],
-                            onTap: (){Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => UserProfileM(data.data()!["members"][index]),
-                    ),
-                  );} ,
-                            ),
-                            trailing: IconButton(icon: Icon(Icons.delete), onPressed: (){
-                              DatabaseService(_username).DeleteMember(widget.groupId, data.data()!["groupName"], data.data()!["members"][index]);
-                            }),
-                          );
+                              title: InkWell(
+                                child: data.data()!["members"][index],
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => UserProfileM(
+                                          data.data()!["members"][index]),
+                                    ),
+                                  );
+                                },
+                              ),
+                              trailing: IconButton(
+                                  icon: Icon(Icons.delete),
+                                  onPressed: () {
+                                    DatabaseService(_username).DeleteMember(
+                                        widget.groupId,
+                                        data.data()!["groupName"],
+                                        data.data()!["members"][index]);
+                                  }),
+                            );
                           }
+                          print(data.data()!["members"][index]);
                           return ListTile(
                             leading: CircleAvatar(
-                                backgroundImage: Image.memory(
-                                  _profilepic(data.data()!["members"][index]),
-                                ).image,
-                                radius: 55.0,
-                              ),
+                              backgroundImage: Image.memory(
+                                _profilepic(data.data()!["members"][index]),
+                              ).image,
+                              radius: 55.0,
+                            ),
                             title: Text(data.data()!["members"][index]),
                           );
-                          
                         });
                   }
                   // } else {
