@@ -101,184 +101,195 @@ class _UsersTableState extends State<UsersTable> {
           // SizedBox(
           //width: double.infinity,
           // child: SingleChildScrollView(
-          Container(
-            width: 750,
-            child: DataTable(
-                columnSpacing: 7,
-                columns: const [
-                  DataColumn(
-                    label: Text(
-                      "Username",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              width: 750,
+              child: DataTable(
+                  columnSpacing: 7,
+                  columns: const [
+                    DataColumn(
+                      label: Text(
+                        "Username",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                  ),
-                  DataColumn(
-                    label: Text(
-                      "Email ID",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
+                    DataColumn(
+                      label: Text(
+                        "Email ID",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                  ),
-                  DataColumn(
-                    label: Text(
-                      "Account\nType",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
+                    DataColumn(
+                      label: Text(
+                        "Account\nType",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                  ),
-                  DataColumn(
-                    label: Text(
-                      "Delete\nUser",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
+                    DataColumn(
+                      label: Text(
+                        "Delete\nUser",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                  ),
-                  DataColumn(
-                    label: Text(
-                      "View\nPosts",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
+                    DataColumn(
+                      label: Text(
+                        "View\nPosts",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                  ),
-                ],
-                rows: _foundUsers.isEmpty
-                    ? users
-                        .map(
-                          (user) => DataRow(
-                            cells: <DataCell>[
-                              DataCell(Text(user.username,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(color: Colors.white))),
-                              DataCell(Text(user.email,
-                                  style: const TextStyle(color: Colors.white))),
-                              DataCell(Text(user.account_type,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(color: Colors.white))),
-                              DataCell(
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.purple,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 15),
-                                    textStyle: const TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold),
-                                    shadowColor: Colors.grey,
+                  ],
+                  rows: _foundUsers.isEmpty
+                      ? users
+                          .map(
+                            (user) => DataRow(
+                              cells: <DataCell>[
+                                DataCell(Text(user.username,
+                                    textAlign: TextAlign.center,
+                                    style:
+                                        const TextStyle(color: Colors.white))),
+                                DataCell(Text(user.email,
+                                    style:
+                                        const TextStyle(color: Colors.white))),
+                                DataCell(Text(user.account_type,
+                                    textAlign: TextAlign.center,
+                                    style:
+                                        const TextStyle(color: Colors.white))),
+                                DataCell(
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.purple,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15, vertical: 15),
+                                      textStyle: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                      shadowColor: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      BlocProvider.of<AuthenticationBloc>(
+                                              context)
+                                          .add(DeleteUser(
+                                              username: user.username));
+                                    },
+                                    child: const Text('X'),
                                   ),
-                                  onPressed: () {
-                                    BlocProvider.of<AuthenticationBloc>(context)
-                                        .add(DeleteUser(
-                                            username: user.username));
-                                  },
-                                  child: const Text('X'),
                                 ),
-                              ),
-                              DataCell(
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.purple,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 15),
-                                    textStyle: const TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold),
-                                    shadowColor: Colors.grey,
-                                  ),
-                                  onPressed: () {
-                                    List<Library> po = [];
-                                    int i = 0;
-                                    while (i < posts.length) {
-                                      if (posts[i]
-                                              .user
-                                              .compareTo(user.username) ==
-                                          0) {
-                                        po.add(posts[i]);
+                                DataCell(
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.purple,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15, vertical: 15),
+                                      textStyle: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                      shadowColor: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      List<Library> po = [];
+                                      int i = 0;
+                                      while (i < posts.length) {
+                                        if (posts[i]
+                                                .user
+                                                .compareTo(user.username) ==
+                                            0) {
+                                          po.add(posts[i]);
+                                        }
+                                        i++;
                                       }
-                                      i++;
-                                    }
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PostsTable(po),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text('\u{1F441}'),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                        .toList()
-                    : _foundUsers
-                        .map(
-                          (user) => DataRow(
-                            cells: <DataCell>[
-                              DataCell(Text(user.username,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(color: Colors.white))),
-                              DataCell(Text(user.email,
-                                  style: const TextStyle(color: Colors.white))),
-                              DataCell(Text(user.account_type,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(color: Colors.white))),
-                              DataCell(
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.purple,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 15),
-                                    textStyle: const TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold),
-                                    shadowColor: Colors.grey,
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => PostsTable(po),
+                                        ),
+                                      );
+                                    },
+                                    child: const Text('\u{1F441}'),
                                   ),
-                                  onPressed: () {
-                                    BlocProvider.of<AuthenticationBloc>(context)
-                                        .add(DeleteUser(
-                                            username: user.username));
-                                  },
-                                  child: const Text('X'),
                                 ),
-                              ),
-                              DataCell(
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.purple,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 15),
-                                    textStyle: const TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold),
-                                    shadowColor: Colors.grey,
+                              ],
+                            ),
+                          )
+                          .toList()
+                      : _foundUsers
+                          .map(
+                            (user) => DataRow(
+                              cells: <DataCell>[
+                                DataCell(Text(user.username,
+                                    textAlign: TextAlign.center,
+                                    style:
+                                        const TextStyle(color: Colors.white))),
+                                DataCell(Text(user.email,
+                                    style:
+                                        const TextStyle(color: Colors.white))),
+                                DataCell(Text(user.account_type,
+                                    textAlign: TextAlign.center,
+                                    style:
+                                        const TextStyle(color: Colors.white))),
+                                DataCell(
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.purple,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15, vertical: 15),
+                                      textStyle: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                      shadowColor: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      BlocProvider.of<AuthenticationBloc>(
+                                              context)
+                                          .add(DeleteUser(
+                                              username: user.username));
+                                    },
+                                    child: const Text('X'),
                                   ),
-                                  onPressed: () {
-                                    List<Library> po = [];
-                                    int i = 0;
-                                    while (i < posts.length) {
-                                      if (posts[i]
-                                              .user
-                                              .compareTo(user.username) ==
-                                          0) {
-                                        po.add(posts[i]);
+                                ),
+                                DataCell(
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.purple,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15, vertical: 15),
+                                      textStyle: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                      shadowColor: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      List<Library> po = [];
+                                      int i = 0;
+                                      while (i < posts.length) {
+                                        if (posts[i]
+                                                .user
+                                                .compareTo(user.username) ==
+                                            0) {
+                                          po.add(posts[i]);
+                                        }
+                                        i++;
                                       }
-                                      i++;
-                                    }
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PostsTable(po),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text('\u{1F441}'),
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => PostsTable(po),
+                                        ),
+                                      );
+                                    },
+                                    child: const Text('\u{1F441}'),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        )
-                        .toList()),
+                              ],
+                            ),
+                          )
+                          .toList()),
+            ),
           ),
           // ),
           const SizedBox(

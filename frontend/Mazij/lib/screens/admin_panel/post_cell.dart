@@ -46,48 +46,52 @@ class PostCell extends StatelessWidget {
                         ));
               },
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Container(
-                      height: 110,
-                      width: 300,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          image: DecorationImage(
-                            fit: BoxFit.fitHeight,
-                            image: Image.memory(
-                              _bytesImage,
-                              gaplessPlayback: true,
-                            ).image,
-                          )),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  PopupMenuButton(
-                                    itemBuilder: (context) {
-                                      return [
-                                        PopupMenuItem<int>(
-                                          value: 0,
-                                          child: const Text("Delete Post"),
-                                          onTap: () =>
-                                              BlocProvider.of<PostBloc>(context)
-                                                  .add(DeletePost(id: id)),
-                                        ),
-                                      ];
-                                    },
-                                  ),
-                                ]),
-                          ])),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                          height: MediaQuery.of(context).size.height / 4.3,
+                          width: MediaQuery.of(context).size.width / 3.4,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: Image.memory(_bytesImage).image,
+                              )),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      PopupMenuButton(
+                                        itemBuilder: (context) {
+                                          return [
+                                            PopupMenuItem<int>(
+                                              value: 0,
+                                              child: const Text("Delete Post"),
+                                              onTap: () =>
+                                                  BlocProvider.of<PostBloc>(
+                                                          context)
+                                                      .add(DeletePost(id: id)),
+                                            ),
+                                          ];
+                                        },
+                                      ),
+                                    ]),
+                              ])),
+                      const SizedBox(height: 2),
+                      Text(
+                        'Post ID: $id\n',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
                 ],
               )),
-          const SizedBox(height: 5),
-          Text(
-            'Post ID: $id\n',
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
           Row(children: [
             Text(
               "$upv upvotes",
