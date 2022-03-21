@@ -52,7 +52,7 @@ class _MembersState extends State<MembersPage> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          elevation: 0.0,
+          elevation: 0.5,
           backgroundColor: Colors.purple.shade300,
           title: const Text('Members',
               style: TextStyle(
@@ -63,6 +63,7 @@ class _MembersState extends State<MembersPage> {
         body: Container(
           child: Column(
             children: [
+              SizedBox(height:5),
               Expanded(
                   child: StreamBuilder<DocumentSnapshot>(
                 stream: FirebaseFirestore.instance
@@ -86,6 +87,7 @@ class _MembersState extends State<MembersPage> {
                           if (_username.compareTo(widget.admin) == 0) {
                             return InkWell(
                               child:ListTile(
+                                contentPadding: EdgeInsets.symmetric(vertical: 3),
                               leading: CircleAvatar(
                                 backgroundImage: Image.memory(
                                   _profilepic(data.data()!["members"][index]),
@@ -116,10 +118,12 @@ class _MembersState extends State<MembersPage> {
                                   );
                             });
                           }
+                          print("in mem print");
                           print(data.data()!["members"][index].runtimeType);
                           
                           return InkWell(
                               child: ListTile(
+                                 contentPadding: EdgeInsets.symmetric(vertical: 3),
                             leading: CircleAvatar(
                               backgroundImage: Image.memory(
                                 _profilepic(data.data()!["members"][index]),
