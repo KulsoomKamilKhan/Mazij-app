@@ -45,7 +45,7 @@ class _SearchPageState extends State<SearchPage> {
       //     .searchByName(searchEditingController.text)
       //     .then((snapshot) {
       // searchResultSnapshot = snapshot;
-     // print("here");
+      // print("here");
       //print("$searchResultSnapshot");
       setState(() {
         isLoading = false;
@@ -82,7 +82,7 @@ class _SearchPageState extends State<SearchPage> {
           .snapshots(),
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
         // var data = snapshot.data;
-       // print('search');
+        // print('search');
         //  print(data.documents.length);
         if (snapshot.hasData) {
           dynamic data = snapshot.data!.docs;
@@ -100,7 +100,7 @@ class _SearchPageState extends State<SearchPage> {
               });
         }
         // } else {
-        return Container(child: const Center(child: CircularProgressIndicator()));
+        return Container();
         //}
       },
     );
@@ -110,39 +110,42 @@ class _SearchPageState extends State<SearchPage> {
       String userName, String groupId, String groupName, String admin) {
     _joinValueInGroup(userName, groupId, groupName, admin);
     return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      contentPadding:
+          const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       leading: CircleAvatar(
           radius: 30.0,
           backgroundColor: Colors.amber,
           child: Text(groupName.substring(0, 1).toUpperCase(),
               style: const TextStyle(color: Colors.white))),
       title: InkWell(
-        onTap: (){
-          if (_isJoined) { //check this
-           // Future.delayed(const Duration(milliseconds: 2000), () {
+          onTap: () {
+            if (_isJoined) {
+              //check this
+              // Future.delayed(const Duration(milliseconds: 2000), () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>
-                      ChatPage(groupId,admin, userName, groupName)));
-            //}
-            //);
-          }
-        },
-      child: Text(groupName, style: const TextStyle(fontWeight: FontWeight.bold))),
+                      ChatPage(groupId, admin, userName, groupName)));
+              //}
+              //);
+            }
+          },
+          child: Text(groupName,
+              style: const TextStyle(fontWeight: FontWeight.bold))),
       subtitle: Text("Admin: $admin"),
       trailing: InkWell(
         onTap: () async {
           await DatabaseService(_username)
               .togglingGroupJoin(groupId, groupName, userName);
-          if (_isJoined) { 
+          if (_isJoined) {
             setState(() {
               _isJoined = !_isJoined;
             });
             // await DatabaseService(uid: _user.uid).userJoinGroup(groupId, groupName, userName);
             _showScaffold('Successfully joined the group "$groupName"');
             //Future.delayed(const Duration(milliseconds: 1000), () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      ChatPage(groupId, admin, userName, groupName)));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) =>
+                    ChatPage(groupId, admin, userName, groupName)));
             //}
             //);
           } else {
@@ -158,16 +161,20 @@ class _SearchPageState extends State<SearchPage> {
                     borderRadius: BorderRadius.circular(10.0),
                     color: const Color.fromARGB(95, 56, 52, 52),
                     border: Border.all(color: Colors.white, width: 1.0)),
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                child: const Text('Joined', style: const TextStyle(color: Colors.white)),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 10.0),
+                child: const Text('Joined',
+                    style: const TextStyle(color: Colors.white)),
               )
             : Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   color: Colors.blueAccent,
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                child: const Text('Join', style: const TextStyle(color: Colors.white)),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 10.0),
+                child: const Text('Join',
+                    style: const TextStyle(color: Colors.white)),
               ),
       ),
     );
@@ -197,7 +204,8 @@ class _SearchPageState extends State<SearchPage> {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
               // color: Colors.amber.shade100,
               child: Row(
                 children: [
@@ -236,13 +244,12 @@ class _SearchPageState extends State<SearchPage> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(40)),
-                          child: const Icon(Icons.search, color: Colors.blueAccent)))
+                          child: const Icon(Icons.search,
+                              color: Colors.blueAccent)))
                 ],
               ),
             ),
-            isLoading
-                ? Container(child: const Center(child: CircularProgressIndicator()))
-                : groupList()
+            isLoading ? Container() : groupList()
           ],
         ),
       ),
