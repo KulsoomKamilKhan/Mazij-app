@@ -106,8 +106,6 @@ class RouterClass {
         return MaterialPageRoute(builder: (_) => Verify(user, "1234567"));
       case adminRoute:
         return MaterialPageRoute(builder: (_) => const DashBoard());
-      case introRoute:
-        return MaterialPageRoute(builder: (_) => const IntroPages());
 
       default:
         return MaterialPageRoute(
