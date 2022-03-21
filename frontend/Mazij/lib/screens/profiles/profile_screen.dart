@@ -136,7 +136,7 @@ Widget profilepage(List<Post> posts) {
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 400,
                 childAspectRatio: 1,
-                crossAxisSpacing: 20,
+                crossAxisSpacing: 10,
                 mainAxisSpacing:
                     15, // pixels between each child along the main axis
               ),
@@ -147,9 +147,9 @@ Widget profilepage(List<Post> posts) {
                 // print("prof screen");
                 // print(postobj.upvotes);
                 return Container(
-                  padding: (index % 2 == 0 // gap from left or right to screen
-                      ? const EdgeInsets.only(left: 20.0)
-                      : const EdgeInsets.only(right: 20.0)),
+                  padding: ( // gap from left or right to screen
+                      const EdgeInsets.only(left: 20.0)),
+                  // : const EdgeInsets.only(right: 20.0)),
                   child: PostScreen(postobj),
                 );
               }, childCount: posts.length),

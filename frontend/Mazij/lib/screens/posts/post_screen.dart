@@ -133,77 +133,76 @@ class _PostScreenState extends State<PostScreen> {
       return Column(
         children: [
           InkWell(
-            onTap: () {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                        // title: Row(children: getc(post.caption)),
-                        title: Column(children: [
-                          Row(children: getc(post.caption, posts)),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            children: getu(context, post.collaborators),
-                          )
-                        ]),
-                        //Text(post.caption, textAlign: TextAlign.center),
-                        content: Stack(
-                          //alignment: Alignment.center,
-                          children: <Widget>[
-                            Image.memory(
-                              _bytesImage,
-                              //gaplessPlayback: true,
-                            ),
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                          // title: Row(children: getc(post.caption)),
+                          title: Column(children: [
+                            Row(children: getc(post.caption, posts)),
                             SizedBox(
-                              height: 10,
+                              height: 5,
+                            ),
+                            Row(
+                              children: getu(context, post.collaborators),
+                            )
+                          ]),
+                          content: Stack(
+                            //alignment: Alignment.center,
+                            children: <Widget>[
+                              Image.memory(_bytesImage),
+                            ],
+                          ),
+                          actions: <Widget>[
+                            Text(date,
+                                style: const TextStyle(
+                                    color: Colors.black87, fontSize: 13)),
+                            IconButton(
+                              icon: Icon(Icons.cancel_rounded),
+                              tooltip: 'Close',
+                              onPressed: () => Navigator.pop(context, 'Cancel'),
+                              //child: const Text('Cancel'),
                             ),
                           ],
-                        ),
-                        actions: <Widget>[
-                          Text(date,
-                              style: const TextStyle(
-                                  color: Colors.black87, fontSize: 13)),
-                          IconButton(
-                            icon: Icon(Icons.cancel_rounded),
-                            onPressed: () => Navigator.pop(context, 'Cancel'),
-                            //child: const Text('Cancel'),
-                          ),
-                        ],
-                      ));
-            },
-            child: Container(
-              height: MediaQuery.of(context).size.height / 4.3,
-              width: MediaQuery.of(context).size.width / 3.4,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: Image.memory(
-                      _bytesImage,
-                      //gaplessPlayback: true,
-                    ).image,
-                  )),
+                        ));
+              },
+              // child: Card(
+              //     clipBehavior: Clip.antiAlias,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                      PopupMenuButton(
-                        itemBuilder: (context) {
-                          return [
-                            PopupMenuItem<int>(
-                              value: 0,
-                              child: const Text("Delete Post"),
-                              onTap: () => BlocProvider.of<PostBloc>(context)
-                                  .add(DeletePost(id: post.id)),
-                            ),
-                          ];
-                        },
-                      ),
+                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                        PopupMenuButton(
+                          itemBuilder: (context) {
+                            return [
+                              PopupMenuItem<int>(
+                                value: 0,
+                                child: const Text("Delete Post"),
+                                onTap: () => BlocProvider.of<PostBloc>(context)
+                                    .add(DeletePost(id: post.id)),
+                              ),
+                            ];
+                          },
+                        ),
+                      ]),
                     ]),
-                  ]),
-            ),
-          ),
+                    SizedBox(
+                      height: 160,
+                      width: 320,
+                      child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(3),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: Image.memory(_bytesImage).image,
+                              ))),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                  ])),
           Row(children: [
             IconButton(
               onPressed: () {
