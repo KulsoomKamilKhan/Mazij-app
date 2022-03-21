@@ -42,7 +42,6 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _initiateSearch() async {
-    
     if (searchEditingController.text.isNotEmpty) {
       setState(() {
         isLoading = false;
@@ -138,11 +137,11 @@ class _SearchPageState extends State<SearchPage> {
           },
           child: Text(groupName,
               style: const TextStyle(fontWeight: FontWeight.bold))),
-      subtitle: Text("Admin: $admin"),
+      subtitle: Text("Creator: $admin"),
       trailing: InkWell(
         onTap: () async {
           print("checking unames");
-          print(_username.compareTo(userName)==0);
+          print(_username.compareTo(userName) == 0);
           await DatabaseService(_username)
               .togglingGroupJoin(groupId, groupName, userName);
           if (_isJoined) {
@@ -151,7 +150,8 @@ class _SearchPageState extends State<SearchPage> {
             });
             // await DatabaseService(uid: _user.uid).userJoinGroup(groupId, groupName, userName);
             _showScaffold('Successfully joined the group "$groupName"');
-            DatabaseService(userName).sendEmail(groupName, _email, admin, _username);
+            DatabaseService(userName)
+                .sendEmail(groupName, _email, admin, _username);
             //Future.delayed(const Duration(milliseconds: 1000), () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) =>
