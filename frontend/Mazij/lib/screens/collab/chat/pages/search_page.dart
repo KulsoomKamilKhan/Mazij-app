@@ -45,7 +45,7 @@ class _SearchPageState extends State<SearchPage> {
       //     .searchByName(searchEditingController.text)
       //     .then((snapshot) {
       // searchResultSnapshot = snapshot;
-      print("here");
+     // print("here");
       //print("$searchResultSnapshot");
       setState(() {
         isLoading = false;
@@ -82,7 +82,7 @@ class _SearchPageState extends State<SearchPage> {
           .snapshots(),
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
         // var data = snapshot.data;
-        print('search');
+       // print('search');
         //  print(data.documents.length);
         if (snapshot.hasData) {
           dynamic data = snapshot.data!.docs;
@@ -119,11 +119,12 @@ class _SearchPageState extends State<SearchPage> {
       title: InkWell(
         onTap: (){
           if (_isJoined) { //check this
-            Future.delayed(const Duration(milliseconds: 2000), () {
+           // Future.delayed(const Duration(milliseconds: 2000), () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>
                       ChatPage(groupId,admin, userName, groupName)));
-            });
+            //}
+            //);
           }
         },
       child: Text(groupName, style: const TextStyle(fontWeight: FontWeight.bold))),
@@ -138,7 +139,7 @@ class _SearchPageState extends State<SearchPage> {
             });
             // await DatabaseService(uid: _user.uid).userJoinGroup(groupId, groupName, userName);
             _showScaffold('Successfully joined the group "$groupName"');
-            Future.delayed(const Duration(milliseconds: 2000), () {
+            Future.delayed(const Duration(milliseconds: 1000), () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>
                       ChatPage(groupId, admin, userName, groupName)));
