@@ -52,7 +52,7 @@ class _MembersState extends State<MembersPage> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          elevation: 0.0,
+          elevation: 0.5,
           backgroundColor: Colors.purple.shade300,
           title: const Text('Members',
               style: TextStyle(
@@ -63,6 +63,7 @@ class _MembersState extends State<MembersPage> {
         body: Container(
           child: Column(
             children: [
+              SizedBox(height:5),
               Expanded(
                   child: StreamBuilder<DocumentSnapshot>(
                 stream: FirebaseFirestore.instance
@@ -83,41 +84,51 @@ class _MembersState extends State<MembersPage> {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           // print(data.data()!["admin"]);
+                          print(widget.admin);
+                          print(_username);
                           if (_username.compareTo(widget.admin) == 0) {
-                            return ListTile(
+                            return InkWell(
+                              child:ListTile(
+                                contentPadding: EdgeInsets.symmetric(vertical: 3),
                               leading: CircleAvatar(
                                 backgroundImage: Image.memory(
                                   _profilepic(data.data()!["members"][index]),
                                 ).image,
                                 radius: 55.0,
                               ),
-                              title: InkWell(
-                                child: data.data()!["members"][index],
-                                onTap: () {
-                                  print("member tapped");
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UserProfileM(data
-                                          .data()!["members"][index]
-                                          .toString()
-                                          .trim()),
-                                    ),
-                                  );
-                                },
-                              ),
+                              title: Text(data.data()!["members"][index]),
                               trailing: IconButton(
-                                  icon: Icon(Icons.delete),
+                                  icon: Icon(Icons.delete, color: Colors.black,),
                                   onPressed: () {
                                     DatabaseService(_username).DeleteMember(
                                         widget.groupId,
                                         data.data()!["groupName"],
                                         data.data()!["members"][index]);
                                   }),
-                            );
+                            ),
+                            onTap: () {
+                                  print("member tapped admin");
+                                  String s = data
+                                          .data()!["members"][index]
+                                          .toString()
+                                          .trim();
+                                  if(s.compareTo(_username)!=0){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => UserProfileM(s),
+                                    ),
+                                  );
+                                  }
+                                  else{Navigator.of(context).pushNamed("/home");}
+                            });
                           }
-                          print(data.data()!["members"][index]);
-                          return ListTile(
+                          //print("in mem print");
+                          //print(data.data()!["members"][index].runtimeType);
+                          
+                          return InkWell(
+                              child: ListTile(
+                                 contentPadding: EdgeInsets.symmetric(vertical: 3),
                             leading: CircleAvatar(
                               backgroundImage: Image.memory(
                                 _profilepic(data.data()!["members"][index]),
@@ -125,6 +136,23 @@ class _MembersState extends State<MembersPage> {
                               radius: 55.0,
                             ),
                             title: Text(data.data()!["members"][index]),
+                          ),
+                          onTap: () {
+                            
+                            String s = data
+                                          .data()!["members"][index]
+                                          .toString()
+                                          .trim();
+                                  print("member tapped");
+                            if(s.compareTo(_username)!=0){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => UserProfileM(s),
+                                    ),
+                                  );
+                            }  else{Navigator.of(context).pushNamed("/home");}
+                          }
                           );
                         });
                   }

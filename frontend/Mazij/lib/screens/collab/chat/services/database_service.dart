@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:http/http.dart' as http;
 
 class DatabaseService {
   String uid;
@@ -168,5 +171,28 @@ class DatabaseService {
         .collection("groups")
         .where('groupName', isEqualTo: groupName)
         .get();
+  }
+
+  Future<bool> sendEmail(String groupName, String email, String admin, String username) async {
+    Uri local = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+    Map<String, dynamic> postBody = {
+      "service_id": "service_lxywpaf",
+      "template_id": "template_qu8mvc7",
+      "user_id": "0cqhqwo8D170gV4HE",
+      "template_params": {
+        "groupName": groupName,
+        "email": email,
+        "admin": admin,
+        "username": username,
+      }
+    };
+    var response = await http.post(local,
+        headers: <String, String>{'Content-Type': 'application/json'},
+        body: jsonEncode(postBody));
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw Exception('Failed to send email');
+    }
   }
 }

@@ -27,7 +27,7 @@ class MessageTile extends StatelessWidget {
                   topLeft: Radius.circular(23),
                   topRight: Radius.circular(23),
                   bottomRight: Radius.circular(23)),
-          color: sentByMe ? Colors.blueAccent : Colors.grey[700],
+          color: sentByMe ? Colors.blueAccent : Colors.grey[600],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +39,7 @@ class MessageTile extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                     letterSpacing: -0.5)),
-            SizedBox(height: 7.0),
+            SizedBox(height: 8.0),
             Text(message,
                 textAlign: TextAlign.start,
                 style: TextStyle(fontSize: 15.0, color: Colors.white)),
