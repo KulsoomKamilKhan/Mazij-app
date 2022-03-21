@@ -139,11 +139,12 @@ class _SearchPageState extends State<SearchPage> {
             });
             // await DatabaseService(uid: _user.uid).userJoinGroup(groupId, groupName, userName);
             _showScaffold('Successfully joined the group "$groupName"');
-            Future.delayed(const Duration(milliseconds: 1000), () {
+            //Future.delayed(const Duration(milliseconds: 1000), () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>
                       ChatPage(groupId, admin, userName, groupName)));
-            });
+            //}
+            //);
           } else {
             setState(() {
               _isJoined = !_isJoined;

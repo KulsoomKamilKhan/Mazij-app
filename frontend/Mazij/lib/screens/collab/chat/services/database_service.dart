@@ -35,7 +35,7 @@ class DatabaseService {
     });
 
     await groupDocRef.update({
-      'members': FieldValue.arrayUnion([uid + '_' + userName]),
+      'members': FieldValue.arrayUnion([uid]),
       'groupId': groupDocRef.id
     });
 

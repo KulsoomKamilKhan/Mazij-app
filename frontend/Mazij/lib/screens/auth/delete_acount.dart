@@ -81,7 +81,7 @@ class CustomFormState extends State<CustomForm> {
                         child: IconButton(
                           icon: const Icon(Icons.home_outlined),
                           color: const Color.fromRGBO(1, 1, 1, 1),
-                          iconSize: 25,
+                          iconSize: 45,
                           tooltip: 'Home',
                           onPressed: () {
                             Navigator.of(context).pushNamed('/home');
