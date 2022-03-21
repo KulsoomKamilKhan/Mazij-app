@@ -19,8 +19,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
 class UserProfileS extends StatefulWidget {
-   final String username;
-   const UserProfileS(this.username,{Key? key}) : super(key: key);
+  final String username;
+  const UserProfileS(this.username, {Key? key}) : super(key: key);
   //final String pg;
 
   @override
@@ -196,36 +196,36 @@ class _ProfileInfoState extends State<ProfileInfo> {
     //print(u.toString());
     return Column(
       children: <Widget>[
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-        Align(
-          alignment: Alignment.topLeft, // align to the top left of the page
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            color: const Color.fromRGBO(1, 1, 1, 1),
-            iconSize: 25,
-            tooltip: 'Back',
-            onPressed: () {
-              Navigator.of(context).pushNamed('/search');
-              //Navigator.of(context).pop();
-            },
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Align(
+            alignment: Alignment.topLeft, // align to the top left of the page
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              color: const Color.fromRGBO(1, 1, 1, 1),
+              iconSize: 25,
+              tooltip: 'Back',
+              onPressed: () {
+                Navigator.of(context).pushNamed('/search');
+                //Navigator.of(context).pop();
+              },
+            ),
           ),
-        ),
-         Align(
-          alignment: Alignment.topRight,
-          child: IconButton(
-            icon: const Icon(Icons.report_problem),
-            color: const Color.fromRGBO(1, 1, 1, 1),
-            iconSize: 25,
-            tooltip: 'Report User',
-            onPressed: () {
-              print("user report");
-              _userRepository.report(user.username, _loggeduser);
-              //Navigator.of(context).pushNamed('/feed');
-              //Navigator.of(context).pop();
-            },
+          Align(
+            alignment: Alignment.topRight,
+            child: IconButton(
+              icon: const Icon(Icons.report_problem),
+              color: const Color.fromRGBO(1, 1, 1, 1),
+              iconSize: 25,
+              tooltip: 'Report User',
+              onPressed: () {
+                print("user report");
+                _userRepository.report(user.username, _loggeduser);
+                //Navigator.of(context).pushNamed('/feed');
+                //Navigator.of(context).pop();
+              },
+            ),
           ),
-        ),]),
+        ]),
         Container(
           width: MediaQuery.of(context).size.width,
           height: 285,
@@ -325,12 +325,12 @@ class _ProfileInfoState extends State<ProfileInfo> {
                         //fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w500))),
           ])),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             // gradient for entire container
             gradient: LinearGradient(colors: [
-              Colors.purpleAccent,
-              Color(0xFF9CB5EB),
-              Colors.white,
+              Colors.pink.shade300,
+              Colors.deepPurple.shade300,
+              Color.fromARGB(255, 98, 147, 255),
             ]),
           ),
         )
