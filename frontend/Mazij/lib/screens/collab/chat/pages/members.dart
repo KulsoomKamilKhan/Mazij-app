@@ -82,8 +82,8 @@ class _MembersState extends State<MembersPage> {
                         itemCount: data.data()!["members"].length,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-                          print(data.data()!["admin"]);
-                          if(data.data()!["admin"].compareTo(widget.admin)==0){
+                         // print(data.data()!["admin"]);
+                          if(_username.compareTo(widget.admin)==0){
                             return ListTile(
                               leading: CircleAvatar(
                                 backgroundImage: Image.memory(
