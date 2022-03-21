@@ -15,7 +15,7 @@ class UserPostSP extends StatelessWidget {
   //String pg;
   UserPostSP(this.post, this._loggeduser);
 
- List<Widget> getc(String caption) {
+  List<Widget> getc(String caption) {
     List<Widget> list = [];
     final split = caption.split(',');
     int i = 0;
@@ -50,7 +50,7 @@ class UserPostSP extends StatelessWidget {
       values[i] = split[i];
       i++;
     }
-    
+
     int j = 0;
     while (j < values.length) {
       String s = values[j].toString().trim();
@@ -59,7 +59,8 @@ class UserPostSP extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             primary: Colors.amber,
             padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-            textStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+            textStyle:
+                const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
             shadowColor: Colors.grey,
           ),
           onPressed: () {},
@@ -86,12 +87,15 @@ class UserPostSP extends StatelessWidget {
                     builder: (BuildContext context) => AlertDialog(
                           // title:
                           //     Row(children: getc(post.caption)),
-                          title: Column(
-                          children: [
-                            Row( children:getc(post.caption)), 
-                            Row(children: getu(post.collaborators),
-                          )]
-                        ),
+                          title: Column(children: [
+                            Row(children: getc(post.caption)),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              children: getu(post.collaborators),
+                            )
+                          ]),
                           content: Stack(
                             //alignment: Alignment.center,
                             children: <Widget>[
@@ -111,15 +115,8 @@ class UserPostSP extends StatelessWidget {
                           ],
                         ));
               },
-              child: Container(
-                  height: MediaQuery.of(context).size.height / 4.3,
-                  width: MediaQuery.of(context).size.width / 3.4,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: Image.memory(_bytesImage).image,
-                      )),
+              child: Card(
+                  clipBehavior: Clip.antiAlias,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -147,6 +144,20 @@ class UserPostSP extends StatelessWidget {
                                 },
                               ),
                             ]),
+                        SizedBox(
+                          height: 160,
+                          width: 300,
+                          child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: Image.memory(_bytesImage).image,
+                              ))),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
                       ]))),
           Row(children: [
             IconButton(
