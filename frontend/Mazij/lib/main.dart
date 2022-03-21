@@ -84,7 +84,7 @@ class MyApp extends StatelessWidget {
           home: AnimatedSplashScreen(
               duration: 2000,
               splash: "assets/logo.png",
-              nextScreen: WelcomePage(),
+              nextScreen: OnBoardingPage(),
               splashTransition: SplashTransition.rotationTransition,
               pageTransitionType: PageTransitionType.topToBottom,
               backgroundColor: Colors.lightBlue),
