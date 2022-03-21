@@ -109,4 +109,25 @@ class UserRepository {
       throw Exception('Failed to send email');
     }
   }
+
+  Future<bool> report(String of, String by) async {
+    Uri local = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+    Map<String, dynamic> postBody = {
+      "service_id": "service_lxywpaf",
+      "template_id": "template_k7lrlzr",
+      "user_id": "0cqhqwo8D170gV4HE",
+      "template_params": {
+        "by": by,
+        "of": of,
+      }
+    };
+    var response = await http.post(local,
+        headers: <String, String>{'Content-Type': 'application/json'},
+        body: jsonEncode(postBody));
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw Exception('Failed to send email');
+    }
+  }
 }

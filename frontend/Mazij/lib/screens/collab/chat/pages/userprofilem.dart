@@ -203,6 +203,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
     //print(u.toString());
     return Column(
       children: <Widget>[
+        Row(children: [
         Align(
           alignment: Alignment.topLeft, // align to the top left of the page
           child: IconButton(
@@ -217,18 +218,19 @@ class _ProfileInfoState extends State<ProfileInfo> {
           ),
         ),
         Align(
-          alignment: Alignment.topLeft, // align to the top left of the page
+          alignment: Alignment.topRight, // align to the top left of the page
           child: IconButton(
             icon: const Icon(Icons.report_problem),
             color: const Color.fromRGBO(1, 1, 1, 1),
             iconSize: 25,
             tooltip: 'Report User',
             onPressed: () {
+              _userRepository.report(user.username, _loggeduser);
               //Navigator.of(context).pushNamed('/feed');
               //Navigator.of(context).pop();
             },
           ),
-        ),
+        )]),
         Container(
           width: MediaQuery.of(context).size.width,
           height: 285,

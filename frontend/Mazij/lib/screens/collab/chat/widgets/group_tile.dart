@@ -23,12 +23,15 @@ class _GroupTileState extends State<GroupTile> {
     .get()
     .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.forEach((doc) {
-            print(doc["admin"]);
-            print(doc["groupName"]);
-            if(doc["groupName"].compareTo(widget.groupName)==0){
+            print(doc['admin']);
+            print(doc['groupName']);
+            if(doc['groupName'].compareTo(widget.groupName)==0){
           // widget.admin = doc["admin"];
+          print("wgr ${widget.groupName}");
                 setState(() {
-                  widget.admin = doc["admin"];
+
+                  print("in set state");
+                  widget.admin = doc['admin'];
                 });
             }
         });

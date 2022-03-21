@@ -212,7 +212,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
           ),
         ),
         Align(
-          alignment: Alignment.topLeft, // align to the top left of the page
+          alignment: Alignment.topRight, // align to the top left of the page
           child: IconButton(
             icon: const Icon(Icons.report_problem),
             color: const Color.fromRGBO(1, 1, 1, 1),
@@ -220,6 +220,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
             tooltip: 'Report User',
             onPressed: () {
               print("user report");
+              _userRepository.report(user.username, _loggeduser);
               //Navigator.of(context).pushNamed('/feed');
               //Navigator.of(context).pop();
             },

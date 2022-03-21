@@ -302,7 +302,7 @@ class _TopTabBarState extends State<TopTabBar> {
                               title: Text(
                                 posts[index].user,
                                 style: const TextStyle(
-                                    color: Colors.white, fontSize: 20),
+                                    color: Colors.black, fontSize: 20),
                               ),
                               subtitle: Row(children: [
                                 ElevatedButton(
