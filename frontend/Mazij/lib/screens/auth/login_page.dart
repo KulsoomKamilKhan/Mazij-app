@@ -508,7 +508,7 @@ class CustomFormState extends State<CustomForm> {
                                   ]),
                             )),
                         const SizedBox(height: 30),
-                        Image.asset("assets/brand-marketer.png"),
+                        // Image.asset("assets/brand-marketer.png"),
                         const SizedBox(height: 20),
                         const Align(
                             alignment: Alignment.topCenter,
