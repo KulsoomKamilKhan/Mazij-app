@@ -176,9 +176,9 @@ class DatabaseService {
   Future<bool> sendEmail(String groupName, String email, String admin, String username) async {
     Uri local = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
     Map<String, dynamic> postBody = {
-      "service_id": "service_lxywpaf",
-      "template_id": "template_qu8mvc7",
-      "user_id": "0cqhqwo8D170gV4HE",
+      "service_id": "service_33uypns",
+      "template_id": "template_rih2a5f",
+      "user_id": "user_5eUULKImN9Mn9uQIHBj5U",
       "template_params": {
         "groupName": groupName,
         "email": email,
