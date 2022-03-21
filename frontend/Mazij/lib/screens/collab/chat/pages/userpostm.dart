@@ -2,18 +2,18 @@ import 'dart:convert';
 import 'package:Mazaj/bloc/post_bloc/post_bloc.dart';
 import 'package:Mazaj/data/models/post_model.dart';
 import 'package:Mazaj/data/repositories/post_repo.dart';
-import 'package:Mazaj/screens/collab/chat/pages/userpostm.dart';
+import 'package:Mazaj/screens/collab/chat/pages/userprofilem.dart';
 import 'package:Mazaj/screens/feed/userprofilec.dart';
 import 'package:Mazaj/screens/feed/userprofilef.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 //import 'package:intl/intl.dart';
 
-class UserPostF extends StatelessWidget {
+class UserPostM extends StatelessWidget {
   Post post;
   String _loggeduser;
   //String pg;
-  UserPostF(this.post, this._loggeduser);
+  UserPostM(this.post, this._loggeduser);
 
   List<Widget> getc(String caption) {
     List<Widget> list = [];
@@ -195,7 +195,7 @@ class UserPostF extends StatelessWidget {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => UserProfileF(
+            builder: (context) => UserProfileM(
               post.user,
             ),
           ),

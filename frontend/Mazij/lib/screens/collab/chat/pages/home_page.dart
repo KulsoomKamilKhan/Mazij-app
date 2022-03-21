@@ -65,8 +65,8 @@ class _HomePageState extends State<HomePage> {
                     int reqIndex = data['groups'].length - index - 1;
                     print('groupList');
                     print(reqIndex);
-                    print(data['groups'][0]);
-                    print(data['groups'][1]);
+                    // print(data['groups'][0]);
+                    // print(data['groups'][1]);
                     return GroupTile(
                         data['fullName'],
                         data['groups'][0],

@@ -17,7 +17,7 @@ class DatabaseService {
       // 'email': email,
       // 'password': password,
       'groups': [],
-      'profilePic': ''
+      //'profilePic': ''
     });
   }
 

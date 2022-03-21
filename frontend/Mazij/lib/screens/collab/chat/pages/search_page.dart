@@ -118,7 +118,7 @@ class _SearchPageState extends State<SearchPage> {
               style: const TextStyle(color: Colors.white))),
       title: InkWell(
         onTap: (){
-          if (!_isJoined) { //check this
+          if (_isJoined) { //check this
             Future.delayed(const Duration(milliseconds: 2000), () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>

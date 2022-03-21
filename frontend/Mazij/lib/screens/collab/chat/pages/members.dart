@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:Mazaj/data/repositories/profile_repo.dart';
 import 'package:Mazaj/screens/collab/chat/pages/chat_page.dart';
+import 'package:Mazaj/screens/collab/chat/pages/userprofilem.dart';
 import 'package:Mazaj/screens/collab/chat/services/database_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -16,19 +20,31 @@ class MembersPage extends StatefulWidget {
 class _MembersState extends State<MembersPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String _username = '';
+  final ProfileRepository _profRepository = ProfileRepository();
+  List<dynamic> profiles = [];
+  var storage = const FlutterSecureStorage();
 
   @override
   void initState() {
-    _getCurrentUserNameAndUid();
+     Future.delayed(Duration.zero, () async {
+      profiles = await _profRepository.getProfiles();
+      _username = (await storage.read(key: 'username')).toString();
+      if (mounted) setState(() {});
+    });
     super.initState();
   }
 
-  var storage = const FlutterSecureStorage();
-  // functions
-  _getCurrentUserNameAndUid() async {
-    _username = (await storage.read(key: 'username')).toString();
-    if (mounted) setState(() {});
-    // });
+  dynamic _profilepic(String username) {
+    int i = 0;
+    String dp = '';
+    while (i < profiles.length) {
+      if (profiles[i].username.compareTo(username) == 0) {
+        dp = profiles[i].profile_pic;
+      }
+      i++;
+    }
+    var s = const Base64Decoder().convert(dp);
+    return s;
   }
 
   @override
@@ -66,9 +82,23 @@ class _MembersState extends State<MembersPage> {
                         itemCount: data.data()!["members"].length,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
+                          print(data.data()!["admin"]);
                           if(data.data()!["admin"].compareTo(widget.admin)==0){
                             return ListTile(
-                            title: Text(data.data()!["members"][index]),
+                              leading: CircleAvatar(
+                                backgroundImage: Image.memory(
+                                  _profilepic(data.data()!["members"][index]),
+                                ).image,
+                                radius: 55.0,
+                              ),
+                            title: InkWell(child:data.data()!["members"][index],
+                            onTap: (){Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UserProfileM(data.data()!["members"][index]),
+                    ),
+                  );} ,
+                            ),
                             trailing: IconButton(icon: Icon(Icons.delete), onPressed: (){
                               DatabaseService(_username).DeleteMember(widget.groupId, data.data()!["groupName"], data.data()!["members"][index]);
                             }),
