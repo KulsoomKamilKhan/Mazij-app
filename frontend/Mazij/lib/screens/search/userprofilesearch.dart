@@ -222,6 +222,20 @@ class _ProfileInfoState extends State<ProfileInfo> {
                 _userRepository.report(user.username, _loggeduser);
                 //Navigator.of(context).pushNamed('/feed');
                 //Navigator.of(context).pop();
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      Future.delayed(const Duration(seconds: 2), () {
+                        Navigator.of(context).pop(true);
+                      });
+                      return const AlertDialog(
+                        backgroundColor: Colors.black87,
+                        title: Text(
+                          'This profile has been reported',
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      );
+                    });
               },
             ),
           ),

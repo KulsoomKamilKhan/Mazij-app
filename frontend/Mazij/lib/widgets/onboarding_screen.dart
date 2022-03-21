@@ -8,6 +8,12 @@ class OnBoardingPage extends StatelessWidget {
         child: IntroductionScreen(
           pages: [
             PageViewModel(
+              title: "Mazij",
+              body: "Meet the World.",
+              image: Image.asset("o5.gif"),
+              decoration: getPageDecoration(),
+            ),
+            PageViewModel(
               title: "Mashup",
               body: "Unleash your creativity!",
               image: Image.asset("assets/o1.png"),
@@ -27,7 +33,7 @@ class OnBoardingPage extends StatelessWidget {
             ),
             PageViewModel(
               title: 'Join a Global Platform',
-              body: 'Start your journey with Mazij',
+              body: 'Start your journey with Mazij!',
               image: buildImage('o4.png'),
               // footer: ButtonWidget(
               //   text: 'Start Reading',
