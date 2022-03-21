@@ -214,6 +214,19 @@ class _ProfileInfoState extends State<ProfileInfo> {
             },
           ),
         ),
+        Align(
+          alignment: Alignment.topLeft, // align to the top left of the page
+          child: IconButton(
+            icon: const Icon(Icons.report_problem),
+            color: const Color.fromRGBO(1, 1, 1, 1),
+            iconSize: 25,
+            tooltip: 'Report User',
+            onPressed: () {
+              //Navigator.of(context).pushNamed('/feed');
+              //Navigator.of(context).pop();
+            },
+          ),
+        ),
         Container(
           width: MediaQuery.of(context).size.width,
           height: 285,

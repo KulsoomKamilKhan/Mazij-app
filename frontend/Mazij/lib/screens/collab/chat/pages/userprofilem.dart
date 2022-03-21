@@ -222,7 +222,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
             icon: const Icon(Icons.report_problem),
             color: const Color.fromRGBO(1, 1, 1, 1),
             iconSize: 25,
-            tooltip: 'Back',
+            tooltip: 'Report User',
             onPressed: () {
               //Navigator.of(context).pushNamed('/feed');
               //Navigator.of(context).pop();
