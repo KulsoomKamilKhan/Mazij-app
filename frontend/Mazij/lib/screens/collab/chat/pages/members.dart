@@ -84,28 +84,15 @@ class _MembersState extends State<MembersPage> {
                         itemBuilder: (context, index) {
                           // print(data.data()!["admin"]);
                           if (_username.compareTo(widget.admin) == 0) {
-                            return ListTile(
+                            return InkWell(
+                              child:ListTile(
                               leading: CircleAvatar(
                                 backgroundImage: Image.memory(
                                   _profilepic(data.data()!["members"][index]),
                                 ).image,
                                 radius: 55.0,
                               ),
-                              title: InkWell(
-                                child: data.data()!["members"][index],
-                                onTap: () {
-                                  print("member tapped");
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UserProfileM(data
-                                          .data()!["members"][index]
-                                          .toString()
-                                          .trim()),
-                                    ),
-                                  );
-                                },
-                              ),
+                              title: data.data()!["members"][index],
                               trailing: IconButton(
                                   icon: Icon(Icons.delete),
                                   onPressed: () {
@@ -114,10 +101,25 @@ class _MembersState extends State<MembersPage> {
                                         data.data()!["groupName"],
                                         data.data()!["members"][index]);
                                   }),
-                            );
+                            ),
+                            onTap: () {
+                                  print("member tapped admin");
+                                  String s = data
+                                          .data()!["members"][index]
+                                          .toString()
+                                          .trim();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => UserProfileM(s),
+                                    ),
+                                  );
+                            });
                           }
-                          print(data.data()!["members"][index]);
-                          return ListTile(
+                          print(data.data()!["members"][index].runtimeType);
+                          
+                          return InkWell(
+                              child: ListTile(
                             leading: CircleAvatar(
                               backgroundImage: Image.memory(
                                 _profilepic(data.data()!["members"][index]),
@@ -125,6 +127,20 @@ class _MembersState extends State<MembersPage> {
                               radius: 55.0,
                             ),
                             title: Text(data.data()!["members"][index]),
+                          ),
+                          onTap: () {
+                            String s = data
+                                          .data()!["members"][index]
+                                          .toString()
+                                          .trim();
+                                  print("member tapped");
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => UserProfileM(s),
+                                    ),
+                                  );
+                            }
                           );
                         });
                   }

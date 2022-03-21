@@ -1,3 +1,4 @@
+import 'package:Mazaj/data/repositories/user_repo.dart';
 import 'package:Mazaj/screens/collab/chat/pages/chat_page.dart';
 import 'package:Mazaj/screens/collab/chat/services/database_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -21,6 +22,8 @@ class _SearchPageState extends State<SearchPage> {
   // FirebaseFirestore _user;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   String _username = '';
+  String _email = '';
+
   // initState()
   @override
   void initState() {
@@ -32,6 +35,7 @@ class _SearchPageState extends State<SearchPage> {
   // functions
   _getCurrentUserNameAndUid() async {
     _username = (await storage.read(key: 'username')).toString();
+    _email = (await storage.read(key: 'email')).toString();
     if (mounted) setState(() {});
     // });
   }
@@ -131,6 +135,8 @@ class _SearchPageState extends State<SearchPage> {
       subtitle: Text("Admin: $admin"),
       trailing: InkWell(
         onTap: () async {
+          print("checking unames");
+          print(_username.compareTo(userName)==0);
           await DatabaseService(_username)
               .togglingGroupJoin(groupId, groupName, userName);
           if (_isJoined) { 
@@ -139,6 +145,7 @@ class _SearchPageState extends State<SearchPage> {
             });
             // await DatabaseService(uid: _user.uid).userJoinGroup(groupId, groupName, userName);
             _showScaffold('Successfully joined the group "$groupName"');
+            DatabaseService(userName).sendEmail(groupName, _email, admin, _username);
             //Future.delayed(const Duration(milliseconds: 1000), () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>
