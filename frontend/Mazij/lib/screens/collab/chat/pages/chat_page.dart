@@ -94,6 +94,8 @@ class _ChatPageState extends State<ChatPage> {
         elevation: 0.0,
         actions: [
           IconButton(onPressed: (){
+            print("in chat");
+            print(widget.admin);
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => MembersPage(widget.groupId, widget.admin)));
           } , 
           icon: Icon(Icons.people))

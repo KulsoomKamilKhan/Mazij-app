@@ -84,6 +84,7 @@ class _MembersState extends State<MembersPage> {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           // print(data.data()!["admin"]);
+                          print("in members");
                           print(widget.admin);
                           print(_username);
                           if (_username.compareTo(widget.admin) == 0) {

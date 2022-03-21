@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                     // print(data['groups'][1]);
                     return GroupTile(
                         data['fullName'],
-                        data['groups'][0],
+                        "",
                         _destructureId(data['groups'][reqIndex]),
                         _destructureName(data['groups'][reqIndex]));
                   });

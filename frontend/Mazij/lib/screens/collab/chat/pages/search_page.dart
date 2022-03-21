@@ -15,7 +15,7 @@ class _SearchPageState extends State<SearchPage> {
   TextEditingController searchEditingController = new TextEditingController();
   //QuerySnapshot searchResultSnapshot = DatabaseService("").searchByName("");
   //dynamic searchResultSnapshot;
-  bool isLoading = false;
+  bool isLoading = true;
   bool hasUserSearched = false;
   bool _isJoined = false;
   //String _userName = '';
@@ -27,6 +27,7 @@ class _SearchPageState extends State<SearchPage> {
   // initState()
   @override
   void initState() {
+    //isLoading = true;
     _getCurrentUserNameAndUid();
     super.initState();
   }
@@ -41,9 +42,11 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _initiateSearch() async {
+    
     if (searchEditingController.text.isNotEmpty) {
       setState(() {
-        isLoading = true;
+        isLoading = false;
+        hasUserSearched = true;
       });
       // await DatabaseService(_username)
       //     .searchByName(searchEditingController.text)
@@ -78,7 +81,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   // widgets
-  StatefulWidget groupList() {
+  Widget groupList() {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection("groups")
@@ -89,10 +92,6 @@ class _SearchPageState extends State<SearchPage> {
         // print('search');
         //  print(data.documents.length);
         if (snapshot.hasData) {
-          setState(() {
-        isLoading = false;
-        hasUserSearched = true;
-      });
           dynamic data = snapshot.data!.docs;
 
           return ListView.builder(

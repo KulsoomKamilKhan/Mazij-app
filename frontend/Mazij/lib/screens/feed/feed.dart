@@ -287,7 +287,7 @@ class _TopTabBarState extends State<TopTabBar> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 250, vertical: 50),
                     child: Card(
-                      color: const Color.fromRGBO(128, 0, 128, 0.4),
+                      color: Colors.white,
                       clipBehavior: Clip.antiAlias,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
