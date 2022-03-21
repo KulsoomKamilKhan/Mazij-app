@@ -83,38 +83,15 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/logo.png
-    - assets/logo_2.jpg
     - assets/privacy.txt
     - assets/termsandcond.txt
     - assets/license.png
-    - assets/student_avatar.png
-    - assets/artist_avatar.png
-    - assets/brand-marketer.png
     - assets/general.png
-    - assets/content_creator_avatar.png
-    - assets/kiwihug-zGZYQQVmXw0-unsplash.jpg
     - assets/BG.jpg
     - assets/o2.png
     - assets/o3.png
-    - assets/cryingcat.png
-    - assets/drake_close.png
-    - assets/drake_waving.png
-    - assets/harambe.png
-    - assets/mj.png
-    - assets/roll-back.png
-    - assets/createbio.png
     - assets/biopg.png
     - assets/o1.png
-    - assets/emoji1.png
-    - assets/emoji2.png
-    - assets/emoji3.png
-    - assets/emoji4.png
-    - assets/emoji5.png
-    - assets/emoji6.png
-    - assets/emoji7.png
-    - assets/emoji8.png
-    - assets/emoji9.png
-    - assets/emoji10.png
     
 
 

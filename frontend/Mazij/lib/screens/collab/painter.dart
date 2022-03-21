@@ -158,7 +158,6 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
       username = (await storage.read(key: 'username')).toString();
       // posts = await _postRepository.GetPosts();
       // _foundPosts = posts;
-      print("painter init state 1");
       drafts = await collabrepo.getDraftsByUsername(username);
       if (mounted) setState(() {});
     });
