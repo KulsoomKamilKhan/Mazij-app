@@ -161,7 +161,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Groups',
+        automaticallyImplyLeading: false,
+        title: Text('Chat',
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 27.0,

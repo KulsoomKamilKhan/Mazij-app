@@ -51,10 +51,10 @@ class _SearchPageState extends State<SearchPage> {
       // searchResultSnapshot = snapshot;
       // print("here");
       //print("$searchResultSnapshot");
-      setState(() {
-        isLoading = false;
-        hasUserSearched = true;
-      });
+      // setState(() {
+      //   isLoading = false;
+      //   hasUserSearched = true;
+      // });
       // });
     }
   }
@@ -68,7 +68,7 @@ class _SearchPageState extends State<SearchPage> {
     ));
   }
 
-  _joinValueInGroup(
+  void _joinValueInGroup(
       String userName, String groupId, String groupName, String admin) async {
     bool value = await DatabaseService(_username)
         .isUserJoined(groupId, groupName, userName);
@@ -78,7 +78,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   // widgets
-  Widget groupList() {
+  StatefulWidget groupList() {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection("groups")
@@ -89,6 +89,10 @@ class _SearchPageState extends State<SearchPage> {
         // print('search');
         //  print(data.documents.length);
         if (snapshot.hasData) {
+          setState(() {
+        isLoading = false;
+        hasUserSearched = true;
+      });
           dynamic data = snapshot.data!.docs;
 
           return ListView.builder(

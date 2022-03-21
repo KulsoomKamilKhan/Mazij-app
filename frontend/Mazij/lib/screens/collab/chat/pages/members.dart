@@ -84,6 +84,8 @@ class _MembersState extends State<MembersPage> {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           // print(data.data()!["admin"]);
+                          print(widget.admin);
+                          print(_username);
                           if (_username.compareTo(widget.admin) == 0) {
                             return InkWell(
                               child:ListTile(
@@ -94,9 +96,9 @@ class _MembersState extends State<MembersPage> {
                                 ).image,
                                 radius: 55.0,
                               ),
-                              title: data.data()!["members"][index],
+                              title: Text(data.data()!["members"][index]),
                               trailing: IconButton(
-                                  icon: Icon(Icons.delete),
+                                  icon: Icon(Icons.delete, color: Colors.black,),
                                   onPressed: () {
                                     DatabaseService(_username).DeleteMember(
                                         widget.groupId,
@@ -110,16 +112,19 @@ class _MembersState extends State<MembersPage> {
                                           .data()!["members"][index]
                                           .toString()
                                           .trim();
+                                  if(s.compareTo(_username)!=0){
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => UserProfileM(s),
                                     ),
                                   );
+                                  }
+                                  else{Navigator.of(context).pushNamed("/home");}
                             });
                           }
-                          print("in mem print");
-                          print(data.data()!["members"][index].runtimeType);
+                          //print("in mem print");
+                          //print(data.data()!["members"][index].runtimeType);
                           
                           return InkWell(
                               child: ListTile(
@@ -133,18 +138,21 @@ class _MembersState extends State<MembersPage> {
                             title: Text(data.data()!["members"][index]),
                           ),
                           onTap: () {
+                            
                             String s = data
                                           .data()!["members"][index]
                                           .toString()
                                           .trim();
                                   print("member tapped");
+                            if(s.compareTo(_username)!=0){
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => UserProfileM(s),
                                     ),
                                   );
-                            }
+                            }  else{Navigator.of(context).pushNamed("/home");}
+                          }
                           );
                         });
                   }

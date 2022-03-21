@@ -100,12 +100,16 @@ class _CaptionPostsState extends State<CaptionPosts> {
             shadowColor: Colors.grey,
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => UserProfileC(s),
-              ),
-            );
+            if (s.compareTo(widget.u) == 0) {
+              Navigator.of(context).pushNamed('/home');
+            } else {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserProfileC(s),
+                ),
+              );
+            }
           },
           child: Text(s)));
       j++;

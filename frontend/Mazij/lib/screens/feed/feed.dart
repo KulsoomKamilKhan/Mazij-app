@@ -308,7 +308,7 @@ class _TopTabBarState extends State<TopTabBar> {
                                 ElevatedButton(
                                   
                                   style: ElevatedButton.styleFrom(
-                                    side: BorderSide(width: 5.0, color: Colors.grey.shade300,),
+                                    side: BorderSide(width: 3.0, color: Colors.grey.shade300,),
                                     primary: Colors.amber.shade300,
                                     onSurface: Colors.grey,
                                     padding: const EdgeInsets.symmetric(
@@ -453,7 +453,7 @@ class _TopTabBarState extends State<TopTabBar> {
                   // height: 800,
                   //  width: 800,
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+                      const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
                   child: Card(
                     clipBehavior: Clip.antiAlias,
                     child: Column(
@@ -472,7 +472,7 @@ class _TopTabBarState extends State<TopTabBar> {
                             subtitle: Row(children: [
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  side: BorderSide(width: 5.0, color: Colors.grey.shade300,),
+                                  side: BorderSide(width: 3.0, color: Colors.grey.shade300,),
                                   primary: Colors.amber.shade400,
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 2, vertical: 2),
