@@ -50,58 +50,58 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
-          child: AppBar(
-             backgroundColor: Colors.white,
-      iconTheme: const IconThemeData(
-          color: Colors.black), 
-            title: const Text("Mazij", style: TextStyle(
-              color: Color(0xB6326EF1),
-              fontSize: 32,
-              fontWeight: FontWeight.w700)),
-            actions: <Widget>[
-        // to dsiplay to the right
-        IconButton(
-          icon: const Icon(Icons.search),
-          highlightColor: Colors.purple,
-          tooltip: "Search",
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SearchProfile(),
-              ),
-            );
-          },
-        ),
-      ],
-        )),
+            preferredSize: const Size.fromHeight(50),
+            child: AppBar(
+              backgroundColor: Colors.white,
+              iconTheme: const IconThemeData(color: Colors.black),
+              title: const Text("Mazij",
+                  style: TextStyle(
+                      color: Color(0xB6326EF1),
+                      fontSize: 32,
+                      fontWeight: FontWeight.w700)),
+              actions: <Widget>[
+                // to dsiplay to the right
+                IconButton(
+                  icon: const Icon(Icons.search),
+                  highlightColor: Colors.purple,
+                  tooltip: "Search",
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SearchProfile(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            )),
         drawer: const SettingsDrawer(),
         body: BlocListener<PostBloc, PostState>(
             listener: (context, state) {},
             child: BlocBuilder<PostBloc, PostState>(builder: (context, state) {
               if (state is PostLoading) {
                 Path _buildSpeechBubblePath() {
-            return Path()
-              ..moveTo(50, 0)
-              ..quadraticBezierTo(0, 0, 0, 37.5)
-              ..quadraticBezierTo(0, 75, 25, 75)
-              ..quadraticBezierTo(25, 95, 5, 95)
-              ..quadraticBezierTo(35, 95, 40, 75)
-              ..quadraticBezierTo(100, 75, 100, 37.5)
-              ..quadraticBezierTo(100, 0, 50, 0)
-              ..close();
-          }
+                  return Path()
+                    ..moveTo(50, 0)
+                    ..quadraticBezierTo(0, 0, 0, 37.5)
+                    ..quadraticBezierTo(0, 75, 25, 75)
+                    ..quadraticBezierTo(25, 95, 5, 95)
+                    ..quadraticBezierTo(35, 95, 40, 75)
+                    ..quadraticBezierTo(100, 75, 100, 37.5)
+                    ..quadraticBezierTo(100, 0, 50, 0)
+                    ..close();
+                }
 
-          return Center(
-            child: //CircularProgressIndicator(),
-                LiquidCustomProgressIndicator(
-              direction: Axis.horizontal,
-              backgroundColor: Colors.grey[300],
-              valueColor: const AlwaysStoppedAnimation(Colors.blue),
-              shapePath: _buildSpeechBubblePath(),
-            ),
-          );
+                return Center(
+                  child: //CircularProgressIndicator(),
+                      LiquidCustomProgressIndicator(
+                    direction: Axis.horizontal,
+                    backgroundColor: Colors.grey[300],
+                    valueColor: const AlwaysStoppedAnimation(Colors.blue),
+                    shapePath: _buildSpeechBubblePath(),
+                  ),
+                );
               } else if (state is PostLoaded) {
                 posts = state.posts;
                 return profilepage(posts!);
@@ -230,7 +230,8 @@ class _ProfileInfoState extends State<ProfileInfo> {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => CreatePosts(post, user, caption, upvotes, collaborators)));
+              builder: (context) =>
+                  CreatePosts(post, user, caption, upvotes, collaborators)));
     } else {
       print("File Picker Error, image is null");
     }
@@ -324,12 +325,12 @@ class _ProfileInfoState extends State<ProfileInfo> {
                         //fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w500))),
           ])),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             // gradient for entire container
             gradient: LinearGradient(colors: [
-              Colors.purpleAccent,
-              Color(0xFF9CB5EB),
-              Colors.white,
+              Colors.pink.shade300,
+              Colors.deepPurple.shade300,
+              Color.fromARGB(255, 98, 147, 255),
             ]),
           ),
         )

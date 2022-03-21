@@ -76,6 +76,7 @@ class _UserProfileMState extends State<UserProfileM> {
                     ..quadraticBezierTo(100, 0, 50, 0)
                     ..close();
                 }
+
                 return Center(
                   child: //CircularProgressIndicator(),
                       LiquidCustomProgressIndicator(
@@ -203,35 +204,49 @@ class _ProfileInfoState extends State<ProfileInfo> {
     //print(u.toString());
     return Column(
       children: <Widget>[
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-        Align(
-          alignment: Alignment.topLeft, // align to the top left of the page
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            color: const Color.fromRGBO(1, 1, 1, 1),
-            iconSize: 25,
-            tooltip: 'Back',
-            onPressed: () {
-              //Navigator.of(context).pushNamed('/feed');
-              Navigator.of(context).pop();
-            },
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Align(
+            alignment: Alignment.topLeft, // align to the top left of the page
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              color: const Color.fromRGBO(1, 1, 1, 1),
+              iconSize: 25,
+              tooltip: 'Back',
+              onPressed: () {
+                //Navigator.of(context).pushNamed('/feed');
+                Navigator.of(context).pop();
+              },
+            ),
           ),
-        ),
-        Align(
-          alignment: Alignment.topRight, // align to the top left of the page
-          child: IconButton(
-            icon: const Icon(Icons.report_problem),
-            color: const Color.fromRGBO(1, 1, 1, 1),
-            iconSize: 25,
-            tooltip: 'Report User',
-            onPressed: () {
-              _userRepository.report(user.username, _loggeduser);
-              //Navigator.of(context).pushNamed('/feed');
-              //Navigator.of(context).pop();
-            },
-          ),
-        )]),
+          Align(
+            alignment: Alignment.topRight, // align to the top left of the page
+            child: IconButton(
+              icon: const Icon(Icons.report_problem),
+              color: const Color.fromRGBO(1, 1, 1, 1),
+              iconSize: 25,
+              tooltip: 'Report User',
+              onPressed: () {
+                _userRepository.report(user.username, _loggeduser);
+                //Navigator.of(context).pushNamed('/feed');
+                //Navigator.of(context).pop();
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      Future.delayed(const Duration(seconds: 2), () {
+                        Navigator.of(context).pop(true);
+                      });
+                      return const AlertDialog(
+                        backgroundColor: Colors.black87,
+                        title: Text(
+                          'This profile has been reported',
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      );
+                    });
+              },
+            ),
+          )
+        ]),
         Container(
           width: MediaQuery.of(context).size.width,
           height: 285,
@@ -331,12 +346,12 @@ class _ProfileInfoState extends State<ProfileInfo> {
                         //fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w500))),
           ])),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             // gradient for entire container
             gradient: LinearGradient(colors: [
-              Colors.purpleAccent,
-              Color(0xFF9CB5EB),
-              Colors.white,
+              Colors.pink.shade300,
+              Colors.deepPurple.shade300,
+              Color.fromARGB(255, 98, 147, 255),
             ]),
           ),
         )

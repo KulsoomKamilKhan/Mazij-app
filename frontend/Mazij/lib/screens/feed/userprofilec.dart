@@ -346,12 +346,12 @@ class _ProfileInfoState extends State<ProfileInfo> {
                         //fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w500))),
           ])),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             // gradient for entire container
             gradient: LinearGradient(colors: [
-              Colors.purpleAccent,
-              Color(0xFF9CB5EB),
-              Colors.white,
+              Colors.pink.shade300,
+              Colors.deepPurple.shade300,
+              Color.fromARGB(255, 98, 147, 255),
             ]),
           ),
         )
