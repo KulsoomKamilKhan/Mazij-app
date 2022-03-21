@@ -226,6 +226,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                   GestureDetector(
                       onTap: () {
+                        searchEditingController.clear;
                         _initiateSearch();
                       },
                       child: Container(
