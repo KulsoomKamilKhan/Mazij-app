@@ -309,7 +309,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                 icon: const Icon(
                   Icons.edit,
                   size: 30,
-                  color: Colors.purpleAccent,
+                  color: Colors.white70,
                 ),
                 tooltip: 'Edit Bio',
               )
