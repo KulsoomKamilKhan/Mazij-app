@@ -106,6 +106,9 @@ class _UsersTableState extends State<UsersTable> {
             child: Container(
               width: 750,
               child: DataTable(
+                  border: TableBorder(
+                      left: BorderSide(color: Colors.white, width: 1),
+                      right: BorderSide(color: Colors.white, width: 1)),
                   columnSpacing: 7,
                   columns: const [
                     DataColumn(
