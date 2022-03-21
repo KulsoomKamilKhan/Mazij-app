@@ -128,18 +128,31 @@ class UserPostF extends StatelessWidget {
                           ],
                         ));
               },
-              child: Container(
-                  height: MediaQuery.of(context).size.height / 4.3,
-                  width: MediaQuery.of(context).size.width / 3.4,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: Image.memory(_bytesImage).image,
-                      )),
+              // child: Container(
+              //     height: MediaQuery.of(context).size.height / 4.3,
+              //     width: MediaQuery.of(context).size.width / 3.4,
+              //     decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(30),
+              //         image: DecorationImage(
+              //           fit: BoxFit.cover,
+              //           image: Image.memory(_bytesImage).image,
+              //         )),
+              child: Card(
+
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(
+                            height: 300,
+                            width: 500,
+                            child: Container(
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: Image.memory(_bytesImage).image,
+                                ))),
+                          ),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [

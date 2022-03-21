@@ -202,7 +202,9 @@ class _ProfileInfoState extends State<ProfileInfo> {
     //print(u.toString());
     return Column(
       children: <Widget>[
-        Row(children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
         Align(
           alignment: Alignment.topLeft, // align to the top left of the page
           child: IconButton(
@@ -217,7 +219,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
           ),
         ),
          Align(
-          alignment: Alignment.centerRight,
+          alignment: Alignment.topLeft,
           child: IconButton(
             icon: const Icon(Icons.report_problem),
             color: const Color.fromRGBO(1, 1, 1, 1),
@@ -333,9 +335,9 @@ class _ProfileInfoState extends State<ProfileInfo> {
           decoration: const BoxDecoration(
             // gradient for entire container
             gradient: LinearGradient(colors: [
-              Colors.purpleAccent,
+              Colors.purple,
               Color(0xFF9CB5EB),
-              Colors.white,
+              Colors.purple,
             ]),
           ),
         )

@@ -302,9 +302,10 @@ class _TopTabBarState extends State<TopTabBar> {
                               title: Text(
                                 posts[index].user,
                                 style: const TextStyle(
-                                    color: Colors.black, fontSize: 20),
+                                    color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               subtitle: Row(children: [
+                                Divider(),                                
                                 ElevatedButton(
                                   
                                   style: ElevatedButton.styleFrom(
@@ -468,8 +469,9 @@ class _TopTabBarState extends State<TopTabBar> {
                             ),
                             title: Text(posts[index].user,
                                 style: const TextStyle(
-                                    color: Colors.black, fontSize: 16)),
+                                    color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold)),
                             subtitle: Row(children: [
+                              Divider(),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   side: BorderSide(width: 3.0, color: Colors.grey.shade300,),
