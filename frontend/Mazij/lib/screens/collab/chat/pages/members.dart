@@ -105,6 +105,12 @@ class _MembersState extends State<MembersPage> {
                           );
                           }
                           return ListTile(
+                            leading: CircleAvatar(
+                                backgroundImage: Image.memory(
+                                  _profilepic(data.data()!["members"][index]),
+                                ).image,
+                                radius: 55.0,
+                              ),
                             title: Text(data.data()!["members"][index]),
                           );
                           
