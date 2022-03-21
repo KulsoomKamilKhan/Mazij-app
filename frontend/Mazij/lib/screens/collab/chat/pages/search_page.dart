@@ -58,9 +58,9 @@ class _SearchPageState extends State<SearchPage> {
   void _showScaffold(String message) {
     _scaffoldKey.currentState?.showSnackBar(SnackBar(
       backgroundColor: Colors.blueAccent,
-      duration: Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 1500),
       content: Text(message,
-          textAlign: TextAlign.center, style: TextStyle(fontSize: 17.0)),
+          textAlign: TextAlign.center, style: const TextStyle(fontSize: 17.0)),
     ));
   }
 
@@ -75,25 +75,6 @@ class _SearchPageState extends State<SearchPage> {
 
   // widgets
   Widget groupList() {
-    // List<QueryDocumentSnapshot<Object?>> doc =  FirebaseFirestore.instance
-    //     .collection("groups")
-    //     .where('groupName', isEqualTo: searchEditingController.text).snapshots();
-    // print('in search groupList');
-    // print(doc.length);
-    // return hasUserSearched
-    //     ? ListView.builder(
-    //         shrinkWrap: true,
-    //         itemCount: doc.length,
-    //         itemBuilder: (context, index) {
-    //           return groupTile(
-    //             _username,
-    //             doc[index].get('groupId'),
-    //             doc[index].get('groupName'),
-    //             doc[index].get('admin'),
-    //           );
-    //         })
-    //     : Container();
-
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection("groups")
@@ -119,7 +100,7 @@ class _SearchPageState extends State<SearchPage> {
               });
         }
         // } else {
-        return Container();
+        return Container(child: const Center(child: CircularProgressIndicator()));
         //}
       },
     );
@@ -129,28 +110,38 @@ class _SearchPageState extends State<SearchPage> {
       String userName, String groupId, String groupName, String admin) {
     _joinValueInGroup(userName, groupId, groupName, admin);
     return ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       leading: CircleAvatar(
           radius: 30.0,
           backgroundColor: Colors.amber,
           child: Text(groupName.substring(0, 1).toUpperCase(),
-              style: TextStyle(color: Colors.white))),
-      title: Text(groupName, style: TextStyle(fontWeight: FontWeight.bold)),
+              style: const TextStyle(color: Colors.white))),
+      title: InkWell(
+        onTap: (){
+          if (!_isJoined) { //check this
+            Future.delayed(const Duration(milliseconds: 2000), () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      ChatPage(groupId,admin, userName, groupName)));
+            });
+          }
+        },
+      child: Text(groupName, style: const TextStyle(fontWeight: FontWeight.bold))),
       subtitle: Text("Admin: $admin"),
       trailing: InkWell(
         onTap: () async {
           await DatabaseService(_username)
               .togglingGroupJoin(groupId, groupName, userName);
-          if (_isJoined) {
+          if (_isJoined) { 
             setState(() {
               _isJoined = !_isJoined;
             });
             // await DatabaseService(uid: _user.uid).userJoinGroup(groupId, groupName, userName);
             _showScaffold('Successfully joined the group "$groupName"');
-            Future.delayed(Duration(milliseconds: 2000), () {
+            Future.delayed(const Duration(milliseconds: 2000), () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>
-                      ChatPage(groupId, userName, groupName)));
+                      ChatPage(groupId, admin, userName, groupName)));
             });
           } else {
             setState(() {
@@ -163,18 +154,18 @@ class _SearchPageState extends State<SearchPage> {
             ? Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    color: Color.fromARGB(95, 56, 52, 52),
+                    color: const Color.fromARGB(95, 56, 52, 52),
                     border: Border.all(color: Colors.white, width: 1.0)),
-                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                child: Text('Joined', style: TextStyle(color: Colors.white)),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                child: const Text('Joined', style: const TextStyle(color: Colors.white)),
               )
             : Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   color: Colors.blueAccent,
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                child: Text('Join', style: TextStyle(color: Colors.white)),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                child: const Text('Join', style: const TextStyle(color: Colors.white)),
               ),
       ),
     );
@@ -188,7 +179,7 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.purple.shade300,
-        title: Text('Search Rooms',
+        title: const Text('Search Rooms',
             style: TextStyle(
                 fontSize: 27.0,
                 fontWeight: FontWeight.bold,
@@ -204,14 +195,14 @@ class _SearchPageState extends State<SearchPage> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
               // color: Colors.amber.shade100,
               child: Row(
                 children: [
                   Expanded(
                     child: TextField(
                         controller: searchEditingController,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black,
                         ),
                         // decoration: InputDecoration(
@@ -242,12 +233,12 @@ class _SearchPageState extends State<SearchPage> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(40)),
-                          child: Icon(Icons.search, color: Colors.blueAccent)))
+                          child: const Icon(Icons.search, color: Colors.blueAccent)))
                 ],
               ),
             ),
             isLoading
-                ? Container(child: Center(child: CircularProgressIndicator()))
+                ? Container(child: const Center(child: CircularProgressIndicator()))
                 : groupList()
           ],
         ),

@@ -1,3 +1,4 @@
+import 'package:Mazaj/screens/collab/chat/pages/members.dart';
 import 'package:Mazaj/screens/collab/chat/services/database_service.dart';
 import 'package:Mazaj/screens/collab/chat/widgets/message_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,10 +7,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ChatPage extends StatefulWidget {
   String groupId = '';
+  String admin = '';
   String _username = '';
   String groupName = '';
 
-  ChatPage(this.groupId, this._username, this.groupName);
+  ChatPage(this.groupId,this.admin, this._username, this.groupName);
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -80,13 +82,6 @@ class _ChatPageState extends State<ChatPage> {
       if (mounted) setState(() {});
     });
     super.initState();
-    // DatabaseService(widget._username).getChats(widget.groupId).then((val) {
-    //   print('ChatPage');
-    //   print(widget._username);
-    //   setState(() {
-    //     _chats = val;
-    //   });
-    // });
   }
 
   @override
@@ -97,6 +92,13 @@ class _ChatPageState extends State<ChatPage> {
         centerTitle: true,
         backgroundColor: Colors.purple.shade300,
         elevation: 0.0,
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => MembersPage(widget.groupId, widget.admin)));
+          } , 
+          icon: Icon(Icons.people))
+
+        ],
       ),
       body: Container(
         child: Stack(

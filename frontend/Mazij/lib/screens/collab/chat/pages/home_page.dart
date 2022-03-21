@@ -64,8 +64,12 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) {
                     int reqIndex = data['groups'].length - index - 1;
                     print('groupList');
+                    print(reqIndex);
+                    print(data['groups'][0]);
+                    print(data['groups'][1]);
                     return GroupTile(
                         data['fullName'],
+                        data['groups'][0],
                         _destructureId(data['groups'][reqIndex]),
                         _destructureName(data['groups'][reqIndex]));
                   });
@@ -88,8 +92,6 @@ class _HomePageState extends State<HomePage> {
   _getUserAuthAndJoinedGroups() async {
     //Future.delayed(Duration.zero, () async {
     _username = (await storage.read(key: 'username')).toString();
-    print('we are in home page');
-    print(_username);
     // if (mounted) setState(() {});
     // });
     //super.initState();

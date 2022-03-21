@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 
 class GroupTile extends StatelessWidget {
   String userName;
+  final String admin;
   final String groupId;
   final String groupName;
 
-  GroupTile(this.userName, this.groupId, this.groupName);
+  GroupTile(this.userName, this.admin, this.groupId, this.groupName);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,7 @@ class GroupTile extends StatelessWidget {
             MaterialPageRoute(
                 builder: (context) => ChatPage(
                       groupId,
+                      admin,
                       userName,
                       groupName,
                     )));
@@ -34,7 +36,7 @@ class GroupTile extends StatelessWidget {
           ),
           title: Text(groupName, style: TextStyle(fontWeight: FontWeight.bold)),
           subtitle: Text("Join the conversation as $userName",
-              style: TextStyle(fontSize: 13.0)),
+              style: TextStyle(fontSize: 10.0, color: Colors.grey.shade700)),
         ),
       ),
     );

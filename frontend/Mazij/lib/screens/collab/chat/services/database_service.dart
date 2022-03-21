@@ -61,8 +61,8 @@ class DatabaseService {
         'groups': FieldValue.arrayRemove([groupId + '_' + groupName])
       });
 
-      await groupDocRef.update({
-        'members': FieldValue.arrayRemove([uid + '_' + userName])
+      await groupDocRef.update({ //changed
+        'members': FieldValue.arrayRemove([userName])
       });
     } else {
       //print('nay');
@@ -70,10 +70,40 @@ class DatabaseService {
         'groups': FieldValue.arrayUnion([groupId + '_' + groupName])
       });
 
-      await groupDocRef.update({
-        'members': FieldValue.arrayUnion([uid + '_' + userName])
+      await groupDocRef.update({ //changed
+        'members': FieldValue.arrayUnion([userName])
       });
     }
+  }
+
+  Future DeleteMember(String groupId, String groupName, String userName) async {
+    DocumentReference userDocRef = userCollection.doc(userName);
+    DocumentSnapshot userDocSnapshot = await userDocRef.get();
+
+    DocumentReference groupDocRef = groupCollection.doc(groupId);
+
+    List<dynamic> groups = await userDocSnapshot['groups'];
+
+    if (groups.contains(groupId + '_' + groupName)) {
+      //print('hey');
+      await userDocRef.update({
+        'groups': FieldValue.arrayRemove([groupId + '_' + groupName])
+      });
+
+      await groupDocRef.update({ //changed
+        'members': FieldValue.arrayRemove([userName])
+      });
+    }
+    // } else {
+    //   //print('nay');
+    //   await userDocRef.update({
+    //     'groups': FieldValue.arrayUnion([groupId + '_' + groupName])
+    //   });
+
+    //   await groupDocRef.update({ //changed
+    //     'members': FieldValue.arrayUnion([userName])
+    //   });
+    // }
   }
 
   // has user joined the group
