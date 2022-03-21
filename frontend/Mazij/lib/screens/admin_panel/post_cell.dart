@@ -45,21 +45,33 @@ class PostCell extends StatelessWidget {
                           ],
                         ));
               },
-              child: Column(
+              child: Card(
+                clipBehavior: Clip.antiAlias,
+                child: Column(
                 children: [
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                          height: MediaQuery.of(context).size.height / 4.3,
-                          width: MediaQuery.of(context).size.width / 3.4,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              image: DecorationImage(
+                      // Container(
+                      //     height: MediaQuery.of(context).size.height / 4.3,
+                      //     width: MediaQuery.of(context).size.width / 3.4,
+                      //     decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(30),
+                      //         image: DecorationImage(
+                      //           fit: BoxFit.cover,
+                      //           image: Image.memory(_bytesImage).image,
+                      //         )),
+                          SizedBox(
+                          height: 160,
+                          width: 300,
+                          child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: Image.memory(_bytesImage).image,
-                              )),
-                          child: Column(
+                              ))),
+                        ),Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
@@ -80,7 +92,7 @@ class PostCell extends StatelessWidget {
                                         },
                                       ),
                                     ]),
-                              ])),
+                              ]),
                       const SizedBox(height: 2),
                       Text(
                         'Post ID: $id\n',
@@ -92,16 +104,16 @@ class PostCell extends StatelessWidget {
                   ),
                 ],
               )),
-          Row(children: [
-            Text(
-              "$upv upvotes",
-              style: const TextStyle(
-                  fontSize: 8,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-          ])
-        ],
+          // Row(children: [
+          //   Text(
+          //     "$upv upvotes",
+          //     style: const TextStyle(
+          //         fontSize: 8,
+          //         fontWeight: FontWeight.bold,
+          //         color: Colors.white),
+          //   ),
+          // ])
+          )],
       );
     }
 
