@@ -1,6 +1,8 @@
 # Mazij
  Front-end - Shreya, Kulsoom, Azzaam, Varun, Taha  
  Back-end - Bhavika, Alister, Omar  
+ 
+ Backend repo: https://github.com/bhavikakaliya/mazij-backend
 
 Remember to read the FRs given below to see which ones are being inplemented in stage-2 (denoted with a 1 beside the names). All FRs and NFRs associated with each page given below will have to be implemented by the people assigned to that particular page.  
 
