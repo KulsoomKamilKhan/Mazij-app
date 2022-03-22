@@ -126,50 +126,47 @@ class UserPost extends StatelessWidget {
                           ],
                         ));
               },
-              child: Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              PopupMenuButton(
-                                itemBuilder: (context) {
-                                  return [
-                                    PopupMenuItem<int>(
-                                        value: 0,
-                                        child: const Text("Report Post"),
-                                        onTap: () {
-                                          _postrepo.sendEmail(
-                                              _loggeduser, post.user, post.id);
-                                          const snackBar = SnackBar(
-                                            content: Text(
-                                                'This content has been reported'),
-                                            duration: Duration(seconds: 3),
-                                          );
-                                          Scaffold.of(context)
-                                              .showSnackBar(snackBar);
-                                        }),
-                                  ];
-                                },
-                              ),
-                            ]),
-                        SizedBox(
-                          height: 160,
-                          width: 300,
-                          child: Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: Image.memory(_bytesImage).image,
-                              ))),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                      ]))),
+              // child: Card(
+              //     clipBehavior: Clip.antiAlias,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                      PopupMenuButton(
+                        itemBuilder: (context) {
+                          return [
+                            PopupMenuItem<int>(
+                                value: 0,
+                                child: const Text("Report Post"),
+                                onTap: () {
+                                  _postrepo.sendEmail(
+                                      _loggeduser, post.user, post.id);
+                                  const snackBar = SnackBar(
+                                    content:
+                                        Text('This content has been reported'),
+                                    duration: Duration(seconds: 3),
+                                  );
+                                  Scaffold.of(context).showSnackBar(snackBar);
+                                }),
+                          ];
+                        },
+                      ),
+                    ]),
+                    SizedBox(
+                      height: 160,
+                      width: 300,
+                      child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: Image.memory(_bytesImage).image,
+                          ))),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                  ])),
           Row(children: [
             IconButton(
               onPressed: () {
