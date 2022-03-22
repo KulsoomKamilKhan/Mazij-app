@@ -123,142 +123,167 @@ class CustomFormState extends State<CustomForm> {
                 height: MediaQuery.of(context).size.height,
                 decoration: BoxDecoration(
                   //color: const Color(0xFF068EE9),
-                    image: DecorationImage(image: Image.asset("biopg.png").image, fit: BoxFit.cover, alignment: Alignment.bottomLeft, opacity: 0.6),
-                //     gradient: LinearGradient(
-                //   begin: Alignment.topCenter,
-                //   end: Alignment.bottomCenter,
-                //   colors: [
-                //       Colors.pink.shade200,Colors.purple.shade600 ,const Color(0xFF068EE9),
-                //   ],
-                // )
+                  image: DecorationImage(
+                      image: Image.asset("assets/biopg.png").image,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.bottomLeft,
+                      opacity: 0.6),
+                  //     gradient: LinearGradient(
+                  //   begin: Alignment.topCenter,
+                  //   end: Alignment.bottomCenter,
+                  //   colors: [
+                  //       Colors.pink.shade200,Colors.purple.shade600 ,const Color(0xFF068EE9),
+                  //   ],
+                  // )
                 ),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
                 child: Column(children: [
-                 Expanded(
+                  Expanded(
                       child: Container(
-                            width: 550,
-                            height: 500,
-                            decoration: const BoxDecoration(
-                              color: Color.fromRGBO(255, 255, 255, 0.7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15)),
-                            ),
-                            child: Padding(
-                              padding:const EdgeInsets.symmetric(horizontal: 20.0),
+                          width: 550,
+                          height: 500,
+                          decoration: const BoxDecoration(
+                            color: Color.fromRGBO(255, 255, 255, 0.7),
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                          ),
+                          child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
                               child: ListView(children: [
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(height: 10,),
-                          Text('Build Your Profile',
-                              style: TextStyle(
-                                  color: Colors.purple,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.w900)),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Container(
-                              width: 500.0,
-                              child: Text(
-                                'Write something about yourself, let the world know who you are!',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xFF068EE9),
-                                  fontWeight: FontWeight.bold
-                                ),
-                              )),
-                          const SizedBox(
-                            height: 25,
-                          ),
-                          Row(children: [
-                          Container(
-                              // for profile pic
-                             // alignment: Alignment.center,
-                              padding: const EdgeInsets.only(left:150.0),
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: CircleAvatar(
-                                backgroundImage: Image.memory(
-                                  _bytesImage,
-                                  gaplessPlayback: true,
-                                ).image,
-                                radius: 55.0,
-                              )),
-                          const SizedBox(
-                            height: 3,
-                          ),
-                          IconButton(
-                            onPressed: () =>
-                                imageSelectorGallery(), // upload image
-                            icon: const Icon(
-                              Icons.arrow_circle_up_rounded,
-                              size: 35,
-                              color: Colors.purple,
-                            ),
-                            tooltip: 'Upload Profile Image',
-                          ),]),
-                          const SizedBox(
-                            height: 35,
-                          ),
-                          Container(
-                            width: 500.0,
-                            child: TextField(
-                              maxLength: 100,
-                              style:  TextStyle(color: Colors.black,fontWeight: FontWeight.bold ),
-                              keyboardType: TextInputType.name,
-                              controller: TextEditingController(text: _bio,),
-                              decoration: InputDecoration(
-                                hintText: "Maximum 100 characters",
-                                fillColor: Colors.grey,
-                                label: Text('Bio',
-                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                                icon: const Icon(Icons.note, color: Colors.amber,),
-                                 focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.amber.shade600),
-                                          borderRadius:
-                                              BorderRadius.circular(85),
+                                Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text('Build Your Profile',
+                                          style: TextStyle(
+                                              color: Colors.purple,
+                                              fontSize: 40,
+                                              fontWeight: FontWeight.w900)),
+                                      const SizedBox(
+                                        height: 30,
+                                      ),
+                                      Container(
+                                          width: 500.0,
+                                          child: Text(
+                                            'Write something about yourself, let the world know who you are!',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                color: Color(0xFF068EE9),
+                                                fontWeight: FontWeight.bold),
+                                          )),
+                                      const SizedBox(
+                                        height: 25,
+                                      ),
+                                      Row(children: [
+                                        Container(
+                                            // for profile pic
+                                            // alignment: Alignment.center,
+                                            padding: const EdgeInsets.only(
+                                                left: 150.0),
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.rectangle,
+                                            ),
+                                            child: CircleAvatar(
+                                              backgroundImage: Image.memory(
+                                                _bytesImage,
+                                                gaplessPlayback: true,
+                                              ).image,
+                                              radius: 55.0,
+                                            )),
+                                        const SizedBox(
+                                          height: 3,
                                         ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.amber.shade600),
-                                          borderRadius:
-                                              BorderRadius.circular(85),
+                                        IconButton(
+                                          onPressed: () =>
+                                              imageSelectorGallery(), // upload image
+                                          icon: const Icon(
+                                            Icons.arrow_circle_up_rounded,
+                                            size: 35,
+                                            color: Colors.purple,
+                                          ),
+                                          tooltip: 'Upload Profile Image',
                                         ),
-                              ),
-                              onChanged: (val) {
-                                _bio = val;
-                              },
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.amber,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 20),
-                              textStyle: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                              shadowColor: Colors.grey,
-                            ),
-                            onPressed: () {
-                              // Validate returns true if the form is valid, or false otherwise.
-                              if (_formKey.currentState!.validate()) {
-                                BlocProvider.of<ProfileBloc>(context).add(
-                                    UpdateProfile(
-                                        bio: _bio, profile_pic: profile_pic));
-                              }
-                            },
-                            child: const Text('Submit', style: TextStyle(color: Colors.black),),
-                          ), SizedBox(height: 10),
-                        ]),
-                  ]))
-    ))]))));
+                                      ]),
+                                      const SizedBox(
+                                        height: 35,
+                                      ),
+                                      Container(
+                                        width: 500.0,
+                                        child: TextField(
+                                          maxLength: 100,
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                          keyboardType: TextInputType.name,
+                                          controller: TextEditingController(
+                                            text: _bio,
+                                          ),
+                                          decoration: InputDecoration(
+                                            hintText: "Maximum 100 characters",
+                                            fillColor: Colors.grey,
+                                            label: Text('Bio',
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            icon: const Icon(
+                                              Icons.note,
+                                              color: Colors.amber,
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.amber.shade600),
+                                              borderRadius:
+                                                  BorderRadius.circular(85),
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.amber.shade600),
+                                              borderRadius:
+                                                  BorderRadius.circular(85),
+                                            ),
+                                          ),
+                                          onChanged: (val) {
+                                            _bio = val;
+                                          },
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.amber,
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20, vertical: 20),
+                                          textStyle: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                          shadowColor: Colors.grey,
+                                        ),
+                                        onPressed: () {
+                                          // Validate returns true if the form is valid, or false otherwise.
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            BlocProvider.of<ProfileBloc>(
+                                                    context)
+                                                .add(UpdateProfile(
+                                                    bio: _bio,
+                                                    profile_pic: profile_pic));
+                                          }
+                                        },
+                                        child: const Text(
+                                          'Submit',
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                    ]),
+                              ]))))
+                ]))));
   }
 }

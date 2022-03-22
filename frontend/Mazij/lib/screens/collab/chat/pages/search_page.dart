@@ -144,7 +144,7 @@ class _SearchPageState extends State<SearchPage> {
         onTap: () async {
           // print("checking unames");
           // print(_username.compareTo(userName) == 0);
-          
+
           await DatabaseService(_username)
               .togglingGroupJoin(groupId, groupName, userName);
           if (_isJoined) {
@@ -225,6 +225,10 @@ class _SearchPageState extends State<SearchPage> {
                 children: [
                   Expanded(
                     child: TextField(
+                        onSubmitted: (value) {
+                          searchEditingController.clear;
+                          _initiateSearch();
+                        },
                         controller: searchEditingController,
                         style: const TextStyle(
                           color: Colors.black,

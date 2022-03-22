@@ -19,22 +19,18 @@ class _GroupTileState extends State<GroupTile> {
   @override
   Widget build(BuildContext context) {
     FirebaseFirestore.instance
-    .collection('groups')
-    .get()
-    .then((QuerySnapshot querySnapshot) {
-        querySnapshot.docs.forEach((doc) {
-            print(doc['admin']);
-            print(doc['groupName']);
-            if(doc['groupName'].compareTo(widget.groupName)==0){
+        .collection('groups')
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        if (doc['groupName'].compareTo(widget.groupName) == 0) {
           // widget.admin = doc["admin"];
-          print("wgr ${widget.groupName}");
-                setState(() {
-
-                  print("in set state");
-                  widget.admin = doc['admin'];
-                });
-            }
-        });
+          //print("wgr ${widget.groupName}");
+          setState(() {
+            widget.admin = doc['admin'];
+          });
+        }
+      });
     });
 
     return GestureDetector(
@@ -49,7 +45,6 @@ class _GroupTileState extends State<GroupTile> {
                       widget.groupName,
                     )));
       },
-      
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 10.0),
         child: ListTile(
@@ -60,7 +55,8 @@ class _GroupTileState extends State<GroupTile> {
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white)),
           ),
-          title: Text(widget.groupName, style: TextStyle(fontWeight: FontWeight.bold)),
+          title: Text(widget.groupName,
+              style: TextStyle(fontWeight: FontWeight.bold)),
           subtitle: Text("Join the conversation as ${widget.userName}",
               style: TextStyle(fontSize: 10.0, color: Colors.grey.shade700)),
         ),

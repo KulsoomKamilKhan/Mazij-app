@@ -283,7 +283,8 @@ class AuthenticationBloc
           account_type: account_type,
           date_of_birth: (await storage.read(key: 'dateofbirth')).toString(),
           passwords: password);
-
+      print("validated bloc");
+      print(user.account_type);
       var response = await _userRepository
           .updateUser(user); //retrieve user details and update account
       if (response) {

@@ -11,7 +11,7 @@ class ChatPage extends StatefulWidget {
   String _username = '';
   String groupName = '';
 
-  ChatPage(this.groupId,this.admin, this._username, this.groupName);
+  ChatPage(this.groupId, this.admin, this._username, this.groupName);
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -93,78 +93,87 @@ class _ChatPageState extends State<ChatPage> {
         backgroundColor: Colors.purple.shade300,
         elevation: 0.0,
         actions: [
-          IconButton(onPressed: (){
-            print("in chat");
-            print(widget.admin);
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => MembersPage(widget.groupId, widget.admin)));
-          } , 
-          icon: Icon(Icons.people))
-
+          IconButton(
+              onPressed: () {
+                print("in chat");
+                print(widget.admin);
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        MembersPage(widget.groupId, widget.admin)));
+              },
+              icon: Icon(Icons.people))
         ],
       ),
-      body: Container(
-        child: Stack(
-          children: <Widget>[
-            _chatMessages(),
-            // Container(),
-            Container(
-              alignment: Alignment.bottomCenter,
-              width: MediaQuery.of(context).size.width,
+      body: Stack(
+        children: <Widget>[
+          Padding(
+              padding: const EdgeInsets.only(bottom: 65),
+              child: _chatMessages()),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Center(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-                //color: Colors.grey[700],
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(height: 20,),
-                    Expanded(
-                      child: TextField(
-                        
-                          controller: messageEditingController,
-                          style: TextStyle(color: Colors.black),
-                          // decoration: InputDecoration(
-                          //     hintText: "Send a message ...",
-                          //     hintStyle: TextStyle(
-                          //       color: Colors.white38,
-                          //       fontSize: 16,
-                          //     ),
-                          //   border: InputBorder.none),
-                          decoration: InputDecoration(
-                            hintText: "Send a message ...",
-                            hintStyle: TextStyle(
-                              color: Colors.black54,
+                alignment: Alignment.bottomCenter,
+                width: MediaQuery.of(context).size.width,
+                child: Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+                  //color: Colors.grey[700],
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: TextField(
+                            onSubmitted: (value) {
+                              _sendMessage();
+                            },
+                            controller: messageEditingController,
+                            style: TextStyle(
+                              color: Colors.black,
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  const BorderSide(color: Colors.purple),
-                              borderRadius: BorderRadius.circular(85),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.blue),
-                              borderRadius: BorderRadius.circular(85),
-                            ),
-                          )),
-                    ),
-                    SizedBox(width: 12.0),
-                    GestureDetector(
-                      onTap: () {
-                        _sendMessage();
-                      },
-                      child: Container(
-                        height: 50.0,
-                        width: 50.0,
-                        decoration: BoxDecoration(
-                            color: Colors.blueAccent,
-                            borderRadius: BorderRadius.circular(50)),
-                        child: Center(
-                            child: Icon(Icons.send, color: Colors.white)),
+                            decoration: InputDecoration(
+                              hintText: "Send a message ...",
+                              fillColor: Colors.white,
+                              filled: true,
+                              hintStyle: TextStyle(
+                                color: Colors.black54,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.purple),
+                                borderRadius: BorderRadius.circular(85),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.blue),
+                                borderRadius: BorderRadius.circular(85),
+                              ),
+                            )),
                       ),
-                    )
-                  ],
+                      SizedBox(width: 12.0),
+                      GestureDetector(
+                        onTap: () {
+                          _sendMessage();
+                        },
+                        child: Container(
+                          height: 50.0,
+                          width: 50.0,
+                          decoration: BoxDecoration(
+                              color: Colors.blueAccent,
+                              borderRadius: BorderRadius.circular(50)),
+                          child: Center(
+                              child: Icon(Icons.send, color: Colors.white)),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
