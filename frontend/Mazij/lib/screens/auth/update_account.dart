@@ -74,41 +74,47 @@ class CustomFormState extends State<CustomForm> {
   }
 
   void mapDropDownCode(value) {
+    String a = '';
     switch (value) {
       case "General":
-      setState(() {
-        user.account_type = "G";
-      });
+      //setState(() {
+        a = "G";
+      //});
         break;
       case "Artist":
-        setState(() {
-        user.account_type = "A";
-      });
+       // setState(() {
+        a = "A";
+      //});
         break;
       case "Student":
-       setState(() {
-        user.account_type = "S";
-      });
+      // setState(() {
+        a = "S";
+      //});
         break;
       case "Content Creator":
-        setState(() {
-        user.account_type = "CC";
-      });
+        //setState(() {
+        a = "CC";
+     // });
         break;
       case "Business Marketer":
-       setState(() {
-        user.account_type = "BM";
-      });
+       //setState(() {
+        a = "BM";
+      //});
         break;
       default:
-        setState(() {
+        //setState(() {
         user.account_type = "G";
-      });
+     // });
         break;
     }
     print("after sc");
     print(value);
     print(user.account_type);
+    setState(() {
+      user.account_type = a;
+      print("in set sc");
+      print(user.account_type);
+    });
   }
 
   //Future<String> getUsername() async {
