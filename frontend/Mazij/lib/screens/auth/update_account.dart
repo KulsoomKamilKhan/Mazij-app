@@ -19,7 +19,7 @@ class Update extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(body: CustomForm());
-        //)));
+    //)));
   }
 }
 
@@ -123,7 +123,7 @@ class CustomFormState extends State<CustomForm> {
       'username': '',
       'email': '',
       'accounttype': '',
-      'dob':'',
+      'dob': '',
     };
     var storage = const FlutterSecureStorage();
     _details['username'] = (await storage.read(key: 'username')).toString();
@@ -132,8 +132,7 @@ class CustomFormState extends State<CustomForm> {
     _details['email'] = (await storage.read(key: 'email')).toString();
     _details['accounttype'] =
         (await storage.read(key: 'accounttype')).toString();
-      _details['dob'] =
-        (await storage.read(key: 'dateofbirth')).toString();
+    _details['dob'] = (await storage.read(key: 'dateofbirth')).toString();
     return _details;
   }
 
@@ -155,7 +154,7 @@ class CustomFormState extends State<CustomForm> {
     'username': '',
     'email': '',
     'accounttype': '',
-    'dob':''
+    'dob': ''
   };
   final String _dropdownValue = "General";
 
@@ -182,14 +181,14 @@ class CustomFormState extends State<CustomForm> {
             width: double.infinity,
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
-              //  image: DecorationImage(image: Image.asset("assets/logo.png").image, opacity: 0.4, fit: BoxFit.contain),
+                //  image: DecorationImage(image: Image.asset("assets/logo.png").image, opacity: 0.4, fit: BoxFit.contain),
                 gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
                 const Color(0xFF068EE9),
-                      Colors.purple.shade600,
-                      Colors.pink.shade200
+                Colors.purple.shade600,
+                Colors.pink.shade200
               ],
             )),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -249,7 +248,8 @@ class CustomFormState extends State<CustomForm> {
                                   Container(
                                     width: 500.0,
                                     child: TextFormField(
-                                      controller: TextEditingController(text: user.first_name),
+                                      controller: TextEditingController(
+                                          text: user.first_name),
                                       keyboardType: TextInputType.name,
                                       style: TextStyle(color: Colors.white),
                                       cursorColor: Colors.yellow,
@@ -293,7 +293,8 @@ class CustomFormState extends State<CustomForm> {
                                     width: 500.0,
                                     child: TextFormField(
                                       keyboardType: TextInputType.name,
-                                      controller: TextEditingController(text: user.last_name),
+                                      controller: TextEditingController(
+                                          text: user.last_name),
                                       style: TextStyle(color: Colors.white),
                                       cursorColor: Colors.yellow,
                                       decoration: InputDecoration(
@@ -335,7 +336,8 @@ class CustomFormState extends State<CustomForm> {
                                   Container(
                                     width: 500.0,
                                     child: TextFormField(
-                                       controller: TextEditingController(text: user.email),
+                                      controller: TextEditingController(
+                                          text: user.email),
                                       keyboardType: TextInputType.emailAddress,
                                       style: TextStyle(color: Colors.white),
                                       cursorColor: Colors.yellow,
@@ -445,46 +447,46 @@ class CustomFormState extends State<CustomForm> {
                                     height: 30,
                                   ),
                                   Container(
-                                    width: 500.0,
-                                    child: DropdownButtonFormField<String>(
-                                      value: _dropdownValue,
-                                      decoration: InputDecoration(
-                                        counterText: ac(user.account_type),
-                                        label: const Text('Account Type',
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white)),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
-                                              color: Colors.white),
-                                          borderRadius:
-                                              BorderRadius.circular(85),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
-                                              color: Colors.white),
-                                          borderRadius:
-                                              BorderRadius.circular(85),
-                                        ),
-                                      ),
-                                      icon: const Icon(Icons.arrow_right,
-                                          color: Colors.white),
-                                      items: _usertypes
-                                          .map<DropdownMenuItem<String>>(
-                                              (String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(value,
+                                      width: 500.0,
+                                      child: DropdownButtonFormField<String>(
+                                        value: _dropdownValue,
+                                        decoration: InputDecoration(
+                                          counterText: ac(user.account_type),
+                                          label: const Text('Account Type',
                                               style: TextStyle(
-                                                  color: Colors.purple)),
-                                        );
-                                      }).toList(),
-                                      onChanged: (newValue) {
-                                        setState(() {
-                                          mapDropDownCode(newValue);
-                                        });
-                                      },
-                                    )),
+                                                  fontSize: 18,
+                                                  color: Colors.white)),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                                color: Colors.white),
+                                            borderRadius:
+                                                BorderRadius.circular(85),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                                color: Colors.white),
+                                            borderRadius:
+                                                BorderRadius.circular(85),
+                                          ),
+                                        ),
+                                        icon: const Icon(Icons.arrow_right,
+                                            color: Colors.white),
+                                        items: _usertypes
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(value,
+                                                style: TextStyle(
+                                                    color: Colors.purple)),
+                                          );
+                                        }).toList(),
+                                        onChanged: (newValue) {
+                                          setState(() {
+                                            mapDropDownCode(newValue);
+                                          });
+                                        },
+                                      )),
                                   const SizedBox(height: 30),
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(
@@ -512,13 +514,19 @@ class CustomFormState extends State<CustomForm> {
                                       _userrepo.sendEmail(
                                           user, code.toString());
 
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              Verify2(user, code.toString()),
-                                        ),
-                                      );
+                                        _userrepo.sendEmail(
+                                            user, code.toString());
+
+                                        _userrepo.sendEmail(
+                                            user, code.toString());
+
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                Verify2(user, code.toString()),
+                                          ),
+                                        );
                                       }
                                     },
                                     child: const Text('Next'),

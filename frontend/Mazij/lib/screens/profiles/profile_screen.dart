@@ -260,7 +260,6 @@ class _ProfileInfoState extends State<ProfileInfo> {
                 child: CircleAvatar(
                   backgroundImage: Image.memory(
                     _bytesImage,
-                    //gaplessPlayback: true,
                   ).image,
                   radius: 35.0,
                 )),
