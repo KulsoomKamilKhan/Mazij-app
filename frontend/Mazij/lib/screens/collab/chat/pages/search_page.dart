@@ -1,3 +1,4 @@
+import 'package:Mazaj/data/models/user_model.dart';
 import 'package:Mazaj/data/repositories/user_repo.dart';
 import 'package:Mazaj/screens/collab/chat/pages/chat_page.dart';
 import 'package:Mazaj/screens/collab/chat/services/database_service.dart';
@@ -23,6 +24,7 @@ class _SearchPageState extends State<SearchPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   String _username = '';
   String _email = '';
+  UserRepository userRepository = UserRepository();
 
   // initState()
   @override
@@ -36,7 +38,7 @@ class _SearchPageState extends State<SearchPage> {
   // functions
   _getCurrentUserNameAndUid() async {
     _username = (await storage.read(key: 'username')).toString();
-    _email = (await storage.read(key: 'email')).toString();
+    //_email = (await storage.read(key: 'email')).toString();
     if (mounted) setState(() {});
     // });
   }
@@ -140,8 +142,9 @@ class _SearchPageState extends State<SearchPage> {
       subtitle: Text("Creator: $admin"),
       trailing: InkWell(
         onTap: () async {
-          print("checking unames");
-          print(_username.compareTo(userName) == 0);
+          // print("checking unames");
+          // print(_username.compareTo(userName) == 0);
+          
           await DatabaseService(_username)
               .togglingGroupJoin(groupId, groupName, userName);
           if (_isJoined) {
@@ -149,9 +152,10 @@ class _SearchPageState extends State<SearchPage> {
               _isJoined = !_isJoined;
             });
             // await DatabaseService(uid: _user.uid).userJoinGroup(groupId, groupName, userName);
-            _showScaffold('Successfully joined the group "$groupName"');
+            _showScaffold('Successfully joined the room "$groupName"');
+            User u = await userRepository.getUserByusername(admin);
             DatabaseService(userName)
-                .sendEmail(groupName, _email, admin, _username);
+                .sendEmail(groupName, u.email, admin, _username);
             //Future.delayed(const Duration(milliseconds: 1000), () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) =>

@@ -19,6 +19,28 @@ class UserRepository {
     }
   }
 
+  Future<List<String>> GetUsernames() async {
+    Uri local = Uri.parse(base);
+    print(local);
+    // var response = await http.get(local);
+    // print(response.statusCode);
+    // Iterable userList = jsonDecode(response.body);
+    var users = await GetUsers();
+    
+    List<String> unames = [];
+    int i=0;
+    while(i<users.length){
+      String u = users[i].username;
+      unames.add(u);
+      i++;
+    }
+    //if (response.statusCode == 200) {
+      return unames;
+    //} else {
+      //throw Exception('Failed to load users');
+    //}
+  }
+
   Future<User> getUserByusername(String? username) async {
     Uri local = Uri.parse(base + "/${username}/");
     print(local);

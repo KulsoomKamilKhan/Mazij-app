@@ -92,7 +92,7 @@ class TopTabBar extends StatefulWidget {
 class _TopTabBarState extends State<TopTabBar> {
   String username = '';
   String acc = '';
-  List<Library> posts = [];
+  List<Library> posts2 = [];
   List<String> list = [];
   //List<String> titles = [];
 
@@ -106,7 +106,7 @@ class _TopTabBarState extends State<TopTabBar> {
         if ((post.user.compareTo(u) == 0) ||
             (post.account_type.compareTo(u) == 0)) {
           var _bytesImage = const Base64Decoder().convert(post.post);
-          posts.add(post);
+          posts2.add(post);
         }
         j++;
       }
@@ -197,7 +197,7 @@ class _TopTabBarState extends State<TopTabBar> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CaptionPosts(username, s, posts),
+                    builder: (context) => CaptionPosts(username, s, widget.posts!),
                   ),
                 );
               },
@@ -279,9 +279,9 @@ class _TopTabBarState extends State<TopTabBar> {
             ],
           )),
           child: ListView.builder(
-              itemCount: posts.length,
+              itemCount: posts2.length,
               itemBuilder: (context, index) {
-                Library post = posts[index];
+                Library post = posts2[index];
                 var _bytesImage = const Base64Decoder().convert(post.post);
                 return Padding(
                     padding: const EdgeInsets.symmetric(
@@ -295,12 +295,12 @@ class _TopTabBarState extends State<TopTabBar> {
                           ListTile(
                               leading: CircleAvatar(
                                 backgroundImage: Image.memory(
-                                  _profilepic(posts[index].user),
+                                  _profilepic(posts2[index].user),
                                 ).image,
                                 radius: 55.0,
                               ),
                               title: Text(
-                                posts[index].user,
+                                posts2[index].user,
                                 style: const TextStyle(
                                     color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
                               ),
@@ -319,7 +319,7 @@ class _TopTabBarState extends State<TopTabBar> {
                                     shadowColor: Colors.grey,
                                     
                                   ),
-                                  child: Text(ac(posts[index].account_type),
+                                  child: Text(ac(posts2[index].account_type),
                                       style:
                                           const TextStyle(color: Colors.white)),
                                   onPressed: () {},
@@ -446,9 +446,9 @@ class _TopTabBarState extends State<TopTabBar> {
           ],
         )),
         child: ListView.builder(
-            itemCount: posts.length,
+            itemCount: posts2.length,
             itemBuilder: (context, index) {
-              Library post = posts[index];
+              Library post = posts2[index];
               var _bytesImage = const Base64Decoder().convert(post.post);
               return Padding(
                   // height: 800,
@@ -463,11 +463,11 @@ class _TopTabBarState extends State<TopTabBar> {
                         ListTile(
                             leading: CircleAvatar(
                               backgroundImage: Image.memory(
-                                _profilepic(posts[index].user),
+                                _profilepic(posts2[index].user),
                               ).image,
                               radius: 55.0,
                             ),
-                            title: Text(posts[index].user,
+                            title: Text(posts2[index].user,
                                 style: const TextStyle(
                                     color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold)),
                             subtitle: Row(children: [
@@ -482,7 +482,7 @@ class _TopTabBarState extends State<TopTabBar> {
                                       fontSize: 10, color: Colors.white),
                                   shadowColor: Colors.grey,
                                 ),
-                                child: Text(ac(posts[index].account_type),
+                                child: Text(ac(posts2[index].account_type),
                                     style:
                                         const TextStyle(color: Colors.white)),
                                 onPressed: () {},

@@ -13,6 +13,7 @@ class DatabaseService {
   final CollectionReference groupCollection =
       FirebaseFirestore.instance.collection('groups');
 
+
   // update userdata
   Future updateUserData(String fullName) async {
     return await userCollection.doc(uid).set({
@@ -28,7 +29,7 @@ class DatabaseService {
   Future createGroup(String userName, String groupName) async {
     DocumentReference groupDocRef = await groupCollection.add({
       'groupName': groupName,
-      'groupIcon': '',
+      //'groupIcon': '',
       'admin': userName,
       'members': [],
       //'messages': ,

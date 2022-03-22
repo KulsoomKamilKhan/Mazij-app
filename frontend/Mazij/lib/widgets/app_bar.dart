@@ -27,7 +27,7 @@ class _AppBarState extends State<myAppBar> {
         IconButton(
           icon: const Icon(Icons.search),
           highlightColor: Colors.purple,
-          tooltip: "Search",
+          tooltip: "Search Users",
           onPressed: () {
             Navigator.push(
               context,

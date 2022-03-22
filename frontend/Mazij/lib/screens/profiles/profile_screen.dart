@@ -64,7 +64,7 @@ class _ProfileState extends State<Profile> {
                 IconButton(
                   icon: const Icon(Icons.search),
                   highlightColor: Colors.purple,
-                  tooltip: "Search",
+                  tooltip: "Search Users",
                   onPressed: () {
                     Navigator.push(
                       context,

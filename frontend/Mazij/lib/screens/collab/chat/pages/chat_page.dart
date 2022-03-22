@@ -115,8 +115,10 @@ class _ChatPageState extends State<ChatPage> {
                 //color: Colors.grey[700],
                 child: Row(
                   children: <Widget>[
+                    SizedBox(height: 20,),
                     Expanded(
                       child: TextField(
+                        
                           controller: messageEditingController,
                           style: TextStyle(color: Colors.black),
                           // decoration: InputDecoration(
@@ -129,7 +131,7 @@ class _ChatPageState extends State<ChatPage> {
                           decoration: InputDecoration(
                             hintText: "Send a message ...",
                             hintStyle: TextStyle(
-                              color: Colors.white60,
+                              color: Colors.black54,
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide:

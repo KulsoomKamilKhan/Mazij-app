@@ -144,7 +144,7 @@ class _SearchTState extends State<SearchT> {
                       child: Tooltip(
                         message: postobj.user,
                           child: Container(
-                            child: Text(postobj.user, style: TextStyle(fontWeight: FontWeight.bold),),
+                            //child: Text(postobj.user, style: TextStyle(fontWeight: FontWeight.bold),),
                             height: MediaQuery.of(context).size.height / 4.7,
                             width: MediaQuery.of(context).size.width / 3.8,
                             decoration: BoxDecoration(

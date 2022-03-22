@@ -52,6 +52,28 @@ class CustomFormState extends State<CustomForm> {
     "Business Marketer"
   ];
 
+  String ac(String type) {
+    String acc = '';
+    switch (type) {
+      case "A":
+        acc = "Artist";
+        break;
+      case "G":
+        acc = "General";
+        break;
+      case "S":
+        acc = "Student";
+        break;
+      case "CC":
+        acc = "Content Creator";
+        break;
+      case "BM":
+        acc = "Brand Marketer";
+        break;
+    }
+    return acc;
+  }
+
   void mapDropDownCode(value) {
     switch (value) {
       case "General":
@@ -345,7 +367,7 @@ class CustomFormState extends State<CustomForm> {
                                         icon: const Icon(Icons.password,
                                             color: Colors.white),
                                         hintText:
-                                            'Include numbers and uppercase and special characters!',
+                                            'Include numbers, uppercase and special characters',
                                         suffixIcon: IconButton(
                                           icon: Icon(
                                             Icons.remove_red_eye,
@@ -404,7 +426,7 @@ class CustomFormState extends State<CustomForm> {
                                     child: DropdownButtonFormField<String>(
                                       value: _dropdownValue,
                                       decoration: InputDecoration(
-                                        counterText: _account_type,
+                                        counterText: ac(_account_type),
                                         label: const Text('Account Type',
                                             style: TextStyle(
                                                 fontSize: 18,

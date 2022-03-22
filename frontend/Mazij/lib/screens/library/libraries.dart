@@ -53,7 +53,7 @@ class _LibrariesState extends State<Libraries> {
               IconButton(
                 icon: const Icon(Icons.search),
                 highlightColor: Colors.purple,
-                tooltip: "Search",
+                tooltip: "Search Tagged Posts",
                 onPressed: () {
                   Navigator.push(
                     context,

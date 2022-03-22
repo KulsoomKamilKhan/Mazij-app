@@ -10,7 +10,8 @@ class PostCell extends StatelessWidget {
   String post;
   int upvotes;
   String caption;
-  PostCell(this.id, this.post, this.upvotes, this.caption, this.created_on);
+  String collaborators;
+  PostCell(this.id, this.post, this.upvotes, this.caption, this.created_on, this.collaborators);
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +25,16 @@ class PostCell extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
                         title: const Text('Post Information',
-                            textAlign: TextAlign.center),
+                            textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold),),
                         content: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             Text('Post ID: $id\n'),
                             Text('Created On: $created_on\n'),
-                            Text('Caption: $caption\n'),
-                            Text('Upvotes: $upvotes')
+                            Text('Tags: $caption\n'),
+                            Text('Upvotes: $upvotes'),
+                            Text('Collaborators: $collaborators')
                           ],
                         ),
                         actions: <Widget>[

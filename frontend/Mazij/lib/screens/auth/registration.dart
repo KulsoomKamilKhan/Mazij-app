@@ -347,7 +347,7 @@ class CustomFormState extends State<CustomForm> {
                                         icon: const Icon(Icons.password,
                                             color: Colors.white),
                                         hintText:
-                                            'Include numbers and uppercase and special characters!',
+                                            'Include numbers, uppercase and special characters',
                                         suffixIcon: IconButton(
                                           icon: Icon(
                                             Icons.remove_red_eye,

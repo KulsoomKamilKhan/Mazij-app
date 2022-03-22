@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:Mazaj/data/repositories/profile_repo.dart';
+import 'package:Mazaj/data/repositories/user_repo.dart';
 import 'package:Mazaj/screens/collab/chat/pages/chat_page.dart';
 import 'package:Mazaj/screens/collab/chat/pages/userprofilem.dart';
 import 'package:Mazaj/screens/collab/chat/services/database_service.dart';
@@ -21,13 +22,16 @@ class _MembersState extends State<MembersPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String _username = '';
   final ProfileRepository _profRepository = ProfileRepository();
+  final UserRepository _userRepository = UserRepository();
   List<dynamic> profiles = [];
+  List<String> unames = [];
   var storage = const FlutterSecureStorage();
 
   @override
   void initState() {
     Future.delayed(Duration.zero, () async {
       profiles = await _profRepository.getProfiles();
+      unames = await _userRepository.GetUsernames();
       _username = (await storage.read(key: 'username')).toString();
       if (mounted) setState(() {});
     });
@@ -87,7 +91,7 @@ class _MembersState extends State<MembersPage> {
                           print("in members");
                           print(widget.admin);
                           print(_username);
-                          if (_username.compareTo(widget.admin) == 0) {
+                          if ((_username.compareTo(widget.admin) == 0) && (unames.contains(data.data()!["members"][index]))) {
                             return InkWell(
                               child:ListTile(
                                 contentPadding: EdgeInsets.symmetric(vertical: 3),
@@ -126,7 +130,7 @@ class _MembersState extends State<MembersPage> {
                           }
                           //print("in mem print");
                           //print(data.data()!["members"][index].runtimeType);
-                          
+                          else if (unames.contains(data.data()!["members"][index])){
                           return InkWell(
                               child: ListTile(
                                  contentPadding: EdgeInsets.symmetric(vertical: 3),
@@ -154,7 +158,8 @@ class _MembersState extends State<MembersPage> {
                                   );
                             }  else{Navigator.of(context).pushNamed("/home");}
                           }
-                          );
+                          );}
+                          return ListTile();
                         });
                   }
                   // } else {

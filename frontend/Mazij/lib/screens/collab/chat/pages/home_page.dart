@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.purple.shade300, size: 75.0)),
             SizedBox(height: 20.0),
             Text(
-                "You've not joined any group, tap on the 'add' icon to create a group or search for groups by tapping on the search button below."),
+                "You've not joined any room, tap on the 'add' icon to create a room or search for rooms by tapping on the search button below."),
           ],
         ));
   }
@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
     );
 
     AlertDialog alert = AlertDialog(
-      title: Text("Create a Room to start chatting"),
+      title: Text("Create a Room to Start Chatting!"),
       content: TextField(
           onChanged: (val) {
             _groupName = val;

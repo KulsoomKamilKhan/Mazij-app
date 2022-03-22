@@ -54,7 +54,7 @@ class _PostsTableState extends State<PostsTable> {
                         ? const EdgeInsets.only(left: 20.0)
                         : const EdgeInsets.only(right: 20.0)),
                     child: PostCell(postobj.id, postobj.post, postobj.upvotes,
-                        postobj.caption, postobj.created_on),
+                        postobj.caption, postobj.created_on, postobj.collaborators),
                   );
                 }, childCount: posts.length),
               ),

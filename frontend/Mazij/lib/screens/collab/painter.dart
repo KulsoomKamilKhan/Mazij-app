@@ -957,7 +957,7 @@ class _SearchCState extends State<SearchC> {
         title: const Text('Search User',
             style: TextStyle(
                 color: Colors.purple,
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: FontWeight.w700)),
       ),
       body: Padding(
@@ -1225,7 +1225,7 @@ class _SearchTState extends State<SearchT> {
         title: const Text('Search Tags',
             style: TextStyle(
                 color: Colors.purple,
-                fontSize: 14,
+                fontSize: 27,
                 fontWeight: FontWeight.w700)),
       ),
       body: Padding(

@@ -89,7 +89,7 @@ class _DashBoardState extends State<DashBoard> {
                       SizedBox(
                         height: 50,
                       ),
-                      Stats(stats),
+                      Center(child: Stats(stats)), //or try padding
                       if (Responsive.isMobile(context))
                         const SizedBox(height: defaultPadding),
                     ],
