@@ -76,22 +76,34 @@ class CustomFormState extends State<CustomForm> {
   void mapDropDownCode(value) {
     switch (value) {
       case "General":
+      setState(() {
         user.account_type = "G";
+      });
         break;
       case "Artist":
+        setState(() {
         user.account_type = "A";
+      });
         break;
       case "Student":
+       setState(() {
         user.account_type = "S";
+      });
         break;
       case "Content Creator":
+        setState(() {
         user.account_type = "CC";
+      });
         break;
       case "Business Marketer":
+       setState(() {
         user.account_type = "BM";
+      });
         break;
       default:
+        setState(() {
         user.account_type = "G";
+      });
         break;
     }
     print("after sc");
@@ -493,7 +505,7 @@ class CustomFormState extends State<CustomForm> {
                                       print(code.toString());
                                       UserRepository _userrepo = UserRepository();
                                       print("in update");
-                                        print(user.account_type);
+                                      print(user.account_type);
                                       // User user = User(first_name: _firstName, last_name: _lastName,
                                       //  username: _username, account_type: _account_type, date_of_birth: _dob, email: _email, passwords: _password);
                                       
