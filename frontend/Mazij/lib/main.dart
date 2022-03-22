@@ -5,14 +5,11 @@ import 'package:Mazaj/screens/auth/login_page.dart';
 import 'package:Mazaj/screens/auth/update_account.dart';
 import 'package:Mazaj/screens/auth/verify_email.dart';
 import 'package:Mazaj/screens/auth/verify_email2.dart';
-import 'package:Mazaj/screens/profiles/profile_screen.dart';
 import 'package:Mazaj/screens/welcome.dart';
-import 'package:Mazaj/widgets/home.dart';
 import 'package:Mazaj/widgets/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'router.dart';
 import 'package:Mazaj/bloc/authentication_bloc/authentication_bloc.dart';
@@ -39,27 +36,12 @@ void main() async {
 }
 
 // root widget
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   // stateless widget because we do not need to change the state of this widget
   const MyApp({Key? key})
-      : super(key: key); 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
+      : super(key: key); // key is an identifier for the widgets
 
-class _MyAppState extends State<MyApp> {
- // key is an identifier for the widgets
- var storage = const FlutterSecureStorage();
- String login = "false";
- @override
-  void initState() {
-    Future.delayed(Duration.zero, () async {
-      login = (await storage.read(key: 'login')).toString();
-      print(login);
-      if (mounted) setState(() {});
-    });
-    super.initState();
-  }
+  // final Future<Firebase>
 
   @override // This annotation is recognized by the Dart analyzer, and it allows the analyzer to provide hints or warnings for some potential problems
   Widget build(BuildContext context) {
@@ -102,7 +84,7 @@ class _MyAppState extends State<MyApp> {
           home: AnimatedSplashScreen(
               duration: 2000,
               splash: "assets/logo.png",
-              nextScreen: (login.compareTo("false")==0)? OnBoardingPage() : const Home(),
+              nextScreen: OnBoardingPage(),
               splashTransition: SplashTransition.rotationTransition,
               pageTransitionType: PageTransitionType.topToBottom,
               backgroundColor: Colors.lightBlue),
@@ -137,4 +119,3 @@ class _MyAppState extends State<MyApp> {
 //     );
 //   }
 // }
-
