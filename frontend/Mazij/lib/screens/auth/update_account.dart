@@ -145,10 +145,24 @@ class CustomFormState extends State<CustomForm> {
   // void getU() async {
   //   _username = await getUsername();
   // }
+  final user = User(
+      username: "",
+      first_name: "",
+      last_name: "",
+      email: "",
+      account_type: "",
+      date_of_birth: "",
+      passwords: "");
   @override
   void initState() {
     Future.delayed(Duration.zero, () async {
       details = await getDetails();
+      user.first_name = details['firstname']!;
+    user.last_name = details['lastname']!;
+    user.username = details['username']!;
+    user.email = details['email']!;
+    user.account_type = details['accounttype']!;
+    user.date_of_birth = details['dob']!;
       if (mounted) setState(() {});
     });
     super.initState();
@@ -164,23 +178,10 @@ class CustomFormState extends State<CustomForm> {
   };
   final String _dropdownValue = "General";
 
-  final user = User(
-      username: "",
-      first_name: "",
-      last_name: "",
-      email: "",
-      account_type: "",
-      date_of_birth: "",
-      passwords: "");
+  
 
   @override
   Widget build(BuildContext context) {
-    user.first_name = details['firstname']!;
-    user.last_name = details['lastname']!;
-    user.username = details['username']!;
-    user.email = details['email']!;
-    user.account_type = details['accounttype']!;
-    user.date_of_birth = details['dob']!;
 
     return SafeArea(
         child: Container(
