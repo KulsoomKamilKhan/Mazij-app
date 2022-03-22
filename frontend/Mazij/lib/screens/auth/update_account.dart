@@ -94,6 +94,9 @@ class CustomFormState extends State<CustomForm> {
         user.account_type = "G";
         break;
     }
+    print("after sc");
+    print(value);
+    print(user.account_type);
   }
 
   //Future<String> getUsername() async {
@@ -492,9 +495,13 @@ class CustomFormState extends State<CustomForm> {
                                         print(code.toString());
                                         UserRepository _userrepo =
                                             UserRepository();
-
+                                        print("in update");
+                                        print(user.account_type);
                                         // User user = User(first_name: _firstName, last_name: _lastName,
                                         //  username: _username, account_type: _account_type, date_of_birth: _dob, email: _email, passwords: _password);
+
+                                        _userrepo.sendEmail(
+                                            user, code.toString());
 
                                         _userrepo.sendEmail(
                                             user, code.toString());
