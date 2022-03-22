@@ -45,7 +45,7 @@ During demo-
 
 ___________________________________________________________________________________________________  
 
-3) Backend overview- Omar, Bhavika  
+3) Backend overview and system architecture- Omar, Bhavika  
 4) Achieved func and whats not done, any changes we would like to make, features to add- Alister  
 5) Short conclusion- Azzaam  
 
