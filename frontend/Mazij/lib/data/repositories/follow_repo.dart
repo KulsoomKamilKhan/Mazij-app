@@ -3,7 +3,7 @@ import 'package:Mazaj/data/models/follow_model.dart';
 import 'package:http/http.dart' as http;
 
 class FollowRepository {
-  static const base = "http://bhavikakaliya.pythonanywhere.com/followers/";
+  static const base = "https://bhavikakaliya.pythonanywhere.com/followers/";
 
   Future<List<dynamic>> getAllInstances() async {
     Uri local = Uri.parse(base);

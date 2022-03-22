@@ -5,7 +5,7 @@ import 'package:Mazaj/data/models/post_model.dart';
 import 'package:http/http.dart' as http;
 
 class PostRepository {
-  static const base = "http://bhavikakaliya.pythonanywhere.com/posts/";
+  static const base = "https://bhavikakaliya.pythonanywhere.com/posts/";
 
   Future<List<Post>> getPostsByUsername(String? user) async {
     Uri local = Uri.parse(base + "${user}/");

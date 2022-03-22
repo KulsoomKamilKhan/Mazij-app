@@ -10,7 +10,7 @@ class OnBoardingPage extends StatelessWidget {
             PageViewModel(
               title: "Mazij",
               body: "Meet the World.",
-              image: Image.asset("o5.gif"),
+              image: Image.asset("assets/o5.gif"),
               decoration: getPageDecoration(),
             ),
             PageViewModel(
@@ -22,19 +22,19 @@ class OnBoardingPage extends StatelessWidget {
             PageViewModel(
               title: "Collaborate",
               body: "...because we are better together!",
-              image: Image.asset('o2.png'),
+              image: Image.asset('assets/o2.png'),
               decoration: getPageDecoration(),
             ),
             PageViewModel(
               title: "Share",
               body: "​Experience the joy in sharing!",
-              image: buildImage('o3.png'),
+              image: Image.asset('assets/o3.png'),
               decoration: getPageDecoration(),
             ),
             PageViewModel(
               title: 'Join a Global Platform',
               body: 'Start your journey with Mazij!',
-              image: buildImage('o4.png'),
+              image: Image.asset('assets/o4.png'),
               // footer: ButtonWidget(
               //   text: 'Start Reading',
               //   onClicked: () => goToHome(context),

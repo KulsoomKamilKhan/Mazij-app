@@ -3,7 +3,7 @@ import 'package:Mazaj/data/models/user_model.dart';
 import 'package:http/http.dart' as http;
 
 class UserRepository {
-  static const base = "http://bhavikakaliya.pythonanywhere.com/users";
+  static const base = "https://bhavikakaliya.pythonanywhere.com/users";
 
   Future<List<User>> GetUsers() async {
     Uri local = Uri.parse(base);

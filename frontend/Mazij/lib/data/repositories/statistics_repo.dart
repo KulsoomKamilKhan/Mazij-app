@@ -4,7 +4,8 @@ import 'package:Mazaj/data/models/statistics_model.dart';
 import 'package:http/http.dart' as http;
 
 class StatisticsRepository {
-  static const base = "http://bhavikakaliya.pythonanywhere.com/users/user/stats/";
+  static const base =
+      "https://bhavikakaliya.pythonanywhere.com/users/user/stats/";
 
   Future<Statistics> GetStats() async {
     Uri local = Uri.parse(base);
