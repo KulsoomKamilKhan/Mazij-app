@@ -77,34 +77,34 @@ class CustomFormState extends State<CustomForm> {
     String a = '';
     switch (value) {
       case "General":
-      //setState(() {
+        //setState(() {
         a = "G";
-      //});
+        //});
         break;
       case "Artist":
-       // setState(() {
+        // setState(() {
         a = "A";
-      //});
+        //});
         break;
       case "Student":
-      // setState(() {
+        // setState(() {
         a = "S";
-      //});
+        //});
         break;
       case "Content Creator":
         //setState(() {
         a = "CC";
-     // });
+        // });
         break;
       case "Business Marketer":
-       //setState(() {
+        //setState(() {
         a = "BM";
-      //});
+        //});
         break;
       default:
         //setState(() {
         user.account_type = "G";
-     // });
+        // });
         break;
     }
     print("after sc");
@@ -158,11 +158,11 @@ class CustomFormState extends State<CustomForm> {
     Future.delayed(Duration.zero, () async {
       details = await getDetails();
       user.first_name = details['firstname']!;
-    user.last_name = details['lastname']!;
-    user.username = details['username']!;
-    user.email = details['email']!;
-    user.account_type = details['accounttype']!;
-    user.date_of_birth = details['dob']!;
+      user.last_name = details['lastname']!;
+      user.username = details['username']!;
+      user.email = details['email']!;
+      user.account_type = details['accounttype']!;
+      user.date_of_birth = details['dob']!;
       if (mounted) setState(() {});
     });
     super.initState();
@@ -178,11 +178,8 @@ class CustomFormState extends State<CustomForm> {
   };
   final String _dropdownValue = "General";
 
-  
-
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
         child: Container(
             width: double.infinity,
@@ -509,17 +506,18 @@ class CustomFormState extends State<CustomForm> {
                                       // Validate returns true if the form is valid, or false otherwise.
                                       if (_formKey.currentState!.validate()) {
                                         int code = 0;
-                                      code =
-                                          11111111 + Random().nextInt(99999999);
-                                      print(code.toString());
-                                      UserRepository _userrepo = UserRepository();
-                                      print("in update");
-                                      print(user.account_type);
-                                      // User user = User(first_name: _firstName, last_name: _lastName,
-                                      //  username: _username, account_type: _account_type, date_of_birth: _dob, email: _email, passwords: _password);
-                                      
-                                      _userrepo.sendEmail(
-                                          user, code.toString());
+                                        code = 11111111 +
+                                            Random().nextInt(99999999);
+                                        print(code.toString());
+                                        UserRepository _userrepo =
+                                            UserRepository();
+                                        print("in update");
+                                        print(user.account_type);
+                                        // User user = User(first_name: _firstName, last_name: _lastName,
+                                        //  username: _username, account_type: _account_type, date_of_birth: _dob, email: _email, passwords: _password);
+
+                                        _userrepo.sendEmail(
+                                            user, code.toString());
 
                                         _userrepo.sendEmail(
                                             user, code.toString());

@@ -29,7 +29,7 @@ import 'package:Mazaj/screens/profiles/profile_screen.dart';
 
 // commented routes added for easy testing and debugging
 class RouterClass {
-  static const String welcomeRoute = '/';
+  static const String welcomeRoute = '/welcome';
   static const String profhomeRoute = '/home';
   static const String libHomeRoute = '/lib';
   static const String bioRoute = '/bio';

@@ -21,7 +21,7 @@ class Delete extends StatelessWidget {
             listener: (context, state) {
           if (state is AccountDeleted) {
             Navigator.of(context)
-                .pushNamedAndRemoveUntil('/', (route) => false);
+                .pushNamedAndRemoveUntil('/welcome', (route) => false);
           }
         }, child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
           builder: (context, state) {
