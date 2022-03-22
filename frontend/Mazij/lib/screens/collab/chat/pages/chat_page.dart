@@ -11,7 +11,7 @@ class ChatPage extends StatefulWidget {
   String _username = '';
   String groupName = '';
 
-  ChatPage(this.groupId,this.admin, this._username, this.groupName);
+  ChatPage(this.groupId, this.admin, this._username, this.groupName);
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -93,13 +93,15 @@ class _ChatPageState extends State<ChatPage> {
         backgroundColor: Colors.purple.shade300,
         elevation: 0.0,
         actions: [
-          IconButton(onPressed: (){
-            print("in chat");
-            print(widget.admin);
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => MembersPage(widget.groupId, widget.admin)));
-          } , 
-          icon: Icon(Icons.people))
-
+          IconButton(
+              onPressed: () {
+                print("in chat");
+                print(widget.admin);
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        MembersPage(widget.groupId, widget.admin)));
+              },
+              icon: Icon(Icons.people))
         ],
       ),
       body: Container(
@@ -115,10 +117,14 @@ class _ChatPageState extends State<ChatPage> {
                 //color: Colors.grey[700],
                 child: Row(
                   children: <Widget>[
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Expanded(
                       child: TextField(
-                        
+                          onSubmitted: (value) {
+                            _sendMessage();
+                          },
                           controller: messageEditingController,
                           style: TextStyle(color: Colors.black),
                           // decoration: InputDecoration(
