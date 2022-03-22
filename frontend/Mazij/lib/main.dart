@@ -7,6 +7,7 @@ import 'package:Mazaj/screens/auth/verify_email.dart';
 import 'package:Mazaj/screens/auth/verify_email2.dart';
 import 'package:Mazaj/screens/profiles/profile_screen.dart';
 import 'package:Mazaj/screens/welcome.dart';
+import 'package:Mazaj/widgets/home.dart';
 import 'package:Mazaj/widgets/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -101,7 +102,7 @@ class _MyAppState extends State<MyApp> {
           home: AnimatedSplashScreen(
               duration: 2000,
               splash: "assets/logo.png",
-              nextScreen: (login.compareTo("false")==0)? OnBoardingPage() : const Profile(),
+              nextScreen: (login.compareTo("false")==0)? OnBoardingPage() : const Home(),
               splashTransition: SplashTransition.rotationTransition,
               pageTransitionType: PageTransitionType.topToBottom,
               backgroundColor: Colors.lightBlue),

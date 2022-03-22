@@ -80,7 +80,8 @@ class UserRepository {
 
   Future<bool> updateUser(User user) async {
     Uri local = Uri.parse(base + "/${user.username}/update/");
-    print(local);
+    print("in update repo");
+    print(user.account_type);
     var response = await http.put(
       local,
       headers: <String, String>{'Content-Type': 'application/json'},
