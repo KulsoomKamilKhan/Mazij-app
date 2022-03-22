@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:Mazaj/data/models/user_model.dart';
 import 'package:Mazaj/data/repositories/user_repo.dart';
 import 'package:Mazaj/screens/auth/verify_email2.dart';
@@ -35,13 +34,13 @@ class CustomForm extends StatefulWidget {
 
 class CustomFormState extends State<CustomForm> {
   final _formKey = GlobalKey<FormState>();
-  String _firstName = '';
-  String _lastName = '';
-  String _email = '';
-  String _password = '';
-  String _username = '';
-  String _dob= '';
-  String _account_type = '';
+  // String _firstName = '';
+  // String _lastName = '';
+  // String _email = '';
+  // String _password = '';
+  // String _username = '';
+  // String _dob= '';
+  // String _account_type = '';
   bool _passwordVisible = false;
 
   final _usertypes = [
@@ -77,22 +76,22 @@ class CustomFormState extends State<CustomForm> {
   void mapDropDownCode(value) {
     switch (value) {
       case "General":
-        _account_type = "G";
+        user.account_type = "G";
         break;
       case "Artist":
-        _account_type = "A";
+        user.account_type = "A";
         break;
       case "Student":
-        _account_type = "S";
+        user.account_type = "S";
         break;
       case "Content Creator":
-        _account_type = "CC";
+        user.account_type = "CC";
         break;
       case "Business Marketer":
-        _account_type = "BM";
+        user.account_type = "BM";
         break;
       default:
-        _account_type = "G";
+        user.account_type = "G";
         break;
     }
   }
@@ -145,14 +144,23 @@ class CustomFormState extends State<CustomForm> {
   };
   final String _dropdownValue = "General";
 
+  final user = User(
+      username: "",
+      first_name: "",
+      last_name: "",
+      email: "",
+      account_type: "",
+      date_of_birth: "",
+      passwords: "");
+
   @override
   Widget build(BuildContext context) {
-    _firstName = details['firstname']!;
-    _lastName = details['lastname']!;
-    _username = details['username']!;
-    _email = details['email']!;
-    _account_type = details['accounttype']!;
-    _dob = details['dob']!;
+    user.first_name = details['firstname']!;
+    user.last_name = details['lastname']!;
+    user.username = details['username']!;
+    user.email = details['email']!;
+    user.account_type = details['accounttype']!;
+    user.date_of_birth = details['dob']!;
 
     return SafeArea(
         child: Container(
@@ -226,7 +234,7 @@ class CustomFormState extends State<CustomForm> {
                                   Container(
                                     width: 500.0,
                                     child: TextFormField(
-                                      controller: TextEditingController(text: _firstName),
+                                      controller: TextEditingController(text: user.first_name),
                                       keyboardType: TextInputType.name,
                                       style: TextStyle(color: Colors.white),
                                       cursorColor: Colors.yellow,
@@ -259,7 +267,7 @@ class CustomFormState extends State<CustomForm> {
                                         return null;
                                       },
                                       onChanged: (val) {
-                                        _firstName = val;
+                                        user.first_name = val;
                                       },
                                     ),
                                   ),
@@ -270,7 +278,7 @@ class CustomFormState extends State<CustomForm> {
                                     width: 500.0,
                                     child: TextFormField(
                                       keyboardType: TextInputType.name,
-                                      controller: TextEditingController(text: _lastName),
+                                      controller: TextEditingController(text: user.last_name),
                                       style: TextStyle(color: Colors.white),
                                       cursorColor: Colors.yellow,
                                       decoration: InputDecoration(
@@ -302,7 +310,7 @@ class CustomFormState extends State<CustomForm> {
                                         return null;
                                       },
                                       onChanged: (val) {
-                                        _lastName = val;
+                                        user.last_name = val;
                                       },
                                     ),
                                   ),
@@ -312,7 +320,7 @@ class CustomFormState extends State<CustomForm> {
                                   Container(
                                     width: 500.0,
                                     child: TextFormField(
-                                       controller: TextEditingController(text: _email),
+                                       controller: TextEditingController(text: user.email),
                                       keyboardType: TextInputType.emailAddress,
                                       style: TextStyle(color: Colors.white),
                                       cursorColor: Colors.yellow,
@@ -344,7 +352,7 @@ class CustomFormState extends State<CustomForm> {
                                         return null;
                                       },
                                       onChanged: (val) {
-                                        _email = val;
+                                        user.email = val;
                                       },
                                     ),
                                   ),
@@ -411,10 +419,10 @@ class CustomFormState extends State<CustomForm> {
                                       onChanged: (val) {
                                         //getU();
                                         var saltedPass =
-                                            _username.toString() + val;
+                                            user.username.toString() + val;
                                         var bytes = utf8.encode(saltedPass);
                                         var digest = sha256.convert(bytes);
-                                        _password = digest.toString();
+                                        user.passwords = digest.toString();
                                       },
                                     ),
                                   ),
@@ -426,7 +434,7 @@ class CustomFormState extends State<CustomForm> {
                                     child: DropdownButtonFormField<String>(
                                       value: _dropdownValue,
                                       decoration: InputDecoration(
-                                        counterText: ac(_account_type),
+                                        counterText: ac(user.account_type),
                                         label: const Text('Account Type',
                                             style: TextStyle(
                                                 fontSize: 18,
@@ -482,8 +490,8 @@ class CustomFormState extends State<CustomForm> {
                                       print(code.toString());
                                       UserRepository _userrepo = UserRepository();
 
-                                      User user = User(first_name: _firstName, last_name: _lastName,
-                                       username: _username, account_type: _account_type, date_of_birth: _dob, email: _email, passwords: _password);
+                                      // User user = User(first_name: _firstName, last_name: _lastName,
+                                      //  username: _username, account_type: _account_type, date_of_birth: _dob, email: _email, passwords: _password);
                                       
                                       _userrepo.sendEmail(
                                           user, code.toString());
