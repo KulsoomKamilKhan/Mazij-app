@@ -19,6 +19,7 @@ class SettingsDrawer extends StatelessWidget {
     // to store that user is not logged in, may be useful for future
     const storage = FlutterSecureStorage();
     await storage.write(key: 'login', value: 'false');
+    print('logged out');
   }
 
   @override
@@ -81,7 +82,7 @@ class SettingsDrawer extends StatelessWidget {
                       onTap: () {
                         removeUserData();
                         Navigator.of(context).pushNamedAndRemoveUntil(
-                            '/',
+                            '/welcome',
                             (route) =>
                                 false); // user can not press the back button after logging out to come back to the home screens
                       }),

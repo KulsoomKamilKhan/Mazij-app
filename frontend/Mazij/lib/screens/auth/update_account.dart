@@ -77,34 +77,34 @@ class CustomFormState extends State<CustomForm> {
     String a = '';
     switch (value) {
       case "General":
-      //setState(() {
+        //setState(() {
         a = "G";
-      //});
+        //});
         break;
       case "Artist":
-       // setState(() {
+        // setState(() {
         a = "A";
-      //});
+        //});
         break;
       case "Student":
-      // setState(() {
+        // setState(() {
         a = "S";
-      //});
+        //});
         break;
       case "Content Creator":
         //setState(() {
         a = "CC";
-     // });
+        // });
         break;
       case "Business Marketer":
-       //setState(() {
+        //setState(() {
         a = "BM";
-      //});
+        //});
         break;
       default:
         //setState(() {
         user.account_type = "G";
-     // });
+        // });
         break;
     }
     setState(() {
@@ -153,11 +153,11 @@ class CustomFormState extends State<CustomForm> {
     Future.delayed(Duration.zero, () async {
       details = await getDetails();
       user.first_name = details['firstname']!;
-    user.last_name = details['lastname']!;
-    user.username = details['username']!;
-    user.email = details['email']!;
-    user.account_type = details['accounttype']!;
-    user.date_of_birth = details['dob']!;
+      user.last_name = details['lastname']!;
+      user.username = details['username']!;
+      user.email = details['email']!;
+      user.account_type = details['accounttype']!;
+      user.date_of_birth = details['dob']!;
       if (mounted) setState(() {});
     });
     super.initState();
@@ -173,11 +173,8 @@ class CustomFormState extends State<CustomForm> {
   };
   final String _dropdownValue = "General";
 
-  
-
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
         child: Container(
             width: double.infinity,

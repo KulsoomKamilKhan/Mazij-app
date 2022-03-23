@@ -8,6 +8,7 @@ import 'package:Mazaj/data/repositories/post_repo.dart';
 import 'package:Mazaj/screens/admin_panel/stats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'header.dart';
@@ -50,6 +51,13 @@ class _DashBoardState extends State<DashBoard> {
     super.initState();
   }
 
+  Future removeUserData() async {
+    // to store that user is not logged in, may be useful for future
+    const storage = FlutterSecureStorage();
+    await storage.write(key: 'login', value: 'false');
+    print('logged out');
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -70,8 +78,9 @@ class _DashBoardState extends State<DashBoard> {
                 iconSize: 30,
                 tooltip: 'Logout',
                 onPressed: () {
+                  removeUserData();
                   Navigator.of(context)
-                      .pushNamedAndRemoveUntil('/', (route) => false);
+                      .pushNamedAndRemoveUntil('/welcome', (route) => false);
                 },
               ),
             ),

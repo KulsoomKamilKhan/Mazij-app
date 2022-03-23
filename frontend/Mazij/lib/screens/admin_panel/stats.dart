@@ -14,7 +14,7 @@ class Stats extends StatelessWidget {
           child: Container(
               alignment: Alignment.center,
               child: Row(children: [
-                const SizedBox(width: 270),
+                const SizedBox(width: 250),
                 Center(
                     child: WidgetCircularAnimator(
                   child: Container(
