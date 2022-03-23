@@ -212,7 +212,7 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
   /// to use it as a background
   void initBackground() async {
     // Extension getter (.image) to get [ui.Image] from [ImageProvider]
-    final image = await const NetworkImage("assets/BG.jpg").image; //BG
+    final image = await const AssetImage("assets/BG.jpg").image; //BG
 
     setState(() {
       backgroundImage = image;
@@ -693,12 +693,10 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
                             //img = imageLink.post;
                             setState(() {
                               Future.delayed(Duration.zero, () async {
-                                
                                 ui.Image bg =
                                     await Image.memory(_bytesImage).image.image;
                                 backgroundImage = bg;
                                 controller.background = bg.backgroundDrawable;
-                                
                               });
                             });
                             Navigator.pop(context, 'Cancel');
@@ -730,7 +728,7 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
                                                   onTap: () async {
                                                     var bool = await collabrepo
                                                         .deletePost(postobj.id);
-                                                   
+
                                                     if (bool) {
                                                       // displaydrafts(
                                                       //  context, post);
@@ -940,7 +938,7 @@ class _SearchCState extends State<SearchC> {
 
     setState(() {
       _foundUsers = results;
-     // print("foundusers len in setstate runfilter- ${_foundUsers.length}");
+      // print("foundusers len in setstate runfilter- ${_foundUsers.length}");
     });
     // Refresh the UI
   }
@@ -971,7 +969,6 @@ class _SearchCState extends State<SearchC> {
                 //print("value in textfield after filter ${value}");
                 int i = 0;
                 while (i < _foundUsers.length) {
-                 
                   i++;
                 }
               },
@@ -1131,7 +1128,7 @@ class _SearchCState extends State<SearchC> {
                             //img = imageLink.post;
                             setState(() {
                               Future.delayed(Duration.zero, () async {
-                               // print("b1");
+                                // print("b1");
                                 ui.Image bg =
                                     await Image.memory(_bytesImage).image.image;
                                 backgroundImage = bg;
@@ -1195,7 +1192,7 @@ class _SearchTState extends State<SearchT> {
       // print("if filter length");
       // print(results.length);
     } else {
-     // print("if filter not 0");
+      // print("if filter not 0");
       results = posts
           .where((post) => ((post.caption
                   .toLowerCase()
