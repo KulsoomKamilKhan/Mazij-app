@@ -219,7 +219,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
               iconSize: 25,
               tooltip: 'Report User',
               onPressed: () {
-                print("user report");
+                //"user report");
                 _userRepository.report(user.username, _loggeduser);
                 //Navigator.of(context).pushNamed('/feed');
                 //Navigator.of(context).pop();
@@ -285,9 +285,9 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     shadowColor: Colors.grey,
                   ),
                   onPressed: () async {
-                    print("button");
+                    //"button");
                     if (!pressed) {
-                      print(pressed);
+                      //pressed);
                       var bool = await _followRepository.Create(
                           _loggeduser, user.username);
                       if (bool) {
@@ -295,10 +295,10 @@ class _ProfileInfoState extends State<ProfileInfo> {
                           w = const Text("Following");
                           pressed = true;
                         });
-                        print(pressed);
+                        //pressed);
                       }
                     } else {
-                      print(pressed);
+                      //pressed);
                       var bool = await _followRepository.Delete(
                           _loggeduser, user.username);
                       if (bool) {
@@ -307,7 +307,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                           w = const Text("Follow");
                           pressed = false;
                         });
-                        print(pressed);
+                        //pressed);
                       }
                     }
                   },

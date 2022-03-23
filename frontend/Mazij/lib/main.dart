@@ -55,7 +55,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     Future.delayed(Duration.zero, () async {
       login = (await storage.read(key: 'login')).toString();
-      print(login);
       if (mounted) setState(() {});
     });
     super.initState();

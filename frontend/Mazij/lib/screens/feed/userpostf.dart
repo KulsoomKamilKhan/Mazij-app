@@ -173,7 +173,7 @@ class UserPostF extends StatelessWidget {
             IconButton(
               onPressed: () {
                 post.upvotes++;
-                print(post.upvotes);
+               // print(post.upvotes);
                 BlocProvider.of<PostBloc>(context).add(UpvotePost(post: post));
               },
               icon: Icon(Icons.favorite,
@@ -195,7 +195,7 @@ class UserPostF extends StatelessWidget {
         body: BlocListener<PostBloc, PostState>(listener: (context, state) {
       if (state is PostUpvoted) {
         // Navigator.of(context).pushNamedAndRemoveUntil('/lib', (route) => false);
-        print("Success, upvotes");
+        //print("Success, upvotes");
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(

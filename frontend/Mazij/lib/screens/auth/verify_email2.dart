@@ -166,7 +166,7 @@ class CustomFormState extends State<CustomForm> {
                                                 givencode.compareTo(
                                                         widget.code) ==
                                                     0) {
-                                              print("validated");
+                                              
                                               BlocProvider.of<
                                                           AuthenticationBloc>(
                                                       context)
@@ -204,7 +204,7 @@ class CustomFormState extends State<CustomForm> {
                                         if (_formKey.currentState!.validate() &&
                                             givencode.compareTo(widget.code) ==
                                                 0) {
-                                          print("validated");
+                                        
                                           BlocProvider.of<AuthenticationBloc>(
                                                   context)
                                               .add(UpdateAccount(

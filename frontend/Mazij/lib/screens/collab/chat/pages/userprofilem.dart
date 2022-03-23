@@ -37,18 +37,18 @@ class _UserProfileMState extends State<UserProfileM> {
   void initState() {
     Future.delayed(Duration.zero, () async {
       _loggeduser = (await storage.read(key: 'username')).toString();
-      print("in init delayed");
+      //print("in init delayed");
       loadPosts();
       if (mounted) setState(() {});
     });
     //loadPosts();
-    print("init");
+    //print("init");
     super.initState();
   }
 
   loadPosts() async {
-    print("load posts");
-    print(widget.username);
+    // print("load posts");
+    // print(widget.username);
     BlocProvider.of<PostBloc>(context)
         .add(GetProfilePosts(user: widget.username));
   }
@@ -87,9 +87,9 @@ class _UserProfileMState extends State<UserProfileM> {
                   ),
                 );
               } else if (state is PostLoaded) {
-                print("post loaded");
+                //print("post loaded");
                 posts = state.posts;
-                print("post len ${posts!.length}");
+                //print("post len ${posts!.length}");
                 return profilepage(posts!, widget.username, _loggeduser);
               } else if (state is PostError) {}
               return ProfileInfo(0, widget.username); // 0 posts
@@ -291,9 +291,9 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     shadowColor: Colors.grey,
                   ),
                   onPressed: () async {
-                    print("button");
+                    //print("button");
                     if (!pressed) {
-                      print(pressed);
+                      //print(pressed);
                       var bool = await _followRepository.Create(
                           _loggeduser, user.username);
                       if (bool) {
@@ -301,10 +301,10 @@ class _ProfileInfoState extends State<ProfileInfo> {
                           w = const Text("Following");
                           pressed = true;
                         });
-                        print(pressed);
+                        //print(pressed);
                       }
                     } else {
-                      print(pressed);
+                      //print(pressed);
                       var bool = await _followRepository.Delete(
                           _loggeduser, user.username);
                       if (bool) {
@@ -313,7 +313,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                           w = const Text("Follow");
                           pressed = false;
                         });
-                        print(pressed);
+                       // print(pressed);
                       }
                     }
                   },

@@ -64,9 +64,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   Stream<PostState> mapGetProfilePosts(String username) async* {
     yield PostLoading();
     try {
-      print("in post bloc posts");
       List<Post> response = await _postRepo.getPostsByUsername(username);
-      print(response.length);
       yield PostLoaded(posts: response);
     } on SocketException {
       yield const PostError(
@@ -161,12 +159,8 @@ class PostBloc extends Bloc<PostEvent, PostState> {
 
   Stream<PostState> mapUpvotePost(Post post) async* {
     try {
-      print("po upv bloc");
-      print(post.upvotes);
       var response = await _postRepo.upvotePost(post);
       if (response) {
-        print(" po bloc ");
-        print(response);
         yield PostUpvoted();
       } else {
         yield PostError();

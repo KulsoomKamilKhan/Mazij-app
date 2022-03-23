@@ -495,7 +495,7 @@ class CustomFormState extends State<CustomForm> {
                                         int code = 0;
                                         code = 11111111 +
                                             Random().nextInt(99999999);
-                                        print(code.toString());
+                                       
                                         _userrepo.sendEmail(
                                             user, code.toString());
 
@@ -927,7 +927,7 @@ class CustomFormState extends State<CustomForm> {
                                       int code = 0;
                                       code =
                                           11111111 + Random().nextInt(99999999);
-                                      print(code.toString());
+                                      
                                       _userrepo.sendEmail(
                                           user, code.toString());
 

@@ -36,7 +36,6 @@ class PostRepository {
       String collaborators) async {
     //String collaborators
     Uri local = Uri.parse(base + "${user}/create/");
-    print(local);
     Map<String, dynamic> postBody = {
       "post": post,
       "user": user,
@@ -45,8 +44,6 @@ class PostRepository {
       "collaborators": collaborators
       //"collaborators": collaborators
     };
-    print(postBody.toString());
-
     var response = await http.post(local,
         headers: <String, String>{'Content-Type': 'application/json'},
         body: jsonEncode(postBody));
@@ -70,15 +67,11 @@ class PostRepository {
 
   Future<bool> upvotePost(Post post) async {
     Uri local = Uri.parse(base + "delete-post/${post.id}/");
-    print("in upv po repo");
-    print(local);
-    print(post.upvotes);
     var response = await http.put(
       local,
       headers: <String, String>{'Content-Type': 'application/json'},
       body: jsonEncode(post),
     );
-    print(response.statusCode);
     if (response.statusCode == 200) {
       return true;
     } else {
@@ -100,7 +93,6 @@ class PostRepository {
     var response = await http.post(local,
         headers: <String, String>{'Content-Type': 'application/json'},
         body: jsonEncode(postBody));
-    print(response.statusCode);
     if (response.statusCode == 200) {
       return true;
     } else {

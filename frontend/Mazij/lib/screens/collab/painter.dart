@@ -235,7 +235,7 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
               builder: (context, _, child) {
                 return AppBar(
                   automaticallyImplyLeading: false,
-                  backgroundColor: Color(0xB6326EF1),
+                  backgroundColor: const Color(0xB6326EF1),
                   title: child,
                   actions: [
                     PopupMenuButton(
@@ -336,7 +336,7 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
         // Generate image
         floatingActionButton: FloatingActionButton(
           heroTag: "btn1",
-          backgroundColor: Color(0xB6326EF1),
+          backgroundColor: const Color(0xB6326EF1),
           child: const Icon(PhosphorIcons.imageFill),
           onPressed: renderAndDisplayImage,
         ),
@@ -693,12 +693,12 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
                             //img = imageLink.post;
                             setState(() {
                               Future.delayed(Duration.zero, () async {
-                                print("b1");
+                                
                                 ui.Image bg =
                                     await Image.memory(_bytesImage).image.image;
                                 backgroundImage = bg;
                                 controller.background = bg.backgroundDrawable;
-                                print("b12");
+                                
                               });
                             });
                             Navigator.pop(context, 'Cancel');
@@ -730,7 +730,7 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
                                                   onTap: () async {
                                                     var bool = await collabrepo
                                                         .deletePost(postobj.id);
-                                                    print(bool);
+                                                   
                                                     if (bool) {
                                                       // displaydrafts(
                                                       //  context, post);
@@ -924,9 +924,7 @@ class _SearchCState extends State<SearchC> {
     List<User> results = [];
     if (enteredKeyword.isEmpty) {
       results = users;
-      print("if filter length is 0, len of all users is- ${results.length}");
     } else {
-      print("if filter not 0");
       results = users
           .where((user) => (user.username
                   .toLowerCase()
@@ -938,12 +936,11 @@ class _SearchCState extends State<SearchC> {
                   .toLowerCase()
                   .contains(enteredKeyword.toLowerCase())))
           .toList();
-      print(results.length);
     }
 
     setState(() {
       _foundUsers = results;
-      print("foundusers len in setstate runfilter- ${_foundUsers.length}");
+     // print("foundusers len in setstate runfilter- ${_foundUsers.length}");
     });
     // Refresh the UI
   }
@@ -969,13 +966,12 @@ class _SearchCState extends State<SearchC> {
             ),
             TextField(
               onChanged: (value) {
-                print("on changed");
+                //print("on changed");
                 _runFilter(value);
-                print("value in textfield after filter ${value}");
+                //print("value in textfield after filter ${value}");
                 int i = 0;
                 while (i < _foundUsers.length) {
-                  print("in onchanged loop");
-                  print(_foundUsers[i].username);
+                 
                   i++;
                 }
               },
@@ -1135,12 +1131,12 @@ class _SearchCState extends State<SearchC> {
                             //img = imageLink.post;
                             setState(() {
                               Future.delayed(Duration.zero, () async {
-                                print("b1");
+                               // print("b1");
                                 ui.Image bg =
                                     await Image.memory(_bytesImage).image.image;
                                 backgroundImage = bg;
                                 controller.background = bg.backgroundDrawable;
-                                print("b12");
+                                //print("b12");
                               });
                             });
                             Navigator.pop(context, 'Cancel');
@@ -1186,7 +1182,7 @@ class _SearchTState extends State<SearchT> {
       //username = (await storage.read(key: 'username')).toString();
       posts = await _postRepository.GetPosts();
       _foundPosts = posts;
-      print("painter init state searcht");
+      //print("painter init state searcht");
       if (mounted) setState(() {});
     });
     super.initState();
@@ -1196,10 +1192,10 @@ class _SearchTState extends State<SearchT> {
     List<Library> results = [];
     if (enteredKeyword.isEmpty) {
       results = posts;
-      print("if filter length");
-      print(results.length);
+      // print("if filter length");
+      // print(results.length);
     } else {
-      print("if filter not 0");
+     // print("if filter not 0");
       results = posts
           .where((post) => ((post.caption
                   .toLowerCase()
@@ -1312,12 +1308,12 @@ class _SearchTState extends State<SearchT> {
                             //img = imageLink.post;
                             setState(() {
                               Future.delayed(Duration.zero, () async {
-                                print("b1");
+                                // print("b1");
                                 ui.Image bg =
                                     await Image.memory(_bytesImage).image.image;
                                 backgroundImage = bg;
                                 controller.background = bg.backgroundDrawable;
-                                print("b12");
+                                // print("b12");
                               });
                             });
                             Navigator.pop(context, 'Cancel');
@@ -1406,7 +1402,7 @@ class _RenderedImageDialogState extends State<RenderedImageDialog> {
           },
         ),
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.cloud_download,
             //color: c,
           ),
@@ -1414,7 +1410,7 @@ class _RenderedImageDialogState extends State<RenderedImageDialog> {
           onPressed: () async {
             CollabRepository crepo = CollabRepository();
             var bool = await crepo.createPost(user, base64Encode(b));
-            print(bool);
+            // print(bool);
             if (bool) {
               setState(() {
                 // c = Colors.green;

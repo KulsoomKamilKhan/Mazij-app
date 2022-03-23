@@ -23,9 +23,9 @@ class CaptionPosts extends StatefulWidget {
 class _CaptionPostsState extends State<CaptionPosts> {
   @override
   Widget build(BuildContext context) {
-    print('in caption.dart');
-    print(widget.caption);
-    print(widget.caption.length);
+    // print('in caption.dart');
+    // print(widget.caption);
+    // print(widget.caption.length);
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(50),
@@ -134,8 +134,8 @@ class _CaptionPostsState extends State<CaptionPosts> {
         if (values[i]!.compareTo(caption) == 0) {
           posts.add(post);
         }
-        print(values[i]);
-        print(split[i].length);
+        // print(values[i]);
+        // print(split[i].length);
         i++;
       }
       // int j = 0;

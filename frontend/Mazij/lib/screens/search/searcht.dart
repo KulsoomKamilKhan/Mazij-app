@@ -23,7 +23,7 @@ class _SearchTState extends State<SearchT> {
     Future.delayed(Duration.zero, () async {
       posts = await _postRepository.GetPosts();
       _foundPosts = posts;
-      print("search t");
+      //"search t");
       if (mounted) setState(() {});
     });
 
@@ -35,10 +35,10 @@ class _SearchTState extends State<SearchT> {
     List<Library> results = [];
     if (enteredKeyword.isEmpty) {
       results = posts;
-      print("if filter length");
-      print(results.length);
+      //"if filter length");
+      //results.length);
     } else {
-      print("if filter not 0");
+      //"if filter not 0");
       results = posts
           .where((post) => ((post.caption
                   .toLowerCase()

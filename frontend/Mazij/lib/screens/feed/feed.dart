@@ -45,7 +45,7 @@ class _FeedState extends State<Feed> {
         drawer: const SettingsDrawer(),
         body: BlocListener<PostBloc, PostState>(listener: (context, state) {
           if (state is PostUpvoted) {
-            print("here upv");
+            // print("here upv");
             Navigator.of(context)
                 .pushNamedAndRemoveUntil('/feed', (route) => false);
           }
@@ -174,15 +174,15 @@ class _TopTabBarState extends State<TopTabBar> {
     Map<int, String> values = {};
     while (i < split.length) {
       values[i] = split[i];
-      print(values[i]);
-      print(split[i].length);
+      // print(values[i]);
+      // print(split[i].length);
       i++;
     }
     int j = 0;
     while (j < values.length) {
       String s = values[j].toString().trim();
-      print('in feed');
-      print(s);
+      // print('in feed');
+      // print(s);
       list.add(Row(
         children: [
           ElevatedButton(
@@ -193,7 +193,7 @@ class _TopTabBarState extends State<TopTabBar> {
                 shadowColor: Colors.grey,
               ),
               onPressed: () {
-                print(s);
+                //print(s);
                 Navigator.push(
                   context,
                   MaterialPageRoute(

@@ -88,9 +88,9 @@ class _MembersState extends State<MembersPage> {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           // print(data.data()!["admin"]);
-                          print("in members");
-                          print(widget.admin);
-                          print(_username);
+                          // print("in members");
+                          // print(widget.admin);
+                          // print(_username);
                           if ((_username.compareTo(widget.admin) == 0) && (unames.contains(data.data()!["members"][index]))) {
                             return InkWell(
                               child:ListTile(
@@ -112,7 +112,7 @@ class _MembersState extends State<MembersPage> {
                                   }),
                             ),
                             onTap: () {
-                                  print("member tapped admin");
+                                  //print("member tapped admin");
                                   String s = data
                                           .data()!["members"][index]
                                           .toString()
@@ -148,7 +148,7 @@ class _MembersState extends State<MembersPage> {
                                           .data()!["members"][index]
                                           .toString()
                                           .trim();
-                                  print("member tapped");
+                                  //print("member tapped");
                             if(s.compareTo(_username)!=0){
                                   Navigator.push(
                                     context,

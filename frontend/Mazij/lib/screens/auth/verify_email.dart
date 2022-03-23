@@ -186,7 +186,7 @@ class CustomFormState extends State<CustomForm> {
                                                         givencode.compareTo(
                                                                 widget.code) ==
                                                             0) {
-                                                      print("validated");
+                                                      
                                                       context
                                                           .read<
                                                               AuthenticationBloc>()
@@ -221,7 +221,7 @@ class CustomFormState extends State<CustomForm> {
                                                     givencode.compareTo(
                                                             widget.code) ==
                                                         0) {
-                                                  print("validated");
+                                                  
                                                   context
                                                       .read<
                                                           AuthenticationBloc>()

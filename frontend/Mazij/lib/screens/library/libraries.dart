@@ -261,9 +261,9 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
                             side: BorderSide(color: w2)),
                         //),
                         onPressed: () async {
-                          print("follow in lib 2");
+                          //"follow in lib 2");
                           if (!pressed2) {
-                            print(pressed2);
+                            //pressed2);
                             var bool =
                                 await _followRepository.Create(username, "A");
                             if (bool) {
@@ -271,10 +271,10 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
                                 w2 = Colors.red;
                                 pressed2 = true;
                               });
-                              print(pressed2);
+                              //pressed2);
                             }
                           } else {
-                            print(pressed2);
+                            //pressed2);
                             var bool =
                                 await _followRepository.Delete(username, "A");
                             if (bool) {
@@ -282,7 +282,7 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
                                 w2 = Colors.white;
                                 pressed2 = false;
                               });
-                              print(pressed2);
+                              //pressed2);
                             }
                           }
                         },
@@ -308,9 +308,9 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
                             borderRadius: BorderRadius.circular(50),
                             side: BorderSide(color: w3)),
                         onPressed: () async {
-                          print("follow in lib 2");
+                          //"follow in lib 2");
                           if (!pressed3) {
-                            print(pressed3);
+                            //pressed3);
                             var bool =
                                 await _followRepository.Create(username, "S");
                             if (bool) {
@@ -318,10 +318,10 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
                                 w3 = Colors.red;
                                 pressed3 = true;
                               });
-                              print(pressed1);
+                              //pressed1);
                             }
                           } else {
-                            print(pressed3);
+                            //pressed3);
                             var bool =
                                 await _followRepository.Delete(username, "S");
                             if (bool) {
@@ -329,7 +329,7 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
                                 w3 = Colors.white;
                                 pressed3 = false;
                               });
-                              print(pressed3);
+                              //pressed3);
                             }
                           }
                         },
@@ -353,9 +353,9 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
                             borderRadius: BorderRadius.circular(50),
                             side: BorderSide(color: w4)),
                         onPressed: () async {
-                          print("follow in lib 2");
+                          //"follow in lib 2");
                           if (!pressed4) {
-                            print(pressed4);
+                            //pressed4);
                             var bool =
                                 await _followRepository.Create(username, "CC");
                             if (bool) {
@@ -363,10 +363,10 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
                                 w4 = Colors.red;
                                 pressed4 = true;
                               });
-                              print(pressed4);
+                              //pressed4);
                             }
                           } else {
-                            print(pressed4);
+                            //pressed4);
                             var bool =
                                 await _followRepository.Delete(username, "CC");
                             if (bool) {
@@ -374,7 +374,7 @@ class _TopTabBarState extends State<TopTabBar> with TickerProviderStateMixin {
                                 w4 = Colors.white;
                                 pressed4 = false;
                               });
-                              print(pressed4);
+                              //pressed4);
                             }
                           }
                         },

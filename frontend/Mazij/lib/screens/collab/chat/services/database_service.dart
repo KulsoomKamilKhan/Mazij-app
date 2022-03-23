@@ -167,7 +167,7 @@ class DatabaseService {
 
   // search groups
   searchByName(String groupName) {
-    print(groupName);
+    //print(groupName);
     return FirebaseFirestore.instance
         .collection("groups")
         .where('groupName', isEqualTo: groupName)

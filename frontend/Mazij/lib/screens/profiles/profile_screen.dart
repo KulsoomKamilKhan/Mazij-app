@@ -233,7 +233,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
               builder: (context) =>
                   CreatePosts(post, user, caption, upvotes, collaborators)));
     } else {
-      print("File Picker Error, image is null");
+      //"File Picker Error, image is null");
     }
   }
 

@@ -29,14 +29,14 @@ class _PostScreenState extends State<PostScreen> {
     Map<int, String> values = {};
     while (i < split.length) {
       values[i] = split[i];
-      print(values[i]);
+      //values[i]);
       i++;
     }
 
     int j = 0;
     while (j < values.length) {
       String s = values[j].toString().trim();
-      print(s);
+      //s);
       list.add(Row(
         children: [
           ElevatedButton(
@@ -70,20 +70,20 @@ class _PostScreenState extends State<PostScreen> {
     List<Widget> list = [];
     final split = collaborators.split(',');
     int i = 0;
-    print("collaborators");
-    print(collaborators);
+    //"collaborators");
+    //collaborators);
     Map<int, String> values = {};
     while (i < split.length) {
       values[i] = split[i];
-      print(split[i]);
-      print(values[i]);
+      //split[i]);
+      //values[i]);
       i++;
     }
 
     int j = 0;
     while (j < values.length) {
       String s = values[j].toString().trim();
-      print(s);
+      //s);
       list.add(Row(
         children: [
           ElevatedButton(

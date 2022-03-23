@@ -209,8 +209,8 @@ class CustomFormState extends State<CustomForm> {
                                         ),
                                         onPressed: () {
                                           //Navigator.of(context).pushNamed('/home');
-                                          print(widget.user);
-                                          print(widget.collaborators);
+                                          //widget.user);
+                                          //widget.collaborators);
 
                                           context
                                               .read<PostBloc>()

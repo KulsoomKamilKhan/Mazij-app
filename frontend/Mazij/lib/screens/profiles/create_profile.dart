@@ -95,15 +95,15 @@ class CustomFormState extends State<CustomForm> {
       _bio = (await storage.read(key: 'bio')).toString();
       var _dp = (await storage.read(key: 'profile_pic')).toString();
       if (_bio == "null") {
-        // print("createprofile0");
-        // print(_bio);
+        // //"createprofile0");
+        // //_bio);
         _bio = '';
       }
       if (_dp != "null") {
-        // print("createprofile");
-        // print(_dp);
+        // //"createprofile");
+        // //_dp);
         profile_pic = _dp;
-        //print(profile_pic);
+        ////profile_pic);
       }
       //or if(_bio==''){_bio='';}
       if (mounted) setState(() {});

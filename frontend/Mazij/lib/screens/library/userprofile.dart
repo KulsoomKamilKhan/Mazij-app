@@ -35,18 +35,18 @@ class _UserProfileState extends State<UserProfile> {
   void initState() {
     Future.delayed(Duration.zero, () async {
       _loggeduser = (await storage.read(key: 'username')).toString();
-      print("in init delayed");
+      //"in init delayed");
       loadPosts();
       if (mounted) setState(() {});
     });
     //loadPosts();
-    print("init");
+    //"init");
     super.initState();
   }
 
   loadPosts() async {
-    print("load posts");
-    print(widget.username);
+    //"load posts");
+    //widget.username);
     BlocProvider.of<PostBloc>(context)
         .add(GetProfilePosts(user: widget.username));
   }
@@ -85,9 +85,9 @@ class _UserProfileState extends State<UserProfile> {
                   ),
                 );
               } else if (state is PostLoaded) {
-                print("post loaded");
+                //"post loaded");
                 posts = state.posts;
-                print("post len ${posts!.length}");
+                //"post len ${posts!.length}");
                 return profilepage(posts!, widget.username, _loggeduser);
               } else if (state is PostError) {}
               return ProfileInfo(0, widget.username); // 0 posts
@@ -199,7 +199,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
   @override
   Widget build(BuildContext context) {
     var _bytesImage = const Base64Decoder().convert(prof.profile_pic);
-    //print(u.toString());
+    ////u.toString());
     return Column(
       children: <Widget>[
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -224,7 +224,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
               iconSize: 25,
               tooltip: 'Report User',
               onPressed: () {
-                print("user report");
+                //"user report");
                 _userRepository.report(user.username, _loggeduser);
                 //Navigator.of(context).pushNamed('/feed');
                 //Navigator.of(context).pop();
@@ -290,9 +290,9 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     shadowColor: Colors.grey,
                   ),
                   onPressed: () async {
-                    print("button");
+                    //"button");
                     if (!pressed) {
-                      print(pressed);
+                      //pressed);
                       var bool = await _followRepository.Create(
                           _loggeduser, user.username);
                       if (bool) {
@@ -300,10 +300,10 @@ class _ProfileInfoState extends State<ProfileInfo> {
                           w = const Text("Following");
                           pressed = true;
                         });
-                        print(pressed);
+                        //pressed);
                       }
                     } else {
-                      print(pressed);
+                      //pressed);
                       var bool = await _followRepository.Delete(
                           _loggeduser, user.username);
                       if (bool) {
@@ -312,7 +312,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                           w = const Text("Follow");
                           pressed = false;
                         });
-                        print(pressed);
+                        //pressed);
                       }
                     }
                   },

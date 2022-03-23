@@ -38,7 +38,7 @@ class _SearchState extends State<Search> {
       username = (await storage.read(key: 'username')).toString();
       users.removeWhere((element) => element.username.compareTo(username) == 0);
       _foundUsers = users;
-      print(users.length);
+      //users.length);
       if (mounted) setState(() {});
     });
     super.initState();
@@ -63,8 +63,8 @@ class _SearchState extends State<Search> {
     if (enteredKeyword.isEmpty) {
       // if the search field is empty or only contains white-space, we'll display all users
       results = users;
-      print("if filter length");
-      print(results.length);
+      //"if filter length");
+      //results.length);
     } else {
       results = users
           .where((user) => (user.username

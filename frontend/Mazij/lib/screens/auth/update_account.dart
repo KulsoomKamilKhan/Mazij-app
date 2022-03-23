@@ -107,13 +107,8 @@ class CustomFormState extends State<CustomForm> {
      // });
         break;
     }
-    print("after sc");
-    print(value);
-    print(user.account_type);
     setState(() {
       user.account_type = a;
-      print("in set sc");
-      print(user.account_type);
     });
   }
 
@@ -511,10 +506,9 @@ class CustomFormState extends State<CustomForm> {
                                         int code = 0;
                                       code =
                                           11111111 + Random().nextInt(99999999);
-                                      print(code.toString());
+                                      
                                       UserRepository _userrepo = UserRepository();
-                                      print("in update");
-                                      print(user.account_type);
+                                    
                                       // User user = User(first_name: _firstName, last_name: _lastName,
                                       //  username: _username, account_type: _account_type, date_of_birth: _dob, email: _email, passwords: _password);
                                       

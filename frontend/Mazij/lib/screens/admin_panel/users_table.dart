@@ -32,7 +32,6 @@ class _UsersTableState extends State<UsersTable> {
     // at the beginning, all users are shown
     Future.delayed(Duration.zero, () async {
       _foundUsers = widget.users;
-      print(_foundUsers.length);
       if (mounted) setState(() {});
     });
     super.initState();
@@ -44,8 +43,6 @@ class _UsersTableState extends State<UsersTable> {
     if (enteredKeyword.isEmpty) {
       // if the search field is empty or only contains white-space, we'll display all users
       results = widget.users;
-      print("if filter length");
-      print(results.length);
     } else {
       results = widget.users
           .where((user) => user.username

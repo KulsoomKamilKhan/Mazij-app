@@ -53,18 +53,18 @@ class _HomePageState extends State<HomePage> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           dynamic data = snapshot.data!;
-          print(snapshot.data.toString());
-          print(data['groups'].length);
+          // print(snapshot.data.toString());
+          // print(data['groups'].length);
           if (data['groups'] != null) {
-            print(data['groups'].length);
+            // print(data['groups'].length);
             if (data['groups'].length != 0) {
               return ListView.builder(
                   itemCount: data['groups'].length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     int reqIndex = data['groups'].length - index - 1;
-                    print('groupList');
-                    print(reqIndex);
+                    // print('groupList');
+                    // print(reqIndex);
                     // print(data['groups'][0]);
                     // print(data['groups'][1]);
                     return GroupTile(
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
     //super.initState();
     setState(() {});
     DatabaseService(_username).getUserGroups().then((snapshots) {
-      print(_username);
+      // print(_username);
 
       setState(() {
         _groups = snapshots;

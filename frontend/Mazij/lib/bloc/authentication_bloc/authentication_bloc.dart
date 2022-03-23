@@ -70,19 +70,13 @@ class AuthenticationBloc
     try {
       var response = await _userRepository.getUserByusername(
           username); //retrieving password from user and authenticating it
-      print("bloc0");
       if (response.passwords.compareTo(password) == 0) {
-        print("bloc1");
         var profile = await _profileRepository.getProfileByUsername(username);
         loginPersistence(response);
         await storage.write(key: 'bio', value: profile.bio);
         await storage.write(key: 'profile_pic', value: profile.profile_pic);
-        print("bloc2");
-        print(response.username);
-        print(response.email);
         if ((response.username.compareTo('hwumazijadmin48') == 0) &&
             response.email.compareTo('hwumazij@gmail.com') == 0) {
-          print("admin login bloc");
           yield AdminLogin();
         } else {
           yield LoginSuccessful();
@@ -121,13 +115,11 @@ class AuthenticationBloc
         await storage.write(key: 'profile_pic', value: 'null');
         if ((user.username.compareTo('hwumazijadmin48') == 0) &&
             user.email.compareTo('hwumazij@gmail.com') == 0) {
-          print("admin reg bloc");
 
           yield AdminLogin();
         } else {
           String fullName = user.first_name + ' ' + user.last_name;
           DatabaseService(user.username).updateUserData(fullName);
-          print("done");
           yield RegistrationSuccessful();
         } //if user details are valid, register successfully and route to home page
       } else {
@@ -283,8 +275,6 @@ class AuthenticationBloc
           account_type: account_type,
           date_of_birth: (await storage.read(key: 'dateofbirth')).toString(),
           passwords: password);
-      print("validated bloc");
-      print(user.account_type);
       var response = await _userRepository
           .updateUser(user); //retrieve user details and update account
       if (response) {

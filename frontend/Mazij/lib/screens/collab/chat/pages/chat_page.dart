@@ -95,8 +95,8 @@ class _ChatPageState extends State<ChatPage> {
         actions: [
           IconButton(
               onPressed: () {
-                print("in chat");
-                print(widget.admin);
+                // print("in chat");
+                // print(widget.admin);
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
                         MembersPage(widget.groupId, widget.admin)));

@@ -57,7 +57,7 @@ class OnBoardingPage extends StatelessWidget {
             color: Colors.white,
           ),
           dotsDecorator: getDotDecoration(),
-          onChange: (index) => print('Page $index selected'),
+          //onChange: (index) => print('Page $index selected'),
           globalBackgroundColor: Theme.of(context).primaryColor,
           skipOrBackFlex: 0,
           nextFlex: 0,

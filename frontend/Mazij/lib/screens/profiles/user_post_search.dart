@@ -160,7 +160,7 @@ class UserPostSP extends StatelessWidget {
             IconButton(
               onPressed: () {
                 post.upvotes++;
-                print(post.upvotes);
+                //post.upvotes);
                 BlocProvider.of<PostBloc>(context).add(UpvotePost(post: post));
               },
               icon: Icon(Icons.favorite,
@@ -182,7 +182,7 @@ class UserPostSP extends StatelessWidget {
         body: BlocListener<PostBloc, PostState>(listener: (context, state) {
       if (state is PostUpvoted) {
         // Navigator.of(context).pushNamedAndRemoveUntil('/lib', (route) => false);
-        print("upvotes");
+        //"upvotes");
         Navigator.push(
           context,
           MaterialPageRoute(
